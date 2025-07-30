@@ -17,15 +17,13 @@ extends CharacterBody2D
 var _jumpCount = 0
 var _lastOnFloor = 0.0
 var _frameSinceJumpPressed = INF
-var _localGravity = 0
+var _localGravity = 980
 var _direction
 var _hasDashed = false
 var _jumpVelocity = 0
 
 func _ready():
-  _localGravity = get_gravity()
-  _jumpVelocity = sqrt(2 * JumpHeight * 980) # TODO: HARDCODED FOR NOW
-  print(_jumpVelocity)
+  _jumpVelocity = sqrt(2 * JumpHeight * _localGravity) # TODO: HARDCODED FOR NOW
 
 
 func _physics_process(delta: float) -> void:
