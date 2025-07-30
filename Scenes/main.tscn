@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://b3ip2tsabj3dm"]
+
+[ext_resource type="PackedScene" uid="uid://cnv1i1bs5daa0" path="res://Scenes/player.tscn" id="1_5lr7u"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ik0b0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_my2t3"]
+size = Vector2(100, 96)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_5tkwg"]
+size = Vector2(100, 96)
+
+[node name="Main" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_5lr7u")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(0, 75)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("WorldBoundaryShape2D_ik0b0")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="StaticBody2D"]
+position = Vector2(90, -48)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D/StaticBody2D2"]
+shape = SubResource("RectangleShape2D_my2t3")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D/StaticBody2D2/CollisionShape2D"]
+texture = SubResource("PlaceholderTexture2D_5tkwg")
