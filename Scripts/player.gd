@@ -1,5 +1,8 @@
 extends CharacterBody2D
 
+# Added for code suggestions
+class_name Player
+
 @export_group("Movement")
 @export var Speed = 300.0
 @export var Deceleration = 30.0
@@ -78,7 +81,7 @@ func _handleJump() -> void:
   if _lastOnFloor <= CoyoteTime && _jumpCount < 1:
     _jump()
     return
-  
+
   if _jumpCount < MaxJumps && velocity.y >= 0 && _lastOnFloor > JumpBuffer:
     _jump()
     return
