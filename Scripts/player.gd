@@ -70,13 +70,13 @@ func _handleGravity(delta) -> void:
 func _handleJump() -> void:
   if Input.get_action_strength("pl_jump"): _frameSinceJumpPressed = 0
 
-  if _frameSinceJumpPressed > CoyoteTime: return
+  if _frameSinceJumpPressed > JumpBuffer: return
 
   if is_on_floor():
     _jump()
     return
 
-  if _lastOnFloor <= JumpBuffer && _jumpCount < 1:
+  if _lastOnFloor <= CoyoteTime && _jumpCount < 1:
     _jump()
     return
 
