@@ -21,6 +21,7 @@ var _localGravity = 980
 var _direction
 var _hasDashed = false
 var _jumpVelocity = 0
+var _isScouting = false
 
 func _ready():
   _jumpVelocity = sqrt(2 * JumpHeight * _localGravity) # TODO: HARDCODED FOR NOW
@@ -37,13 +38,25 @@ func _physics_process(delta: float) -> void:
   _handleHorizontalMovement()
   _handleJump()
 
+
+  if Input.get_action_strength("pl_scout"):
+    if _isScouting:
+      _isScouting = false
+      SignalBus.scout_exit.emit()
+      return
+
+    if !_isScouting:
+      _isScouting = true
+      SignalBus.scout_enter.emit()
+
+      
   move_and_slide()
 
 
 #region HORIZONTAL MOVEMENT
 func _handleHorizontalMovement() -> void:
   _direction = Input.get_axis("pl_left", "pl_right")
-  if _direction:
+  if _direction && !_isScouting:
     velocity.x = _direction * Speed
   else:
     velocity.x = move_toward(velocity.x, 0, Deceleration)
@@ -67,6 +80,7 @@ func _handleGravity(delta) -> void:
 
 #region JUMP
 func _handleJump() -> void:
+  if _isScouting: return
   if Input.get_action_strength("pl_jump"): _frameSinceJumpPressed = 0
 
   if _frameSinceJumpPressed > JumpBuffer: return
