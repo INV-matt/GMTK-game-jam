@@ -9,8 +9,10 @@ extends CharacterBody2D
 @export var JumpHeight = 96.0
 @export var CoyoteTime = 5
 @export var JumpBuffer = 5
+@export var MaxJumps = 2
 @export var FallGravityMultiplier = 1.5
 @export var FastFallGravityMultiplier = 1.5
+
 
 var _jumpCount = 0
 var _lastOnFloor = 0.0
@@ -77,6 +79,11 @@ func _handleJump() -> void:
 
   if _lastOnFloor <= CoyoteTime && _jumpCount < 1:
     _jump()
+    return
+  
+  if _lastOnFloor >= JumpBuffer && _jumpCount < MaxJumps:
+    print('a')
+    #_jump()
     return
 
 
