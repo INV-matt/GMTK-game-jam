@@ -7,7 +7,6 @@ extends CharacterBody2D
 
 @export_group("Jump")
 @export var JumpHeight = 96.0
-@export var CoyoteTimeSec = 0.2
 @export var CoyoteTime = 5
 @export var JumpBuffer = 5
 @export var FallGravityMultiplier = 1.5
