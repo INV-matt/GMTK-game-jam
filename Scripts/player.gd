@@ -81,9 +81,8 @@ func _handleJump() -> void:
     _jump()
     return
   
-  if _lastOnFloor >= JumpBuffer && _jumpCount < MaxJumps:
-    print('a')
-    #_jump()
+  if _jumpCount < MaxJumps && velocity.y >= 0 && _lastOnFloor > JumpBuffer:
+    _jump()
     return
 
 
