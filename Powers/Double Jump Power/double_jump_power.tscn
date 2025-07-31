@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cdpjrx4rk05n6"]
 
-[ext_resource type="Script" uid="uid://c74bj17eqxd3x" path="res://Scripts/double_jump.gd" id="1_v882p"]
+[ext_resource type="Script" uid="uid://c74bj17eqxd3x" path="res://Powers/Double Jump Power/double_jump.gd" id="1_v882p"]
 
 [node name="double_jump" type="Node2D" groups=["power"]]
 script = ExtResource("1_v882p")
