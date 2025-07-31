@@ -17,9 +17,15 @@ class_name HealthComponent
 var health: int
 
 func _updateBar() :
+  print(health)
+  
   if DisplayHealthBar :
     DisplayHealthBar.value = health
     DisplayHealthBar.visible = health < MaxHealth or AlwaysShow
+
+func healAll() :
+  health = MaxHealth
+  _updateBar()
 
 func _ready() -> void:
   health = MaxHealth
@@ -38,6 +44,7 @@ func doDamage(amt: int) :
   
   if health == 0 :
     emit_signal("death")
+    print("hi")
     
     if DestroyOnNoHealth :
       get_parent().queue_free()
