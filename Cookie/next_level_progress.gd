@@ -5,7 +5,7 @@ class_name Cookie
 signal next_level
 
 func _waitForNextGlint() :
-  var time = randi_range(5, 20)
+  var time = randi_range(1, 10)
   $glintTimer.start(time)
 
 func _ready() -> void:

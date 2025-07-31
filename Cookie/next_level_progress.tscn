@@ -1,7 +1,8 @@
-[gd_scene load_steps=17 format=3 uid="uid://cqkmli6tk17on"]
+[gd_scene load_steps=18 format=3 uid="uid://cqkmli6tk17on"]
 
 [ext_resource type="Script" uid="uid://c2re58c7bd7bh" path="res://Cookie/next_level_progress.gd" id="1_oc8bs"]
 [ext_resource type="Texture2D" uid="uid://3vbqlg4xmu0q" path="res://Cookie/Cookie-Sheet.png" id="2_g1xyc"]
+[ext_resource type="Texture2D" uid="uid://bos4tyfr5cive" path="res://Cookie/Cookie_No_Shine-Sheet.png" id="3_radf3"]
 
 [sub_resource type="Animation" id="Animation_rgwi1"]
 length = 0.001
@@ -44,7 +45,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0.5, 1.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, 10), Vector2(0, -10)]
+"values": [Vector2(0, 5), Vector2(0, -5)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_m3cjo"]
@@ -85,8 +86,8 @@ region = Rect2(0, 96, 48, 48)
 atlas = ExtResource("2_g1xyc")
 region = Rect2(48, 96, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2sfdh"]
-atlas = ExtResource("2_g1xyc")
+[sub_resource type="AtlasTexture" id="AtlasTexture_cy0dj"]
+atlas = ExtResource("3_radf3")
 region = Rect2(0, 0, 48, 48)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_tvj5x"]
@@ -122,7 +123,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_2sfdh")
+"texture": SubResource("AtlasTexture_cy0dj")
 }],
 "loop": true,
 "name": &"idle",
@@ -146,6 +147,7 @@ scale = Vector2(0.666667, 0.666667)
 sprite_frames = SubResource("SpriteFrames_tvj5x")
 animation = &"idle"
 autoplay = "idle"
+frame_progress = 0.541064
 
 [node name="collider" type="Area2D" parent="Sprite2D"]
 scale = Vector2(1.5, 1.5)
