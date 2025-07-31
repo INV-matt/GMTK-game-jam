@@ -5,7 +5,9 @@ class_name Player
 
 @export_group("Movement")
 @export var Speed = 300.0
+@export var Acceleration = 30.0
 @export var Deceleration = 30.0
+@export var AccelerationPower = 0.9
 @export var Dash = 1000
 
 @export_group("Jump")
@@ -44,28 +46,36 @@ func _physics_process(delta: float) -> void:
 
   if !_isScouting && !movementLocked:
     _handleGravity(delta)
-    _handleHorizontalMovement()
+    _handleHorizontalMovement(delta)
     _handleJump()
     move_and_slide()
 
 #region APPLY POWERS
-func _apply_powers() :
-  for i in get_children() :
+func _apply_powers():
+  for i in get_children():
     # Only apply the powers of children of type "Power" and that have the group "power"
-    if i is Power and "power" in i.get_groups() :
+    if i is Power and "power" in i.get_groups():
       i.apply_power_passive()
 #endregion
 
 #region HORIZONTAL MOVEMENT
-func _handleHorizontalMovement() -> void:
+func _handleHorizontalMovement(delta) -> void:
+  # _direction = Input.get_axis("pl_left", "pl_right")
+  # if _direction: # && !_isScouting:
+  #   velocity.x = _direction * Speed
+  # else:
+  #   velocity.x = move_toward(velocity.x, 0, Deceleration)
   _direction = Input.get_axis("pl_left", "pl_right")
-  if _direction: # && !_isScouting:
-    velocity.x = _direction * Speed
-  else:
-    velocity.x = move_toward(velocity.x, 0, Deceleration)
+  var target = _direction * Speed
+  var dv = target - velocity.x
+  var accelRate = Acceleration if abs(dv) > 0.1 else Deceleration
+  var mov = pow(abs(dv) * accelRate, AccelerationPower) * sign(dv)
+  velocity.x += mov * delta
+  # print(mov)
+  # print(velocity.x)
 #endregion
 
-func _getCurrentGravity() :
+func _getCurrentGravity():
   return get_gravity() * GlobalGravityMult
 
 #region GRAVITY
