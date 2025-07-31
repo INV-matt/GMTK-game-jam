@@ -1,9 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://b3ip2tsabj3dm"]
+[gd_scene load_steps=14 format=3 uid="uid://b3ip2tsabj3dm"]
+
 
 [ext_resource type="PackedScene" uid="uid://cnv1i1bs5daa0" path="res://Player/player.tscn" id="1_2w1kt"]
 [ext_resource type="Script" uid="uid://jy3cw8fsadki" path="res://Main/camera_movement.gd" id="2_qvhan"]
 [ext_resource type="PackedScene" uid="uid://q2g8uqvyfrap" path="res://Enemies/Basic Enemy/basic_enemy.tscn" id="3_qvhan"]
-[ext_resource type="Script" uid="uid://djrembxkjudx2" path="res://Main/lives_container.gd" id="4_eunhr"]
+[ext_resource type="Script" uid="uid://niau7oxw71ir" path="res://UI/UI.gd" id="5_f6fdm"]
+[ext_resource type="Theme" uid="uid://diigp8dh8nst4" path="res://UI/UI.tres" id="5_k3v36"]
+[ext_resource type="Texture2D" uid="uid://csm576bb3dk1c" path="res://UI/Assets/Life_Hud.png" id="6_liyct"]
+[ext_resource type="Texture2D" uid="uid://dsjfhq3fg44o" path="res://UI/Assets/Life_Numbers-Sheet.png" id="8_rj11h"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ik0b0"]
 
@@ -15,6 +19,10 @@ size = Vector2(100, 96)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jjgbg"]
 size = Vector2(100, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qac2q"]
+atlas = ExtResource("8_rj11h")
+region = Rect2(0, 0, 32, 32)
 
 [node name="Main" type="Node2D"]
 
@@ -57,39 +65,32 @@ texture = SubResource("PlaceholderTexture2D_5tkwg")
 
 [node name="basic_enemy" parent="." instance=ExtResource("3_qvhan")]
 position = Vector2(-206, -220)
+DmgAmt = 50
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="UI" type="CanvasLayer" parent="." node_paths=PackedStringArray("t_Lives")]
+script = ExtResource("5_f6fdm")
+t_Lives = NodePath("MarginContainer/BG/LivesLeft")
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="MarginContainer" type="MarginContainer" parent="UI"]
+offset_right = 267.0
+offset_bottom = 138.0
 size_flags_horizontal = 6
 size_flags_vertical = 6
-theme_override_constants/margin_left = 32
-theme_override_constants/margin_top = 32
-theme_override_constants/margin_right = 32
-theme_override_constants/margin_bottom = 32
+theme = ExtResource("5_k3v36")
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
 
-[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/MarginContainer"]
-custom_minimum_size = Vector2(200, 50)
+[node name="BG" type="TextureRect" parent="UI/MarginContainer"]
 layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
+texture = ExtResource("6_liyct")
+expand_mode = 5
+stretch_mode = 4
 
-[node name="LivesContainer" type="HBoxContainer" parent="CanvasLayer/MarginContainer/PanelContainer" node_paths=PackedStringArray("LivesLabel")]
-layout_mode = 2
-theme_override_constants/separation = 16
-script = ExtResource("4_eunhr")
-LivesLabel = NodePath("Label")
-
-[node name="Heart" type="ColorRect" parent="CanvasLayer/MarginContainer/PanelContainer/LivesContainer"]
-custom_minimum_size = Vector2(50, 0)
-layout_mode = 2
-size_flags_horizontal = 0
-
-[node name="Label" type="Label" parent="CanvasLayer/MarginContainer/PanelContainer/LivesContainer"]
-layout_mode = 2
-text = "100"
+[node name="LivesLeft" type="TextureRect" parent="UI/MarginContainer/BG"]
+layout_mode = 0
+offset_left = 99.0
+offset_top = 9.0
+offset_right = 210.0
+offset_bottom = 130.0
+texture = SubResource("AtlasTexture_qac2q")
+stretch_mode = 5
