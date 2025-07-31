@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://cnv1i1bs5daa0"]
 
 [ext_resource type="Script" uid="uid://cw3ket1027r37" path="res://Player/player.gd" id="1_dynme"]
-[ext_resource type="PackedScene" uid="uid://bgbjkfr7hkkyh" path="res://Powers/Climb Power/climb_power.tscn" id="2_cvnsp"]
 [ext_resource type="Script" uid="uid://b6pxf2yjv2tmg" path="res://Components/Health/health_component.gd" id="3_btcbx"]
+[ext_resource type="PackedScene" uid="uid://bcwjmekm2lobt" path="res://Powers/Attack Power/attack_power.tscn" id="3_gwnis"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_wp0l0"]
 size = Vector2(16, 32)
@@ -22,8 +22,6 @@ texture = SubResource("PlaceholderTexture2D_wp0l0")
 shape = SubResource("CapsuleShape2D_75muk")
 debug_color = Color(7.70092e-07, 0.64704, 0.22181, 0.42)
 
-[node name="climb_power" parent="." instance=ExtResource("2_cvnsp")]
-
 [node name="healthbar" type="ProgressBar" parent="."]
 offset_left = -16.0
 offset_top = -24.0
@@ -35,3 +33,5 @@ show_percentage = false
 script = ExtResource("3_btcbx")
 DisplayHealthBar = NodePath("../healthbar")
 metadata/_custom_type_script = "uid://b6pxf2yjv2tmg"
+
+[node name="attack_power" parent="." instance=ExtResource("3_gwnis")]
