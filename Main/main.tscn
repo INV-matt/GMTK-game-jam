@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://b3ip2tsabj3dm"]
+[gd_scene load_steps=10 format=3 uid="uid://b3ip2tsabj3dm"]
 
 [ext_resource type="PackedScene" uid="uid://cnv1i1bs5daa0" path="res://Player/player.tscn" id="1_2w1kt"]
 [ext_resource type="Script" uid="uid://jy3cw8fsadki" path="res://Main/camera_movement.gd" id="2_qvhan"]
 [ext_resource type="PackedScene" uid="uid://q2g8uqvyfrap" path="res://Enemies/Basic Enemy/basic_enemy.tscn" id="3_qvhan"]
 [ext_resource type="Script" uid="uid://djrembxkjudx2" path="res://Main/lives_container.gd" id="4_eunhr"]
+[ext_resource type="Script" uid="uid://jd6ed085tkkx" path="res://Main/choose_powers.gd" id="5_k3v36"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ik0b0"]
 
@@ -73,7 +74,7 @@ theme_override_constants/margin_right = 32
 theme_override_constants/margin_bottom = 32
 
 [node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/MarginContainer"]
-custom_minimum_size = Vector2(200, 50)
+custom_minimum_size = Vector2(100, 50)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
@@ -84,11 +85,31 @@ theme_override_constants/separation = 16
 script = ExtResource("4_eunhr")
 LivesLabel = NodePath("Label")
 
-[node name="Heart" type="ColorRect" parent="CanvasLayer/MarginContainer/PanelContainer/LivesContainer"]
+[node name="HeartIcon" type="ColorRect" parent="CanvasLayer/MarginContainer/PanelContainer/LivesContainer"]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 
 [node name="Label" type="Label" parent="CanvasLayer/MarginContainer/PanelContainer/LivesContainer"]
 layout_mode = 2
-text = "100"
+text = "3"
+
+[node name="ChoosePowers" type="CanvasLayer" parent="." node_paths=PackedStringArray("powers")]
+script = ExtResource("5_k3v36")
+powers = [null, null, null]
+
+[node name="PanelContainer" type="PanelContainer" parent="ChoosePowers"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ChoosePowers/PanelContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="ChoosePowers/PanelContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Button2" type="Button" parent="ChoosePowers/PanelContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Button3" type="Button" parent="ChoosePowers/PanelContainer/HBoxContainer"]
+layout_mode = 2

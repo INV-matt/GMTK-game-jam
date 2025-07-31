@@ -4,3 +4,4 @@
 
 [node name="dash" type="Node2D" groups=["power"]]
 script = ExtResource("1_mh6kn")
+Name = "Dash"

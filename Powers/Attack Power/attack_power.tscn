@@ -4,3 +4,4 @@
 
 [node name="attack_power" type="Node2D" groups=["power"]]
 script = ExtResource("1_8i07b")
+Name = "Attack"

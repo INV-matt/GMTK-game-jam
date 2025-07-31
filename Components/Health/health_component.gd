@@ -18,6 +18,9 @@ class_name HealthComponent
 
 var health: int
 
+signal death
+signal damaged
+
 func _updateBar():
   #print(health)
   
@@ -27,6 +30,7 @@ func _updateBar():
 
 func healAll():
   health = MaxHealth
+  if IsPlayer: SignalBus.emit_signal("player_healt_changed", health)
   _updateBar()
 
 func _ready() -> void:
@@ -37,8 +41,6 @@ func _ready() -> void:
     
   _updateBar()
 
-signal death
-signal damaged
 
 func doDamage(amt: int):
   health -= amt

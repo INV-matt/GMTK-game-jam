@@ -1,23 +1,18 @@
 extends HBoxContainer
 
-#TODO move lives counter to a better place
-@export var MaxPlayerLives = 3
 
 @export var LivesLabel: Label
 
-var _remainingLives = 0
-
 func _ready():
-  _remainingLives = MaxPlayerLives
-  LivesLabel.text = str(MaxPlayerLives)
+  LivesLabel.text = str(LivesManager.MaxPlayerLives)
 
-  SignalBus.player_death.connect(Callable(self, "_on_player_death"))
-  SignalBus.player_healt_changed.connect(Callable(self, "_on_player_health_changed"))
+  SignalBus.player_death.connect(_on_player_death)
+  SignalBus.player_healt_changed.connect(_on_player_health_changed)
 
 
 func _on_player_death() -> void:
-  _remainingLives -= 1
-  LivesLabel.text = str(_remainingLives)
+  LivesManager.RemoveLife()
+  LivesLabel.text = str(LivesManager.remainingLives)
   print("bruh")
 
 

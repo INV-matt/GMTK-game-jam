@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 SignalBus="*res://Main/SignalBus.gd"
 BodyManager="*res://Main/BodyManager.gd"
+LivesManager="*res://Main/LivesManager.gd"
 
 [dotnet]
 

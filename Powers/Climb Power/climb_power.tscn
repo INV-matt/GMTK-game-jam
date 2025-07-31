@@ -4,3 +4,4 @@
 
 [node name="climb_power" type="Node2D" groups=["power"]]
 script = ExtResource("1_g7bkn")
+Name = "Climb"
