@@ -18,10 +18,14 @@ func _process(delta: float) -> void:
 
 
 func _on_scout_enter() -> void:
+  print("scout entered")
+  zoom *= .8
   _isScouting = true
   return
 
 func _on_scout_exit() -> void:
+  print("scout exited")
+  zoom /= .8
   position = Vector2(0, 0)
   _isScouting = false
   return

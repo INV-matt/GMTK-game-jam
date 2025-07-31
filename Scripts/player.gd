@@ -39,7 +39,7 @@ func _physics_process(delta: float) -> void:
   _handleJump()
 
 
-  if Input.get_action_strength("pl_scout"):
+  if Input.is_action_just_pressed("pl_scout"):
     if _isScouting:
       _isScouting = false
       SignalBus.scout_exit.emit()
@@ -81,7 +81,7 @@ func _handleGravity(delta) -> void:
 #region JUMP
 func _handleJump() -> void:
   if _isScouting: return
-  if Input.get_action_strength("pl_jump"): _frameSinceJumpPressed = 0
+  if Input.is_action_just_pressed("pl_jump"): _frameSinceJumpPressed = 0
 
   if _frameSinceJumpPressed > JumpBuffer: return
 
