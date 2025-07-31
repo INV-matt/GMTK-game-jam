@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://cnv1i1bs5daa0"]
+[gd_scene load_steps=5 format=3 uid="uid://cnv1i1bs5daa0"]
 
 [ext_resource type="Script" uid="uid://cw3ket1027r37" path="res://Scripts/player.gd" id="1_dynme"]
 
@@ -9,6 +9,11 @@ size = Vector2(16, 32)
 radius = 8.0
 height = 32.0
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_v0iea"]
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(0.612, 0, 0)
+gravity = Vector3(0, 0, 0)
+
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_dynme")
 
@@ -17,3 +22,7 @@ texture = SubResource("PlaceholderTexture2D_wp0l0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_75muk")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(0, 16)
+process_material = SubResource("ParticleProcessMaterial_v0iea")
