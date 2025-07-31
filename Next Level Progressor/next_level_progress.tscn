@@ -1,24 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://cqkmli6tk17on"]
+[gd_scene load_steps=17 format=3 uid="uid://cqkmli6tk17on"]
 
-[ext_resource type="Texture2D" uid="uid://c61ayx76til5q" path="res://icon.svg" id="1_g1xyc"]
 [ext_resource type="Script" uid="uid://c2re58c7bd7bh" path="res://Next Level Progressor/next_level_progress.gd" id="1_oc8bs"]
-
-[sub_resource type="Animation" id="Animation_kfa3e"]
-resource_name = "spin"
-length = 2.0
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1, 2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [0.0, 3.14159, 6.28319]
-}
+[ext_resource type="Texture2D" uid="uid://3vbqlg4xmu0q" path="res://Next Level Progressor/Cookie-Sheet.png" id="2_g1xyc"]
 
 [sub_resource type="Animation" id="Animation_rgwi1"]
 length = 0.001
@@ -34,15 +17,119 @@ tracks/0/keys = {
 "update": 0,
 "values": [0.0]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-4.76837e-07, 4.76837e-07)]
+}
+
+[sub_resource type="Animation" id="Animation_g1xyc"]
+resource_name = "move"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.5, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 10), Vector2(0, -10)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_m3cjo"]
 _data = {
 &"RESET": SubResource("Animation_rgwi1"),
-&"spin": SubResource("Animation_kfa3e")
+&"move": SubResource("Animation_g1xyc")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_kfa3e"]
-size = Vector2(32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_oc8bs"]
+atlas = ExtResource("2_g1xyc")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kfa3e"]
+atlas = ExtResource("2_g1xyc")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rgwi1"]
+atlas = ExtResource("2_g1xyc")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m3cjo"]
+atlas = ExtResource("2_g1xyc")
+region = Rect2(0, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v4lp6"]
+atlas = ExtResource("2_g1xyc")
+region = Rect2(48, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vi0d4"]
+atlas = ExtResource("2_g1xyc")
+region = Rect2(96, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b7qdp"]
+atlas = ExtResource("2_g1xyc")
+region = Rect2(0, 96, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ycpjj"]
+atlas = ExtResource("2_g1xyc")
+region = Rect2(48, 96, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2sfdh"]
+atlas = ExtResource("2_g1xyc")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tvj5x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oc8bs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kfa3e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rgwi1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m3cjo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v4lp6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vi0d4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b7qdp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ycpjj")
+}],
+"loop": false,
+"name": &"glister",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2sfdh")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g1xyc"]
 
 [node name="next_level_progress" type="Node2D"]
 script = ExtResource("1_oc8bs")
@@ -51,18 +138,26 @@ script = ExtResource("1_oc8bs")
 libraries = {
 &"": SubResource("AnimationLibrary_m3cjo")
 }
-autoplay = "spin"
+autoplay = "move"
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("1_g1xyc")
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-4.76837e-07, 4.76837e-07)
+scale = Vector2(0.666667, 0.666667)
+sprite_frames = SubResource("SpriteFrames_tvj5x")
+animation = &"idle"
+autoplay = "idle"
 
 [node name="collider" type="Area2D" parent="Sprite2D"]
-scale = Vector2(4, 4)
+scale = Vector2(1.5, 1.5)
 collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/collider"]
-shape = SubResource("RectangleShape2D_kfa3e")
+scale = Vector2(1, 1)
+shape = SubResource("CircleShape2D_g1xyc")
 
+[node name="glintTimer" type="Timer" parent="."]
+
+[connection signal="animation_finished" from="Sprite2D" to="." method="_on_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="Sprite2D/collider" to="." method="_on_collider_body_entered"]
+[connection signal="timeout" from="glintTimer" to="." method="_on_glint_timer_timeout"]
