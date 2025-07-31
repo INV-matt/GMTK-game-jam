@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://jy3cw8fsadki" path="res://Main/camera_movement.gd" id="2_qvhan"]
 [ext_resource type="PackedScene" uid="uid://bcwjmekm2lobt" path="res://Powers/Attack Power/attack_power.tscn" id="3_k3v36"]
 [ext_resource type="PackedScene" uid="uid://q2g8uqvyfrap" path="res://Enemies/Basic Enemy/basic_enemy.tscn" id="3_qvhan"]
-[ext_resource type="Script" uid="uid://djrembxkjudx2" path="res://Main/lives_container.gd" id="4_eunhr"]
+[ext_resource type="Script" uid="uid://djrembxkjudx2" path="res://UI/lives_container.gd" id="4_eunhr"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ik0b0"]
 
