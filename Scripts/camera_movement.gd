@@ -1,6 +1,8 @@
 extends Camera2D
 
 @export var ScoutSpeed = 300.0
+@export var ScoutZoomMult = 0.8
+
 
 var _isScouting = false
 
@@ -19,13 +21,13 @@ func _process(delta: float) -> void:
 
 func _on_scout_enter() -> void:
   print("scout entered")
-  zoom *= .8
+  zoom *= ScoutZoomMult
   _isScouting = true
   return
 
 func _on_scout_exit() -> void:
   print("scout exited")
-  zoom /= .8
+  zoom /= ScoutZoomMult
   position = Vector2(0, 0)
   _isScouting = false
   return
