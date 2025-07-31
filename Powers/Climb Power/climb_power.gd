@@ -14,8 +14,6 @@ func _process(delta: float) -> void:
   if not isReady :
     return
 
-  print(player.GlobalGravityMult)
-    
   if player.velocity.x != 0 :
     return
   

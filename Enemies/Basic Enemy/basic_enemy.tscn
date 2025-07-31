@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://q2g8uqvyfrap"]
+
+[ext_resource type="Script" uid="uid://cq6qt1n1wbw40" path="res://Enemies/Basic Enemy/basic_enemy.gd" id="1_o6f8y"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_cycm8"]
+size = Vector2(16, 32)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_o6f8y"]
+radius = 8.0
+
+[node name="basic_enemy" type="CharacterBody2D"]
+collision_layer = 4
+script = ExtResource("1_o6f8y")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(4.76837e-07, 4.76837e-07)
+rotation = 3.14159
+texture = SubResource("PlaceholderTexture2D_cycm8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_o6f8y")

@@ -110,7 +110,6 @@ func _jump() -> void:
   velocity.y = -_jumpVelocity
 #endregion
 
-
 #region SCOUT
 func _handleScout() -> void:
   if _isScouting:
