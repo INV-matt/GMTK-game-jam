@@ -13,7 +13,7 @@ func _power_passive(p: Player) :
 func _process(delta: float) -> void:
   if not isReady :
     return
-
+    
   if player.velocity.x != 0 :
     return
   
