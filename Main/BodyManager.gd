@@ -33,6 +33,7 @@ func _onPlayerDeath() :
   
   body.add_child(shape)
   body.global_position = pos
+  body.rotation_degrees = 90
   
   get_tree().get_root().add_child(body)
 
