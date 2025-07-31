@@ -2,7 +2,7 @@ extends Camera2D
 
 @export var ScoutSpeed = 300.0
 @export var ScoutZoomMult = 0.8
-
+@export var ScoutCameraSpeed = 10
 
 var _isScouting = false
 
@@ -16,7 +16,7 @@ func _process(delta: float) -> void:
     var xdir = Input.get_axis("pl_left", "pl_right")
     var ydir = Input.get_axis("pl_up", "pl_down")
 
-    position += ScoutSpeed * delta * Vector2(xdir, ydir)
+    position += ScoutSpeed * delta * Vector2(xdir, ydir) * ScoutCameraSpeed
 
 
 func _on_scout_enter() -> void:
