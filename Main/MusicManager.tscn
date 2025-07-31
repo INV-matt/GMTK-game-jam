@@ -1,0 +1,85 @@
+[gd_scene load_steps=9 format=3 uid="uid://bm0wwdefd6xg6"]
+
+[ext_resource type="Script" uid="uid://bbb4qhhutms06" path="res://Main/MusicManager.gd" id="1_bto22"]
+[ext_resource type="AudioStream" uid="uid://b7o6st1upvkiw" path="res://Music Tracks/The Temples Loop OST - Game Over - John 11 25.ogg" id="2_121o8"]
+[ext_resource type="AudioStream" uid="uid://ho60eal4dqt" path="res://Music Tracks/The Temples Loop OST - Level Complete - Oh Mr Lazarus.ogg" id="3_wx16t"]
+[ext_resource type="AudioStream" uid="uid://clxajys7qodd" path="res://Music Tracks/The Temples Loop OST - Main Game Loop - Finger Bones on Stone.ogg" id="4_aiqq3"]
+[ext_resource type="AudioStream" uid="uid://cw75vnb3ahob4" path="res://Music Tracks/The Temples Loop OST - Main Menu - Morning Breaks and Hot Eggs.ogg" id="5_p587h"]
+
+[sub_resource type="Animation" id="Animation_121o8"]
+resource_name = "fadeout"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Stream1:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -80.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Stream2:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-80.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_wx16t"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Stream1:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Stream2:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_aiqq3"]
+_data = {
+&"RESET": SubResource("Animation_wx16t"),
+&"fadeout": SubResource("Animation_121o8")
+}
+
+[node name="MusicManager" type="Node"]
+script = ExtResource("1_bto22")
+tracks = Array[AudioStreamOggVorbis]([ExtResource("2_121o8"), ExtResource("3_wx16t"), ExtResource("4_aiqq3"), ExtResource("5_p587h")])
+tracknames = Array[String](["gameover", "levelcomplete", "maingame", "mainmenu"])
+startingTrack = "maingame"
+
+[node name="Stream1" type="AudioStreamPlayer" parent="."]
+
+[node name="Stream2" type="AudioStreamPlayer" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_aiqq3")
+}
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

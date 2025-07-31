@@ -1,8 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://b3ip2tsabj3dm"]
+[gd_scene load_steps=9 format=3 uid="uid://b3ip2tsabj3dm"]
 
 [ext_resource type="PackedScene" uid="uid://cnv1i1bs5daa0" path="res://Player/player.tscn" id="1_2w1kt"]
 [ext_resource type="Script" uid="uid://jy3cw8fsadki" path="res://Main/camera_movement.gd" id="2_qvhan"]
-[ext_resource type="PackedScene" uid="uid://bcwjmekm2lobt" path="res://Powers/Attack Power/attack_power.tscn" id="3_k3v36"]
 [ext_resource type="PackedScene" uid="uid://q2g8uqvyfrap" path="res://Enemies/Basic Enemy/basic_enemy.tscn" id="3_qvhan"]
 [ext_resource type="Script" uid="uid://djrembxkjudx2" path="res://Main/lives_container.gd" id="4_eunhr"]
 
@@ -22,10 +21,9 @@ size = Vector2(100, 256)
 [node name="Player" parent="." instance=ExtResource("1_2w1kt")]
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(2, 2)
 position_smoothing_enabled = true
 script = ExtResource("2_qvhan")
-
-[node name="attack_power2" parent="Player" instance=ExtResource("3_k3v36")]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(0, 72)

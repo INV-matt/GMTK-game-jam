@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 SignalBus="*res://Main/SignalBus.gd"
 BodyManager="*res://Main/BodyManager.gd"
+MusicManager="*res://Main/MusicManager.tscn"
 
 [dotnet]
 

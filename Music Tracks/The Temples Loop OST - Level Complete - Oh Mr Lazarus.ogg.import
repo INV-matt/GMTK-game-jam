@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://ho60eal4dqt"
+path="res://.godot/imported/The Temples Loop OST - Level Complete - Oh Mr Lazarus.ogg-faeb19ae3f52d196110ea1f11767f827.oggvorbisstr"
+
+[deps]
+
+source_file="res://Music Tracks/The Temples Loop OST - Level Complete - Oh Mr Lazarus.ogg"
+dest_files=["res://.godot/imported/The Temples Loop OST - Level Complete - Oh Mr Lazarus.ogg-faeb19ae3f52d196110ea1f11767f827.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
