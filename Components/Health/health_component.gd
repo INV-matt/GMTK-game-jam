@@ -17,9 +17,10 @@ class_name HealthComponent
 @export var IsPlayer = false
 
 var health: int
+var isdead = false
 
 func _updateBar():
-  #print(health)
+  isdead = health <= 0
   
   if DisplayHealthBar:
     DisplayHealthBar.value = health
