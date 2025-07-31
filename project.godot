@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 SignalBus="*res://Main/SignalBus.gd"
+BodyManager="*res://Main/BodyManager.gd"
 
 [dotnet]
 
