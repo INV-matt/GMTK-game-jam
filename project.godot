@@ -19,6 +19,10 @@ config/icon="res://icon.svg"
 
 project/assembly_name="GMTK-game-jam-2025"
 
+[global_group]
+
+power=""
+
 [input]
 
 pl_left={

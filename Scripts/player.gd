@@ -12,7 +12,7 @@ class_name Player
 @export var JumpHeight = 96.0
 @export var CoyoteTime = 5
 @export var JumpBuffer = 5
-@export var MaxJumps = 2
+@export var MaxJumps = 1
 @export var FallGravityMultiplier = 1.5
 @export var FastFallGravityMultiplier = 1.5
 
@@ -22,7 +22,7 @@ var _lastOnFloor = 0.0
 var _frameSinceJumpPressed = INF
 var _localGravity = 980
 var _direction
-var _hasDashed = false
+var _hasDashed = false # TODO: Move this into the dash power
 var _jumpVelocity = 0
 
 func _ready():
@@ -42,6 +42,13 @@ func _physics_process(delta: float) -> void:
 
   move_and_slide()
 
+#region APPLY POWERS
+func _apply_powers() :
+  for i in get_children() :
+    # Only apply the powers of children of type "Power" and that have the group "power"
+    if i is Power and "power" in i.get_groups() :
+      i.apply_power_passive()
+#endregion
 
 #region HORIZONTAL MOVEMENT
 func _handleHorizontalMovement() -> void:
