@@ -1,6 +1,6 @@
 extends Node2D
 
-class_name LevelProgressor
+class_name Cookie
 
 signal next_level
 

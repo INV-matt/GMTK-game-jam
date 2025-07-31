@@ -1,7 +1,7 @@
 [gd_scene load_steps=17 format=3 uid="uid://cqkmli6tk17on"]
 
-[ext_resource type="Script" uid="uid://c2re58c7bd7bh" path="res://Next Level Progressor/next_level_progress.gd" id="1_oc8bs"]
-[ext_resource type="Texture2D" uid="uid://3vbqlg4xmu0q" path="res://Next Level Progressor/Cookie-Sheet.png" id="2_g1xyc"]
+[ext_resource type="Script" uid="uid://c2re58c7bd7bh" path="res://Cookie/next_level_progress.gd" id="1_oc8bs"]
+[ext_resource type="Texture2D" uid="uid://3vbqlg4xmu0q" path="res://Cookie/Cookie-Sheet.png" id="2_g1xyc"]
 
 [sub_resource type="Animation" id="Animation_rgwi1"]
 length = 0.001
@@ -131,7 +131,7 @@ animations = [{
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g1xyc"]
 
-[node name="next_level_progress" type="Node2D"]
+[node name="next_level_progress" type="Node2D" groups=["cookie"]]
 script = ExtResource("1_oc8bs")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -153,7 +153,6 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/collider"]
-scale = Vector2(1, 1)
 shape = SubResource("CircleShape2D_g1xyc")
 
 [node name="glintTimer" type="Timer" parent="."]

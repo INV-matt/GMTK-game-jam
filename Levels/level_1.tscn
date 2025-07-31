@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=4 uid="uid://wga2vjnx5wwx"]
 
 [ext_resource type="TileSet" uid="uid://bxgijqt2hjkdu" path="res://Levels/tileset.tres" id="1_3mhv4"]
-[ext_resource type="PackedScene" uid="uid://cqkmli6tk17on" path="res://Next Level Progressor/next_level_progress.tscn" id="3_3mhv4"]
+[ext_resource type="PackedScene" uid="uid://cqkmli6tk17on" path="res://Cookie/next_level_progress.tscn" id="3_3mhv4"]
 
 [node name="level_1" type="Node2D"]
 

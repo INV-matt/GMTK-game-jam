@@ -1,8 +1,7 @@
-[gd_scene load_steps=18 format=3 uid="uid://b3ip2tsabj3dm"]
+[gd_scene load_steps=14 format=3 uid="uid://b3ip2tsabj3dm"]
 
 [ext_resource type="PackedScene" uid="uid://cnv1i1bs5daa0" path="res://Player/player.tscn" id="1_2w1kt"]
 [ext_resource type="Script" uid="uid://jy3cw8fsadki" path="res://Main/camera_movement.gd" id="2_qvhan"]
-[ext_resource type="PackedScene" uid="uid://q2g8uqvyfrap" path="res://Enemies/Basic Enemy/basic_enemy.tscn" id="3_qvhan"]
 [ext_resource type="Script" uid="uid://niau7oxw71ir" path="res://UI/UI.gd" id="5_f6fdm"]
 [ext_resource type="Theme" uid="uid://diigp8dh8nst4" path="res://UI/UI.tres" id="5_k3v36"]
 [ext_resource type="Texture2D" uid="uid://dvrpommi32nlv" path="res://UI/Assets/Life_Hud.png" id="6_liyct"]
@@ -11,18 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://b04eryfan18sc" path="res://UI/Parallax/Mountains_BG.png" id="9_rix8b"]
 [ext_resource type="Texture2D" uid="uid://5brpqwx2eose" path="res://UI/Parallax/Pine_Back_BG.png" id="10_0jx5h"]
 [ext_resource type="Texture2D" uid="uid://dmyh3joob8tmy" path="res://UI/Parallax/Pine_Front_BG.png" id="11_uhr2j"]
+[ext_resource type="PackedScene" uid="uid://bna27rt0jdwg7" path="res://Main/LevelManager.tscn" id="12_f3gf5"]
 [ext_resource type="Texture2D" uid="uid://chit0sipr8kc1" path="res://UI/Parallax/Temple_BG.png" id="12_l5bfp"]
-
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ik0b0"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_my2t3"]
-size = Vector2(100, 96)
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_5tkwg"]
-size = Vector2(100, 96)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_jjgbg"]
-size = Vector2(100, 256)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qac2q"]
 atlas = ExtResource("8_rj11h")
@@ -31,45 +20,12 @@ region = Rect2(0, 0, 32, 32)
 [node name="Main" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_2w1kt")]
+unique_name_in_owner = true
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(2, 2)
 position_smoothing_enabled = true
 script = ExtResource("2_qvhan")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2(0, 72)
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-shape = SubResource("WorldBoundaryShape2D_ik0b0")
-
-[node name="StaticBody2D2" type="StaticBody2D" parent="."]
-position = Vector2(96, 24)
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
-shape = SubResource("RectangleShape2D_my2t3")
-
-[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D2/CollisionShape2D"]
-texture = SubResource("PlaceholderTexture2D_5tkwg")
-
-[node name="StaticBody2D3" type="StaticBody2D" parent="."]
-position = Vector2(-192, 24)
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
-position = Vector2(0, -80)
-shape = SubResource("RectangleShape2D_jjgbg")
-
-[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D3/CollisionShape2D"]
-position = Vector2(0, 4.29153e-06)
-scale = Vector2(1, 2.66667)
-texture = SubResource("PlaceholderTexture2D_5tkwg")
-
-[node name="basic_enemy" parent="." instance=ExtResource("3_qvhan")]
-position = Vector2(-206, -220)
-DmgAmt = 50
 
 [node name="UI" type="CanvasLayer" parent="." node_paths=PackedStringArray("t_Lives")]
 script = ExtResource("5_f6fdm")
@@ -141,3 +97,8 @@ motion_mirroring = Vector2(912, 0)
 
 [node name="TempleBg" type="Sprite2D" parent="parallax/temple"]
 texture = ExtResource("12_l5bfp")
+
+[node name="levelcontainer" type="Node2D" parent="." groups=["levelcontainer"]]
+unique_name_in_owner = true
+
+[node name="LevelManager" parent="." instance=ExtResource("12_f3gf5")]

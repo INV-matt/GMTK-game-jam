@@ -28,6 +28,8 @@ project/assembly_name="GMTK-game-jam-2025"
 [global_group]
 
 power=""
+cookie=""
+levelcontainer=""
 
 [input]
 
