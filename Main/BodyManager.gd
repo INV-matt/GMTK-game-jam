@@ -14,10 +14,12 @@ func _respawnPlayer():
   playerhealth.healAll()
   player.global_position = respawnPosition
 
+var _bodyTexture = preload("res://Main/Blank-CorpseSheet.png")
+
 func _onPlayerDeath():
   var pos = player.global_position
   
-  if pos == Vector2.ZERO:
+  if Vector2.ZERO.distance_squared_to(pos) < 100:
     return
   
   _respawnPlayer()
@@ -32,13 +34,17 @@ func _onPlayerDeath():
       shape.shape.radius = i.shape.radius
       shape.shape.height = i.shape.height
   
-  sprite.texture = PlaceholderTexture2D.new()
+  sprite.texture = _bodyTexture
   sprite.texture.set("size", Vector2(shape.shape.radius * 2, shape.shape.height))
+  sprite.rotation_degrees = -90
+  sprite.position.x = -10
+  
   body.add_child(shape)
   body.add_child(sprite)
   body.global_position = pos
+  body.global_position.y += 10
   body.rotation_degrees = 90
-  
+  body.add_to_group("bodies")
   
   get_tree().get_root().add_child(body)
 

@@ -102,3 +102,4 @@ texture = ExtResource("12_l5bfp")
 unique_name_in_owner = true
 
 [node name="LevelManager" parent="." instance=ExtResource("12_f3gf5")]
+startingLevel = 1
