@@ -13,18 +13,19 @@ class_name HealthComponent
 
 ## If this is true then the healthbar will always be shown, otherwise it will be show if not at 100% hp
 @export var AlwaysShow = false
+@export var IsPlayer = false
 
 var health: int
 
-func _updateBar() :
-  if DisplayHealthBar :
+func _updateBar():
+  if DisplayHealthBar:
     DisplayHealthBar.value = health
     DisplayHealthBar.visible = health < MaxHealth or AlwaysShow
 
 func _ready() -> void:
   health = MaxHealth
   
-  if DisplayHealthBar :
+  if DisplayHealthBar:
     DisplayHealthBar.max_value = MaxHealth
     
   _updateBar()
@@ -32,14 +33,17 @@ func _ready() -> void:
 signal death
 signal damaged
 
-func doDamage(amt: int) :
+func doDamage(amt: int):
   health -= amt
+  if IsPlayer: SignalBus.player_healt_changed.emit(health)
   _updateBar()
   
-  if health == 0 :
-    emit_signal("death")
+  if health <= 0:
+    death.emit()
+    if IsPlayer:
+      SignalBus.player_death.emit()
     
-    if DestroyOnNoHealth :
+    if DestroyOnNoHealth:
       get_parent().queue_free()
-  else :
-    emit_signal("damaged")
+  else:
+    damaged.emit()

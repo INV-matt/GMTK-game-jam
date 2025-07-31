@@ -32,6 +32,7 @@ show_percentage = false
 [node name="HealthComponent" type="Node" parent="." node_paths=PackedStringArray("DisplayHealthBar")]
 script = ExtResource("3_btcbx")
 DisplayHealthBar = NodePath("../healthbar")
+IsPlayer = true
 metadata/_custom_type_script = "uid://b6pxf2yjv2tmg"
 
 [node name="attack_power" parent="." instance=ExtResource("3_gwnis")]
