@@ -8,14 +8,14 @@ extends Node
 @onready var stream1 = $Stream1
 @onready var stream2 = $Stream2
 
-func _getTrackByName(name: String) -> AudioStreamOggVorbis :
-  for i in range(len(tracknames)) :
-    if tracknames[i] == name :
+func _getTrackByName(name: String) -> AudioStreamOggVorbis: # Shouldn't this return an error/null if there is no song?
+  for i in range(len(tracknames)):
+    if tracknames[i] == name:
       return tracks[i]
   
   return tracks[0]
 
-func playTrack(name: String) :
+func playTrack(name: String):
   var track = _getTrackByName(name)
   
   stream2.stream = track
