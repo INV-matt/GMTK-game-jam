@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bgbjkfr7hkkyh"]
+
+[ext_resource type="Script" uid="uid://krxwaahc53ep" path="res://Scripts/climb_power.gd" id="1_k2dol"]
+
+[node name="climb_power" type="Node2D" groups=["power"]]
+script = ExtResource("1_k2dol")

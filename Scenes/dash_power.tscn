@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://sgp1mlwgotkw"]
+
+[ext_resource type="Script" uid="uid://bm48sm6w3ijss" path="res://Scripts/dash_power.gd" id="1_mh6kn"]
+
+[node name="dash" type="Node2D" groups=["power"]]
+script = ExtResource("1_mh6kn")

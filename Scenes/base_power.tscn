@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dqkdx0irhvkrp"]
+
+[ext_resource type="Script" uid="uid://b2l5sncqetkc" path="res://Scripts/base_power.gd" id="1_rk6ry"]
+
+[node name="base_power" type="Node2D" groups=["power"]]
+script = ExtResource("1_rk6ry")
