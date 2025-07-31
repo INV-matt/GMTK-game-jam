@@ -86,6 +86,11 @@ pl_dash={
 2d_physics/layer_3="enemy"
 2d_physics/layer_4="hazard"
 
+[physics]
+
+common/physics_jitter_fix=0.0
+common/physics_interpolation=true
+
 [rendering]
 
 renderer/rendering_method="mobile"
