@@ -30,6 +30,7 @@ var _isScouting = false
 var movementLocked = false
 
 func _ready():
+  Globals.player = self
   _jumpVelocity = sqrt(2 * JumpHeight * _localGravity) # TODO: HARDCODED FOR NOW
 
   # TODO: Move this to after the player select their power

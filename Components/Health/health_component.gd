@@ -50,8 +50,6 @@ func doDamage(amt: int):
   if health <= 0:
     emit_signal("death")
     if IsPlayer: SignalBus.emit_signal("player_death")
-
-    print("hi")
     
     if DestroyOnNoHealth:
       get_parent().queue_free()

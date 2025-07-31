@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://jy3cw8fsadki" path="res://Main/camera_movement.gd" id="2_qvhan"]
 [ext_resource type="PackedScene" uid="uid://q2g8uqvyfrap" path="res://Enemies/Basic Enemy/basic_enemy.tscn" id="3_qvhan"]
 [ext_resource type="Script" uid="uid://djrembxkjudx2" path="res://Main/lives_container.gd" id="4_eunhr"]
-[ext_resource type="Script" uid="uid://jd6ed085tkkx" path="res://Main/choose_powers.gd" id="5_k3v36"]
+[ext_resource type="Script" uid="uid://btd4llqsti5xp" path="res://Main/death_menu.gd" id="5_k3v36"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ik0b0"]
 
@@ -96,22 +96,39 @@ size_flags_horizontal = 0
 layout_mode = 2
 text = "3"
 
-[node name="ChoosePowers" type="CanvasLayer" parent="." node_paths=PackedStringArray("powers")]
+[node name="Death Menu" type="CanvasLayer" parent="." node_paths=PackedStringArray("btn_Restart")]
+process_mode = 2
+visible = false
 script = ExtResource("5_k3v36")
-powers = [null, null, null]
+btn_Restart = NodePath("MarginContainer/PanelContainer/VBoxContainer/RestartBtn")
 
-[node name="PanelContainer" type="PanelContainer" parent="ChoosePowers"]
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="MarginContainer" type="MarginContainer" parent="Death Menu"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
 
-[node name="HBoxContainer" type="HBoxContainer" parent="ChoosePowers/PanelContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="Death Menu/MarginContainer"]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="ChoosePowers/PanelContainer/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Death Menu/MarginContainer/PanelContainer"]
 layout_mode = 2
+alignment = 1
 
-[node name="Button2" type="Button" parent="ChoosePowers/PanelContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="Death Menu/MarginContainer/PanelContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "YOU DIED"
+horizontal_alignment = 1
 
-[node name="Button3" type="Button" parent="ChoosePowers/PanelContainer/HBoxContainer"]
+[node name="RestartBtn" type="Button" parent="Death Menu/MarginContainer/PanelContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
+text = "Restart"
+
+[connection signal="button_down" from="Death Menu/MarginContainer/PanelContainer/VBoxContainer/RestartBtn" to="Death Menu" method="_on_restart_btn_button_down"]

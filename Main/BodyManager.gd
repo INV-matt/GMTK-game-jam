@@ -12,10 +12,10 @@ func get_all_children(in_node, array := []):
 
 func _respawnPlayer():
   playerhealth.healAll()
-  player.global_position = respawnPosition
+  Globals.player.global_position = respawnPosition
 
 func _onPlayerDeath():
-  var pos = player.global_position
+  var pos = Globals.player.global_position
   
   if pos == Vector2.ZERO:
     return
@@ -25,14 +25,13 @@ func _onPlayerDeath():
   var body = StaticBody2D.new()
   var shape: CollisionShape2D = CollisionShape2D.new()
   
-  for i in player.get_children():
+  for i in Globals.player.get_children():
     if i is CollisionShape2D:
       shape.shape = i.shape
       shape.shape.radius = i.shape.radius
       shape.shape.height = i.shape.height
   
   body.add_child(shape)
-  body.name = "BOBBY" + str(LivesManager.remainingLives)
   body.global_position = pos
   
   #print(shape)
@@ -40,20 +39,24 @@ func _onPlayerDeath():
   
   get_tree().get_root().add_child(body)
 
+
 func ResetLevel():
   var root = get_tree().get_root()
   
   for element in get_all_children(root):
-    if element is StaticBody2D && "BOBBY" in element.name: element.queue_free()
 
-    if element is Player:
-      respawnPosition = element.global_position
-      player = element
+    # if element is Player:
+    #   respawnPosition = element.global_position
+    #   player = element
       
-      for i in element.get_children():
-        if i is HealthComponent:
-          playerhealth = i
-          i.death.connect(_onPlayerDeath)
+    #   for i in element.get_children():
+    #     if i is HealthComponent:
+    #       playerhealth = i
+    #       i.death.connect(_onPlayerDeath)
+    for i in Globals.player.get_children():
+      if i is HealthComponent:
+        playerhealth = i
+        i.death.connect(_onPlayerDeath)
 
 func _ready() -> void:
   ResetLevel()

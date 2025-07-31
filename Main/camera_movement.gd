@@ -7,8 +7,8 @@ extends Camera2D
 var _isScouting = false
 
 func _ready() -> void:
-  SignalBus.connect("scout_enter", Callable(self, "_on_scout_enter"))
-  SignalBus.connect("scout_exit", Callable(self, "_on_scout_exit"))
+  SignalBus.scout_enter.connect(_on_scout_enter)
+  SignalBus.scout_exit.connect(_on_scout_exit)
 
 func _process(delta: float) -> void:
   if _isScouting:

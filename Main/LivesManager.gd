@@ -17,4 +17,3 @@ func RemoveLife() -> void:
 
 func _handleAllLivesLost() -> void:
   print("YOU DED DED frfr")
-  BodyManager.ResetLevel()
