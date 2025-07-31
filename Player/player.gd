@@ -49,10 +49,10 @@ func _physics_process(delta: float) -> void:
     move_and_slide()
 
 #region APPLY POWERS
-func _apply_powers() :
-  for i in get_children() :
+func _apply_powers():
+  for i in get_children():
     # Only apply the powers of children of type "Power" and that have the group "power"
-    if i is Power and "power" in i.get_groups() :
+    if i is Power and "power" in i.get_groups():
       i.apply_power_passive()
 #endregion
 
@@ -65,7 +65,7 @@ func _handleHorizontalMovement() -> void:
     velocity.x = move_toward(velocity.x, 0, Deceleration)
 #endregion
 
-func _getCurrentGravity() :
+func _getCurrentGravity():
   return get_gravity() * GlobalGravityMult
 
 #region GRAVITY
