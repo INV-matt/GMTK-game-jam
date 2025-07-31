@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bcwjmekm2lobt"]
+
+[ext_resource type="Script" uid="uid://nggl1tmdcpsu" path="res://Powers/Attack Power/attack_power.gd" id="1_8i07b"]
+
+[node name="attack_power" type="Node2D" groups=["power"]]
+script = ExtResource("1_8i07b")
