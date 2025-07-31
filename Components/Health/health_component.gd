@@ -16,21 +16,21 @@ class_name HealthComponent
 
 var health: int
 
-func _updateBar() :
+func _updateBar():
   print(health)
   
-  if DisplayHealthBar :
+  if DisplayHealthBar:
     DisplayHealthBar.value = health
     DisplayHealthBar.visible = health < MaxHealth or AlwaysShow
 
-func healAll() :
+func healAll():
   health = MaxHealth
   _updateBar()
 
 func _ready() -> void:
   health = MaxHealth
   
-  if DisplayHealthBar :
+  if DisplayHealthBar:
     DisplayHealthBar.max_value = MaxHealth
     
   _updateBar()
@@ -38,15 +38,15 @@ func _ready() -> void:
 signal death
 signal damaged
 
-func doDamage(amt: int) :
+func doDamage(amt: int):
   health -= amt
   _updateBar()
   
-  if health == 0 :
+  if health <= 0:
     emit_signal("death")
     print("hi")
     
-    if DestroyOnNoHealth :
+    if DestroyOnNoHealth:
       get_parent().queue_free()
-  else :
+  else:
     emit_signal("damaged")
