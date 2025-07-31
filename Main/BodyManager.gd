@@ -34,9 +34,6 @@ func _onPlayerDeath() :
   body.add_child(shape)
   body.global_position = pos
   
-  print(shape)
-  print(body)
-  
   get_tree().get_root().add_child(body)
 
 func _resetLevel() :

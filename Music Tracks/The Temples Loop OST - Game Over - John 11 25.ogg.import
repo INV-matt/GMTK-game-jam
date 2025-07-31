@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://b7o6st1upvkiw"
+path="res://.godot/imported/The Temples Loop OST - Game Over - John 11 25.ogg-b5a55c66e2d5199d973d7b1dbec9b27f.oggvorbisstr"
+
+[deps]
+
+source_file="res://Music Tracks/The Temples Loop OST - Game Over - John 11 25.ogg"
+dest_files=["res://.godot/imported/The Temples Loop OST - Game Over - John 11 25.ogg-b5a55c66e2d5199d973d7b1dbec9b27f.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
