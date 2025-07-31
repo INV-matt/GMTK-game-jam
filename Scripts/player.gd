@@ -15,14 +15,13 @@ class_name Player
 @export var MaxJumps = 1
 @export var FallGravityMultiplier = 1.5
 @export var FastFallGravityMultiplier = 1.5
-
+@export var GlobalGravityMult = 1
 
 var _jumpCount = 0
 var _lastOnFloor = 0.0
 var _frameSinceJumpPressed = INF
 var _localGravity = 980
 var _direction
-var _hasDashed = false # TODO: Move this into the dash power
 var _jumpVelocity = 0
 
 var movementLocked = false
@@ -39,7 +38,6 @@ func _physics_process(delta: float) -> void:
   if is_on_floor():
     _jumpCount = 0
     _lastOnFloor = 0
-    _hasDashed = false
 
   if not movementLocked :
     _handleGravity(delta)
@@ -65,12 +63,15 @@ func _handleHorizontalMovement() -> void:
     velocity.x = move_toward(velocity.x, 0, Deceleration)
 #endregion
 
+func _getCurrentGravity() :
+  return get_gravity() * GlobalGravityMult
+
 #region GRAVITY
 func _handleGravity(delta) -> void:
   if velocity.y > 0:
-    _localGravity = get_gravity() * FallGravityMultiplier
+    _localGravity = _getCurrentGravity() * FallGravityMultiplier
   else:
-    _localGravity = get_gravity()
+    _localGravity = _getCurrentGravity()
 
   if not is_on_floor():
     if Input.get_action_strength("pl_down"):

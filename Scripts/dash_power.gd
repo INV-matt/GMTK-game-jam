@@ -1,6 +1,6 @@
 extends Power
 
-@export var Speed = 250
+@export var Speed = 500
 @export var Length = 5
 
 var isReady = false
@@ -30,7 +30,7 @@ func _process(delta: float) -> void:
     var dx = Input.get_axis("pl_left", "pl_right")
     var dy = Input.get_axis("pl_up", "pl_down")
     
-    dir = Vector2(dx, dy)
+    dir = Vector2(dx, dy).normalized()
     
     length = Length
     canDash = false
