@@ -2,26 +2,39 @@ extends Node
 
 class_name HealthComponent
 
+## I do not think you need an explanation for this one
 @export var MaxHealth = 100
+
+## Whether to destroy the parent when health reaches 0
 @export var DestroyOnNoHealth = false
+
+## The ProgressBar to use to display heath
 @export var DisplayHealthBar: ProgressBar
 
+## If this is true then the healthbar will always be shown, otherwise it will be show if not at 100% hp
+@export var AlwaysShow = false
+
 var health: int
+
+func _updateBar() :
+  if DisplayHealthBar :
+    DisplayHealthBar.value = health
+    DisplayHealthBar.visible = health < MaxHealth or AlwaysShow
 
 func _ready() -> void:
   health = MaxHealth
   
   if DisplayHealthBar :
     DisplayHealthBar.max_value = MaxHealth
-    DisplayHealthBar.value = health
-    DisplayHealthBar.visible = true
+    
+  _updateBar()
 
 signal death
 signal damaged
 
 func doDamage(amt: int) :
   health -= amt
-  DisplayHealthBar.value = health
+  _updateBar()
   
   if health == 0 :
     emit_signal("death")
