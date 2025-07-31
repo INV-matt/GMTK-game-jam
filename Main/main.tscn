@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://b3ip2tsabj3dm"]
+[gd_scene load_steps=8 format=3 uid="uid://b3ip2tsabj3dm"]
 
 [ext_resource type="PackedScene" uid="uid://cnv1i1bs5daa0" path="res://Player/player.tscn" id="1_2w1kt"]
 [ext_resource type="Script" uid="uid://jy3cw8fsadki" path="res://Main/camera_movement.gd" id="2_qvhan"]
+[ext_resource type="PackedScene" uid="uid://q2g8uqvyfrap" path="res://Enemies/Basic Enemy/basic_enemy.tscn" id="3_qvhan"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ik0b0"]
 
@@ -24,12 +25,14 @@ script = ExtResource("2_qvhan")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(0, 72)
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 shape = SubResource("WorldBoundaryShape2D_ik0b0")
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="."]
 position = Vector2(96, 24)
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
 shape = SubResource("RectangleShape2D_my2t3")
@@ -39,6 +42,7 @@ texture = SubResource("PlaceholderTexture2D_5tkwg")
 
 [node name="StaticBody2D3" type="StaticBody2D" parent="."]
 position = Vector2(-192, 24)
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
 position = Vector2(0, -80)
@@ -48,3 +52,6 @@ shape = SubResource("RectangleShape2D_jjgbg")
 position = Vector2(0, 4.29153e-06)
 scale = Vector2(1, 2.66667)
 texture = SubResource("PlaceholderTexture2D_5tkwg")
+
+[node name="basic_enemy" parent="." instance=ExtResource("3_qvhan")]
+position = Vector2(-206, -220)

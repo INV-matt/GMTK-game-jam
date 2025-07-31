@@ -2,10 +2,9 @@ extends Camera2D
 
 @export var ScoutSpeed = 300.0
 @export var ScoutZoomMult = 0.8
-@export var ScoutCameraSpeed = 10
+@export var ScoutCameraSpeed = 5
 
 var _isScouting = false
-
 
 func _ready() -> void:
   SignalBus.connect("scout_enter", Callable(self, "_on_scout_enter"))
