@@ -18,8 +18,9 @@ script = ExtResource("1_dynme")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = SubResource("PlaceholderTexture2D_wp0l0")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="collider" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_75muk")
+debug_color = Color(7.70092e-07, 0.64704, 0.22181, 0.42)
 
 [node name="climb_power" parent="." instance=ExtResource("2_cvnsp")]
 

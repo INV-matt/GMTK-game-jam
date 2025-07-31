@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://q2g8uqvyfrap"]
+[gd_scene load_steps=6 format=3 uid="uid://q2g8uqvyfrap"]
 
 [ext_resource type="Script" uid="uid://cq6qt1n1wbw40" path="res://Enemies/Basic Enemy/basic_enemy.gd" id="1_o6f8y"]
 [ext_resource type="Script" uid="uid://b6pxf2yjv2tmg" path="res://Components/Health/health_component.gd" id="2_cnb0i"]
@@ -7,6 +7,9 @@
 size = Vector2(16, 32)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_o6f8y"]
+radius = 8.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cnb0i"]
 radius = 8.0
 
 [node name="basic_enemy" type="CharacterBody2D"]
@@ -20,6 +23,7 @@ texture = SubResource("PlaceholderTexture2D_cycm8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_o6f8y")
+debug_color = Color(0.924005, 4.61093e-05, 0.681658, 0.42)
 
 [node name="HealthComponent" type="Node" parent="." node_paths=PackedStringArray("DisplayHealthBar")]
 script = ExtResource("2_cnb0i")
@@ -34,3 +38,12 @@ offset_top = -24.0
 offset_right = 16.0
 offset_bottom = -16.0
 show_percentage = false
+
+[node name="hitbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="shape" type="CollisionShape2D" parent="hitbox"]
+shape = SubResource("CapsuleShape2D_cnb0i")
+
+[connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]
