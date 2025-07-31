@@ -29,11 +29,19 @@ var _isScouting = false
 
 var movementLocked = false
 
+func _setAnimation(name: String) :
+  if $Sprite2D.animation == name :
+    return
+  
+  $Sprite2D.play(name)
+
 func _ready():
   _jumpVelocity = sqrt(2 * JumpHeight * _localGravity) # TODO: HARDCODED FOR NOW
 
   # TODO: Move this to after the player select their power
   _apply_powers()
+  
+  _setAnimation("idle")
 
 func _physics_process(delta: float) -> void:
   _frameSinceJumpPressed += 1
@@ -66,6 +74,18 @@ func _handleHorizontalMovement(delta) -> void:
   # else:
   #   velocity.x = move_toward(velocity.x, 0, Deceleration)
   _direction = Input.get_axis("pl_left", "pl_right")
+  
+  if _direction < 0 :
+    $Sprite2D.flip_h = true
+  elif _direction > 0 :
+    $Sprite2D.flip_h = false
+    
+  if is_on_floor() :
+    if _direction :
+      _setAnimation("walk")
+    else :
+      _setAnimation("idle")
+  
   var target = _direction * Speed
   var dv = target - velocity.x
   var accelRate = Acceleration if abs(dv) > 0.1 else Deceleration
@@ -81,9 +101,14 @@ func _getCurrentGravity():
 #region GRAVITY
 func _handleGravity(delta) -> void:
   if velocity.y > 0:
+    if not is_on_floor() :
+      _setAnimation("fall")
     _localGravity = _getCurrentGravity() * FallGravityMultiplier
   else:
     _localGravity = _getCurrentGravity()
+    
+    if velocity.y < 0 :
+      _setAnimation("jump")
 
   if not is_on_floor():
     if Input.get_action_strength("pl_down"):
