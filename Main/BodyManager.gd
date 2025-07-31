@@ -10,43 +10,48 @@ func get_all_children(in_node, array := []):
     array = get_all_children(child, array)
   return array
 
-func _respawnPlayer() :
+func _respawnPlayer():
   playerhealth.healAll()
   player.global_position = respawnPosition
 
-func _onPlayerDeath() :
+func _onPlayerDeath():
   var pos = player.global_position
   
-  if pos == Vector2.ZERO :
+  if pos == Vector2.ZERO:
     return
   
   _respawnPlayer()
   
   var body = StaticBody2D.new()
   var shape: CollisionShape2D = CollisionShape2D.new()
+  var sprite: Sprite2D = Sprite2D.new()
   
-  for i in player.get_children() :
-    if i is CollisionShape2D :
+  for i in player.get_children():
+    if i is CollisionShape2D:
       shape.shape = i.shape
       shape.shape.radius = i.shape.radius
       shape.shape.height = i.shape.height
   
+  sprite.texture = PlaceholderTexture2D.new()
+  sprite.texture.set("size", Vector2(shape.shape.radius * 2, shape.shape.height))
   body.add_child(shape)
+  body.add_child(sprite)
   body.global_position = pos
   body.rotation_degrees = 90
   
+  
   get_tree().get_root().add_child(body)
 
-func _resetLevel() :
+func _resetLevel():
   var root = get_tree().get_root()
   
   for element in get_all_children(root):
-    if element is Player :
+    if element is Player:
       respawnPosition = element.global_position
       player = element
       
-      for i in element.get_children() :
-        if i is HealthComponent :
+      for i in element.get_children():
+        if i is HealthComponent:
           playerhealth = i
           i.death.connect(_onPlayerDeath)
 
