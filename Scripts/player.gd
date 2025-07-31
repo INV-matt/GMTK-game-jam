@@ -67,7 +67,7 @@ func _handleGravity(delta) -> void:
 
 #region JUMP
 func _handleJump() -> void:
-  if Input.get_action_strength("pl_jump"): _frameSinceJumpPressed = 0
+  if Input.is_action_just_pressed("pl_jump"): _frameSinceJumpPressed = 0
 
   if _frameSinceJumpPressed > JumpBuffer: return
 
@@ -82,6 +82,8 @@ func _handleJump() -> void:
   if _jumpCount < MaxJumps && velocity.y >= 0 && _lastOnFloor > JumpBuffer:
     _jump()
     return
+  
+  if Input.is_action_just_released("pl_jump") && velocity.y < 0: velocity.y = 0 # Basic jump cutting
 
 
 func _jump() -> void:
