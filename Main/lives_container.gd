@@ -21,5 +21,6 @@ func _on_player_death() -> void:
   print("bruh")
 
 
-func _on_player_health_changed() -> void:
+func _on_player_health_changed(health: int) -> void:
+  #print(str(health))
   pass

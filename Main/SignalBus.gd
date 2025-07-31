@@ -4,4 +4,4 @@ signal scout_enter
 signal scout_exit
 
 signal player_death
-signal player_healt_changed
+signal player_healt_changed(health: int)
