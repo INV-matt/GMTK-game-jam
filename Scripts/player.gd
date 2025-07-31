@@ -23,6 +23,7 @@ var _frameSinceJumpPressed = INF
 var _localGravity = 980
 var _direction
 var _jumpVelocity = 0
+var _isScouting = false
 
 var movementLocked = false
 
@@ -38,13 +39,14 @@ func _physics_process(delta: float) -> void:
   if is_on_floor():
     _jumpCount = 0
     _lastOnFloor = 0
+  
+  if Input.is_action_just_pressed("pl_scout"): _handleScout()
 
-  if not movementLocked :
+  if !_isScouting && !movementLocked:
     _handleGravity(delta)
     _handleHorizontalMovement()
     _handleJump()
-
-  move_and_slide()
+    move_and_slide()
 
 #region APPLY POWERS
 func _apply_powers() :
@@ -57,7 +59,7 @@ func _apply_powers() :
 #region HORIZONTAL MOVEMENT
 func _handleHorizontalMovement() -> void:
   _direction = Input.get_axis("pl_left", "pl_right")
-  if _direction:
+  if _direction: # && !_isScouting:
     velocity.x = _direction * Speed
   else:
     velocity.x = move_toward(velocity.x, 0, Deceleration)
@@ -106,4 +108,17 @@ func _handleJump() -> void:
 func _jump() -> void:
   _jumpCount += 1
   velocity.y = -_jumpVelocity
+#endregion
+
+
+#region SCOUT
+func _handleScout() -> void:
+  if _isScouting:
+    _isScouting = false
+    SignalBus.scout_exit.emit()
+    return
+
+  if !_isScouting:
+    _isScouting = true
+    SignalBus.scout_enter.emit()
 #endregion

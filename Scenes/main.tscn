@@ -1,6 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://b3ip2tsabj3dm"]
 
 [ext_resource type="PackedScene" uid="uid://cnv1i1bs5daa0" path="res://Scenes/player.tscn" id="1_5lr7u"]
+[ext_resource type="Script" uid="uid://jy3cw8fsadki" path="res://Scripts/camera_movement.gd" id="2_bo1nx"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ik0b0"]
 
@@ -18,6 +19,7 @@ size = Vector2(100, 256)
 [node name="Player" parent="." instance=ExtResource("1_5lr7u")]
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
+script = ExtResource("2_bo1nx")
 position_smoothing_enabled = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
