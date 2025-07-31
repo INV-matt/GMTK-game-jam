@@ -3,6 +3,21 @@
 [ext_resource type="Texture2D" uid="uid://c61ayx76til5q" path="res://icon.svg" id="1_g1xyc"]
 [ext_resource type="Script" uid="uid://c2re58c7bd7bh" path="res://Next Level Progressor/next_level_progress.gd" id="1_oc8bs"]
 
+[sub_resource type="Animation" id="Animation_rgwi1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
 [sub_resource type="Animation" id="Animation_kfa3e"]
 resource_name = "spin"
 length = 2.0
@@ -18,21 +33,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [0.0, 3.14159, 6.28319]
-}
-
-[sub_resource type="Animation" id="Animation_rgwi1"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_m3cjo"]

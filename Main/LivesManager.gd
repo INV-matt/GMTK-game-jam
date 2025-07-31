@@ -11,8 +11,10 @@ func _ready() -> void:
 
 func RemoveLife() -> void:
   remainingLives -= 1
+  print(remainingLives)
   if remainingLives <= 0: _handleAllLivesLost()
 
 
 func _handleAllLivesLost() -> void:
   print("YOU DED DED frfr")
+  BodyManager.ResetLevel()

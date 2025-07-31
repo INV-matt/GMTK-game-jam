@@ -32,6 +32,7 @@ func _onPlayerDeath():
       shape.shape.height = i.shape.height
   
   body.add_child(shape)
+  body.name = "BOBBY" + str(LivesManager.remainingLives)
   body.global_position = pos
   
   #print(shape)
@@ -39,10 +40,12 @@ func _onPlayerDeath():
   
   get_tree().get_root().add_child(body)
 
-func _resetLevel():
+func ResetLevel():
   var root = get_tree().get_root()
   
   for element in get_all_children(root):
+    if element is StaticBody2D && "BOBBY" in element.name: element.queue_free()
+
     if element is Player:
       respawnPosition = element.global_position
       player = element
@@ -53,4 +56,4 @@ func _resetLevel():
           i.death.connect(_onPlayerDeath)
 
 func _ready() -> void:
-  _resetLevel()
+  ResetLevel()

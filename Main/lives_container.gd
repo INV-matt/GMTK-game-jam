@@ -11,9 +11,7 @@ func _ready():
 
 
 func _on_player_death() -> void:
-  LivesManager.RemoveLife()
   LivesLabel.text = str(LivesManager.remainingLives)
-  print("bruh")
 
 
 func _on_player_health_changed(health: int) -> void:
