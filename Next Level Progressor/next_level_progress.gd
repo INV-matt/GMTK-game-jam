@@ -4,6 +4,20 @@ class_name LevelProgressor
 
 signal next_level
 
+func _waitForNextGlint() :
+  var time = randi_range(5, 20)
+  $glintTimer.start(time)
+
+func _ready() -> void:
+  _waitForNextGlint()
+
 func _on_collider_body_entered(body: Node2D) -> void:
   print("Go to the next level")
   emit_signal("next_level")
+
+func _on_glint_timer_timeout() -> void:
+  $Sprite2D.play("glister")
+  _waitForNextGlint()
+
+func _on_sprite_2d_animation_finished() -> void:
+  $Sprite2D.play("idle")

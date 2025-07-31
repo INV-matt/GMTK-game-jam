@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=4 uid="uid://dxph7wr16q4qq"]
+[gd_scene load_steps=5 format=4 uid="uid://dxph7wr16q4qq"]
 
 [ext_resource type="TileSet" uid="uid://bxgijqt2hjkdu" path="res://Levels/tileset.tres" id="1_ll1bl"]
 [ext_resource type="PackedScene" uid="uid://crxkprqfmatbv" path="res://Hazards/hazard.tscn" id="3_arsda"]
 [ext_resource type="PackedScene" uid="uid://cqkmli6tk17on" path="res://Next Level Progressor/next_level_progress.tscn" id="3_dgq3b"]
+[ext_resource type="PackedScene" uid="uid://cnv1i1bs5daa0" path="res://Player/player.tscn" id="4_dgq3b"]
 
 [node name="level_2" type="Node2D"]
 
@@ -27,3 +28,8 @@ position = Vector2(288, 56)
 
 [node name="next_level_progress" parent="." instance=ExtResource("3_dgq3b")]
 position = Vector2(336, 0)
+
+[node name="Player" parent="." instance=ExtResource("4_dgq3b")]
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(2, 2)
