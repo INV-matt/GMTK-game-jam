@@ -25,20 +25,26 @@ var _direction
 var _hasDashed = false # TODO: Move this into the dash power
 var _jumpVelocity = 0
 
+var movementLocked = false
+
 func _ready():
   _jumpVelocity = sqrt(2 * JumpHeight * _localGravity) # TODO: HARDCODED FOR NOW
 
+  # TODO: Move this to after the player select their power
+  _apply_powers()
 
 func _physics_process(delta: float) -> void:
   _frameSinceJumpPressed += 1
+  
   if is_on_floor():
     _jumpCount = 0
     _lastOnFloor = 0
     _hasDashed = false
 
-  _handleGravity(delta)
-  _handleHorizontalMovement()
-  _handleJump()
+  if not movementLocked :
+    _handleGravity(delta)
+    _handleHorizontalMovement()
+    _handleJump()
 
   move_and_slide()
 
