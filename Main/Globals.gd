@@ -7,6 +7,11 @@ var _gameManager: GameManager
 
 func _ready() -> void:
   _main = get_node("../Main") as Node2D
+  
+  # I just want to bedug in peace
+  if not _main :
+    return
+  
   _player = _main.get_node("%Player") as Player
   _gameManager = _main.get_node("%GameManager") as GameManager
 

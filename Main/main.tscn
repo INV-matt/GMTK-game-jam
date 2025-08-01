@@ -34,6 +34,9 @@ unique_name_in_owner = true
 script = ExtResource("1_rix8b")
 UI = NodePath("../UI")
 
+[node name="levelcontainer" type="Node2D" parent="." groups=["levelcontainer"]]
+unique_name_in_owner = true
+
 [node name="Player" parent="." instance=ExtResource("1_2w1kt")]
 unique_name_in_owner = true
 
@@ -86,7 +89,7 @@ stretch_mode = 5
 scroll_base_offset = Vector2(0, -200)
 
 [node name="sky" type="ParallaxLayer" parent="parallax"]
-motion_scale = Vector2(0.032, 0.032)
+motion_scale = Vector2(0.032, 0)
 motion_offset = Vector2(0, 200)
 motion_mirroring = Vector2(912, 0)
 
@@ -94,7 +97,7 @@ motion_mirroring = Vector2(912, 0)
 texture = ExtResource("8_f3gf5")
 
 [node name="mountains" type="ParallaxLayer" parent="parallax"]
-motion_scale = Vector2(0.063, 0.063)
+motion_scale = Vector2(0.063, 0)
 motion_offset = Vector2(0, 200)
 motion_mirroring = Vector2(912, 0)
 
@@ -102,7 +105,7 @@ motion_mirroring = Vector2(912, 0)
 texture = ExtResource("9_rix8b")
 
 [node name="trees_back" type="ParallaxLayer" parent="parallax"]
-motion_scale = Vector2(0.125, 0.125)
+motion_scale = Vector2(0.125, 0)
 motion_offset = Vector2(0, 200)
 motion_mirroring = Vector2(912, 0)
 
@@ -110,7 +113,7 @@ motion_mirroring = Vector2(912, 0)
 texture = ExtResource("10_0jx5h")
 
 [node name="trees_front" type="ParallaxLayer" parent="parallax"]
-motion_scale = Vector2(0.25, 0.25)
+motion_scale = Vector2(0.25, 0)
 motion_offset = Vector2(0, 200)
 motion_mirroring = Vector2(912, 0)
 
@@ -118,14 +121,11 @@ motion_mirroring = Vector2(912, 0)
 texture = ExtResource("11_uhr2j")
 
 [node name="temple" type="ParallaxLayer" parent="parallax"]
-motion_scale = Vector2(0.5, 0.5)
+motion_scale = Vector2(0.5, 0)
 motion_offset = Vector2(0, 200)
 motion_mirroring = Vector2(912, 0)
 
 [node name="TempleBg" type="Sprite2D" parent="parallax/temple"]
 texture = ExtResource("12_l5bfp")
-
-[node name="levelcontainer" type="Node2D" parent="." groups=["levelcontainer"]]
-unique_name_in_owner = true
 
 [node name="LevelManager" parent="." instance=ExtResource("12_f3gf5")]
