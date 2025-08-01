@@ -17,6 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
+Globals="*res://Main/Globals.gd"
 SignalBus="*res://Main/SignalBus.gd"
 BodyManager="*res://Main/BodyManager.gd"
 MusicManager="*res://Main/MusicManager.tscn"
