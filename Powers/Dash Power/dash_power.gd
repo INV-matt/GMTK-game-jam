@@ -14,6 +14,15 @@ func _power_passive(p: Player):
   isReady = true
   player = p
 
+var collectScene = preload("res://Powers/Dash Power/speed_collectable.tscn")
+
+func _power_death(p: Player) :
+  var collect: Area2D = collectScene.instantiate()
+  
+  collect.global_position = p.global_position
+  
+  get_tree().get_root().call_deferred("add_child", collect)
+
 func _process(delta: float) -> void:
   if not isReady:
     return
