@@ -30,7 +30,7 @@ func _power_death(p: Player) :
   area.connect("body_entered", func(x): canPlayerClimb = true)
   area.connect("body_exited", func(x): canPlayerClimb = false)
   
-  get_tree().get_root().add_child(area)
+  get_tree().get_root().call_deferred("add_child", area)
 
 func _process(delta: float) -> void:
   if canPlayerClimb :
