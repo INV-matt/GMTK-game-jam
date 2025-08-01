@@ -22,6 +22,7 @@ script = ExtResource("1_rmu8i")
 powersToShow = Array[PackedScene]([ExtResource("2_1mqgf"), ExtResource("3_khw80"), ExtResource("4_cana2"), ExtResource("5_4oqgs"), ExtResource("6_khw80"), ExtResource("7_w88rb")])
 
 [node name="Player" parent="." instance=ExtResource("1_biqb7")]
+unique_name_in_owner = true
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(2, 2)

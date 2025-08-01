@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://duau7oeooj6c0"]
+
+[ext_resource type="Script" uid="uid://dxlf8yf5qx4yx" path="res://Powers/Dash Power/slow_zone.gd" id="1_4bsrs"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mvfys"]
+radius = 75.0
+
+[node name="slow_zone" type="Area2D"]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("1_4bsrs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_mvfys")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
