@@ -1,21 +1,26 @@
 extends CanvasLayer
 
-@export var MaxLives = 3
-@export var t_Lives: TextureRect
+@export var t_Lives: Array[TextureRect]
 
-const numberSize = 32
-var _remainingLives = 3
-
+var GM: GameManager
 
 func _ready() -> void:
-  _remainingLives = MaxLives
-  SignalBus.player_death.connect(Callable(self, "_on_player_death"))
+  GM = Globals.getGameManager()
   UpdateLives()
 
 func UpdateLives() -> void:
-  # t_Lives.texture.set("")
-  t_Lives.texture.region = Rect2(32 * _remainingLives, 0, 32, 32)
+  #t_Lives.texture.region = Rect2(32 * GM.getLivesUsed(), 0, 32, 32)
+  var digits = _separateDigits(GM.getLivesUsed())
+  
+  for i in range(len(digits)):
+    t_Lives[i].texture.region = Rect2(32 * digits[i], 0, 32, 32)
 
-func _on_player_death() -> void:
-  _remainingLives -= 1
-  UpdateLives()
+
+func _separateDigits(value: int) -> Array:
+  var str_val = str(value)
+  print(len(str_val))
+
+  if len(str_val) == 1:
+    return [0, value]
+
+  return [int(str_val[0]), int(str_val[1])]
