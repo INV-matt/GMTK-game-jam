@@ -9,6 +9,8 @@ class_name GameManager
 @export var PowersList: Array[PowerWrapper]
 var ChosenPowers: Array[PowerWrapper]
 
+@export var PossiblePowersForLevel: Dictionary[int, PackedStringArray]
+
 var PassivePower: Power
 var OnDeathPower: Power
 var PL: Player
@@ -30,8 +32,8 @@ func _on_player_death() -> void:
   HUD.UpdateLives()
 
 func _on_next_level() -> void:
-  _handlePowerMenuOpening()
-  print("On level: " + str(Globals.getCurrentLevel()))
+  #print("On level: " + str(Globals.getCurrentLevel()))
+  call_deferred("_handlePowerMenuOpening")
 
 
 func _handlePowerMenuOpening() -> void:
@@ -57,9 +59,22 @@ func SetPowers(passive: Power, onDeath: Power) -> void:
   PL._apply_powers_passive()
   
 func ChoosePowersToDisplay() -> Array[PowerWrapper]:
-  var res = PowersList.duplicate(true)
+  var res: Array[PowerWrapper] = []
+  var lvl = Globals.getCurrentLevel()
+
+  for wrp in PowersList:
+    if PossiblePowersForLevel[lvl][0] == 'ALL':
+      res.push_back(wrp)
+    elif wrp.name in PossiblePowersForLevel[lvl]:
+      res.push_back(wrp)
+
   res.shuffle()
+  for i in res: print(i.name)
   return res
+
+  # var res = PowersList.duplicate(true)
+  # res.shuffle()
+  # return res
 
 #! DEBUG
 func _input(event: InputEvent) -> void:

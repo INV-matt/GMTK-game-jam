@@ -217,3 +217,11 @@ HUD = NodePath("../HUD")
 UI_PowerSelect = NodePath("../PowerSelect")
 MinimumPowersLevel = 2
 PowersList = Array[ExtResource("16_wbdht")]([ExtResource("17_puekb"), ExtResource("18_xi84t"), ExtResource("19_j4inf"), ExtResource("21_xi84t")])
+PossiblePowersForLevel = Dictionary[int, PackedStringArray]({
+0: PackedStringArray("ALL"),
+1: PackedStringArray("Dash"),
+2: PackedStringArray("ALL"),
+3: PackedStringArray("ALL"),
+4: PackedStringArray("ALL"),
+5: PackedStringArray("ALL")
+})
