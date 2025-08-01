@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://58q0opyiwp4"
-path="res://.godot/imported/Lantern_Light.png-f2093360009a08e5b9647eb23f0c91de.ctex"
+uid="uid://lbtctouavp3p"
+path="res://.godot/imported/Blank-SwordSheet.png-f27324ceb2ca879ddd9d676c51ab9704.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Powers/Lantern power/Lantern_Light.png"
-dest_files=["res://.godot/imported/Lantern_Light.png-f2093360009a08e5b9647eb23f0c91de.ctex"]
+source_file="res://Player/Spritesheets/Blank-SwordSheet.png"
+dest_files=["res://.godot/imported/Blank-SwordSheet.png-f27324ceb2ca879ddd9d676c51ab9704.ctex"]
 
 [params]
 

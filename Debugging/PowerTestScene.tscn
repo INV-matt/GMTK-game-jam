@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://ck81r3hikcayl"]
+[gd_scene load_steps=18 format=3 uid="uid://ck81r3hikcayl"]
 
 [ext_resource type="PackedScene" uid="uid://cnv1i1bs5daa0" path="res://Player/player.tscn" id="1_biqb7"]
 [ext_resource type="Script" uid="uid://c6vhf65b77vw7" path="res://Debugging/power_test_scene.gd" id="1_rmu8i"]
@@ -8,9 +8,12 @@
 [ext_resource type="PackedScene" uid="uid://cdpjrx4rk05n6" path="res://Powers/Double Jump Power/double_jump_power.tscn" id="5_4oqgs"]
 [ext_resource type="PackedScene" uid="uid://bjmx3pbinedyv" path="res://Powers/Float Power/float_power.tscn" id="6_khw80"]
 [ext_resource type="PackedScene" uid="uid://458iu8swbsj" path="res://Powers/Super Speed Power/super_speed_power.tscn" id="7_w88rb"]
-[ext_resource type="PackedScene" uid="uid://d3p5qby24bnlv" path="res://Powers/Lantern power/lantern_power.tscn" id="8_1chxq"]
+[ext_resource type="PackedScene" uid="uid://d3p5qby24bnlv" path="res://Powers/Lantern Power/lantern_power.tscn" id="8_1chxq"]
 [ext_resource type="PackedScene" uid="uid://q2g8uqvyfrap" path="res://Enemies/Basic Enemy/basic_enemy.tscn" id="8_cana2"]
+[ext_resource type="PackedScene" uid="uid://bjb7t8wpj8sdx" path="res://Powers/Mini Power/mini_power.tscn" id="9_2kp8e"]
 [ext_resource type="PackedScene" uid="uid://crxkprqfmatbv" path="res://Hazards/hazard.tscn" id="9_4oqgs"]
+[ext_resource type="PackedScene" uid="uid://cbo7l02al8h0e" path="res://Powers/Gravity Control Power/gravity_control_power.tscn" id="10_7cfra"]
+[ext_resource type="PackedScene" uid="uid://cnee6r7i5eftq" path="res://Powers/Charge Jump Power/charge_jump_power.tscn" id="11_tt4ml"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_rmu8i"]
 distance = -32.0
@@ -23,7 +26,7 @@ size = Vector2(50, 50)
 
 [node name="power_testing" type="Node2D"]
 script = ExtResource("1_rmu8i")
-powersToShow = Array[PackedScene]([ExtResource("2_1mqgf"), ExtResource("3_khw80"), ExtResource("4_cana2"), ExtResource("5_4oqgs"), ExtResource("6_khw80"), ExtResource("7_w88rb"), ExtResource("8_1chxq")])
+powersToShow = Array[PackedScene]([ExtResource("2_1mqgf"), ExtResource("3_khw80"), ExtResource("4_cana2"), ExtResource("5_4oqgs"), ExtResource("6_khw80"), ExtResource("7_w88rb"), ExtResource("8_1chxq"), ExtResource("9_2kp8e"), ExtResource("10_7cfra"), ExtResource("11_tt4ml")])
 
 [node name="Player" parent="." instance=ExtResource("1_biqb7")]
 unique_name_in_owner = true

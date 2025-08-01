@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dng0p5jl6mhxb"]
 
-[ext_resource type="Texture2D" uid="uid://58q0opyiwp4" path="res://Powers/Lantern power/Lantern_Light.png" id="1_gssh5"]
-[ext_resource type="Script" uid="uid://xsdqpkcbahx7" path="res://Powers/Lantern power/dropped_lantern.gd" id="2_a2fvd"]
+[ext_resource type="Texture2D" uid="uid://58q0opyiwp4" path="res://Powers/Lantern Power/Lantern_Light.png" id="1_gssh5"]
+[ext_resource type="Script" uid="uid://xsdqpkcbahx7" path="res://Powers/Lantern Power/dropped_lantern.gd" id="2_a2fvd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a2fvd"]
 

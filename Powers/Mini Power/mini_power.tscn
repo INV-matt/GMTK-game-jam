@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bjb7t8wpj8sdx"]
+
+[ext_resource type="Script" uid="uid://cd27wb0rajw4c" path="res://Powers/Mini Power/mini_power.gd" id="1_7jw55"]
+
+[node name="mini_power" type="Node2D" groups=["power"]]
+script = ExtResource("1_7jw55")
+PowerName = "Mini Power"

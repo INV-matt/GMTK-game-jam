@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://cnv1i1bs5daa0" path="res://Player/player.tscn" id="1_2w1kt"]
 [ext_resource type="Script" uid="uid://60ahfl7tx4bs" path="res://Main/GameManager.gd" id="1_rix8b"]
 [ext_resource type="Script" uid="uid://jy3cw8fsadki" path="res://Main/camera_movement.gd" id="2_qvhan"]
-[ext_resource type="Texture2D" uid="uid://58q0opyiwp4" path="res://Powers/Lantern power/Lantern_Light.png" id="3_j4inf"]
+[ext_resource type="Texture2D" uid="uid://58q0opyiwp4" path="res://Powers/Lantern Power/Lantern_Light.png" id="3_j4inf"]
 [ext_resource type="Script" uid="uid://niau7oxw71ir" path="res://UI/HUD.gd" id="4_rix8b"]
 [ext_resource type="Theme" uid="uid://diigp8dh8nst4" path="res://UI/UI.tres" id="5_k3v36"]
 [ext_resource type="Texture2D" uid="uid://dvrpommi32nlv" path="res://UI/Assets/Life_Hud.png" id="6_liyct"]

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cbo7l02al8h0e"]
+
+[ext_resource type="Script" uid="uid://dgenckl2qtqms" path="res://Powers/Gravity Control Power/gravity_control_power.gd" id="1_fppfm"]
+
+[node name="gravity_control_power" type="Node2D" groups=["power"]]
+script = ExtResource("1_fppfm")
+PowerName = "Gravity Control Power"
