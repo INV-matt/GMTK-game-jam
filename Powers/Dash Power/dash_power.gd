@@ -1,7 +1,7 @@
 extends Power
 
-@export var Speed = 500
-@export var Length = 5
+@export var Speed = 300
+@export var Length = 10
 
 var isReady = false
 var player: Player
@@ -23,6 +23,8 @@ func _power_death(p: Player) :
   
   get_tree().get_root().call_deferred("add_child", collect)
 
+var trailScene = preload("res://Powers/Dash Power/dash_trail.tscn")
+
 func _process(delta: float) -> void:
   if not isReady:
     return
@@ -31,6 +33,14 @@ func _process(delta: float) -> void:
     length -= 1
     player.velocity = dir * Speed
     player.move_and_slide()
+    
+    if length % 2 == 0 :
+      var trail: AnimatedSprite2D = trailScene.instantiate()
+      trail.global_position = player.global_position
+      trail.rotation = player.velocity.angle()
+      
+      get_tree().get_root().call_deferred("add_child", trail)
+    
     return
   else:
     player.movementLocked = false
