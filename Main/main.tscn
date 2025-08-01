@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://b3ip2tsabj3dm"]
+[gd_scene load_steps=17 format=3 uid="uid://b3ip2tsabj3dm"]
 
 [ext_resource type="PackedScene" uid="uid://cnv1i1bs5daa0" path="res://Player/player.tscn" id="1_2w1kt"]
 [ext_resource type="Script" uid="uid://60ahfl7tx4bs" path="res://Main/GameManager.gd" id="1_rix8b"]
@@ -27,9 +27,6 @@ atlas = SubResource("CompressedTexture2D_rix8b")
 region = Rect2(0, 0, 32, 32)
 margin = Rect2(-8, -8, -16, -16)
 
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_f3gf5"]
-distance = -144.0
-
 [node name="Main" type="Node2D"]
 
 [node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("UI")]
@@ -47,6 +44,7 @@ unique_name_in_owner = true
 zoom = Vector2(2, 2)
 position_smoothing_enabled = true
 script = ExtResource("2_qvhan")
+ScoutZoomMult = 0.6
 
 [node name="UI" type="CanvasLayer" parent="." node_paths=PackedStringArray("t_Lives")]
 script = ExtResource("5_f6fdm")
@@ -89,11 +87,6 @@ texture = SubResource("AtlasTexture_0jx5h")
 stretch_mode = 5
 
 [node name="LevelManager" parent="." instance=ExtResource("12_f3gf5")]
-
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-shape = SubResource("WorldBoundaryShape2D_f3gf5")
 
 [node name="parallax" type="ParallaxBackground" parent="."]
 scale = Vector2(3, 3)
