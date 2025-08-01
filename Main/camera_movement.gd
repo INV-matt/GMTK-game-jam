@@ -21,8 +21,7 @@ func _process(delta: float) -> void:
 
   var viewport_size = get_viewport_rect().size
 
-  #.offset.y = (-viewport_size.y/3 + global_position.y)*3
-  parallax.offset.y = get_screen_center_position().y*3 - viewport_size.y
+  parallax.offset.y = get_screen_center_position().y*2.5 - viewport_size.y/1.335
 
 func _on_scout_enter() -> void:
   print("scout entered")
