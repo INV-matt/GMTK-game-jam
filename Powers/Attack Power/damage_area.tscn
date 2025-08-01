@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://4l30djvs1qv2"]
+
+[ext_resource type="Script" uid="uid://ufu41nfunyp" path="res://Powers/Attack Power/damage_area.gd" id="1_jl1yk"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_unvsw"]
+radius = 90.0
+
+[node name="damageArea" type="Area2D"]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("1_jl1yk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_unvsw")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.25
+autostart = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

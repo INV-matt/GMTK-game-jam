@@ -9,41 +9,17 @@ var player: Player
 func _power_passive(p: Player) :
   player = p
   isReady = true
-  
-@export var RopeHeight = 200
-@export var ClimbSpeed = 5
 
 var canPlayerClimb = false
+var ropeScene = preload("res://Powers/Climb Power/rope.tscn")
 
-func _power_death(p: Player) :
-  var area = Area2D.new()
-  var shape = CollisionShape2D.new()
-  
-  shape.shape = RectangleShape2D.new()
-  (shape.shape as RectangleShape2D).size = Vector2(20, RopeHeight)
-  
-  area.add_child(shape)
-  area.global_position = p.global_position
-  area.position.y -= RopeHeight/2
-  area.collision_layer = 0
-  area.collision_mask = 2
-  area.connect("body_entered", func(x): canPlayerClimb = true)
-  area.connect("body_exited", func(x): canPlayerClimb = false)
-  
-  get_tree().get_root().call_deferred("add_child", area)
+func _power_death(p: Player) :  
+  var rope = ropeScene.instantiate()
+  rope.global_position = p.global_position
+ 
+  get_tree().get_root().call_deferred("add_child", rope)
 
 func _process(delta: float) -> void:
-  if canPlayerClimb :
-    player._setAnimation("idle")
-    player.GlobalGravityMult = 0
-    player.velocity.y = 0
-    if Input.is_action_pressed("pl_up") :
-      player.position.y -= ClimbSpeed
-    if Input.is_action_pressed("pl_down") :
-      player.position.y += ClimbSpeed
-  else :
-    player.GlobalGravityMult = 1
-  
   if not isReady :
     return
     
