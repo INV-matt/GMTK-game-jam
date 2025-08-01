@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://b38xi88pril7a"]
+
+[ext_resource type="Script" uid="uid://clhucv6de5c3g" path="res://Powers/Gravity Control Power/antigravity_area.gd" id="1_irore"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_td617"]
+size = Vector2(100, 100)
+
+[node name="antigravity_area" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_irore")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_td617")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

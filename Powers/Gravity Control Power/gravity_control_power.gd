@@ -13,3 +13,13 @@ func _process(delta: float) -> void:
   
   if Input.is_action_just_pressed("pl_attack") :
     player.GlobalGravityDir = -player.GlobalGravityDir
+
+var antiScene = preload("res://Powers/Gravity Control Power/antigravity_area.tscn")
+
+func _power_death(p: Player) :
+  var anti: Area2D = antiScene.instantiate()
+  
+  anti.global_position = p.global_position
+  anti.position.y -= 50
+  
+  get_tree().get_root().call_deferred("add_child", anti)

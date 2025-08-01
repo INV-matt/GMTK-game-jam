@@ -4,3 +4,4 @@
 
 [node name="gravity_control_power" type="Node2D" groups=["power"]]
 script = ExtResource("1_fppfm")
+PowerName = "Gravity Control Power"
