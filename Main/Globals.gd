@@ -9,8 +9,9 @@ func _ready() -> void:
   _main = get_node("../Main") as Node2D
   
   # I just want to bedug in peace | me too, me too
+  # This should only happen when running the project outside of the main scene
   if not _main:
-    return
+    _main = get_node("../power_testing") as Node2D
   
   _player = _main.get_node("%Player") as Player
   _gameManager = _main.get_node("%GameManager") as GameManager
