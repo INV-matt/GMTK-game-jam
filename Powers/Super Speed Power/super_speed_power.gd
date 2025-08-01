@@ -10,7 +10,7 @@ func _power_passive(player: Player) :
   p.Speed *= Multiplier
   p.Acceleration *= Multiplier
 
-var slowZoneScene = preload("res://Powers/Dash Power/slow_zone.tscn")
+var slowZoneScene = preload("res://Powers/Super Speed Power/slow_zone.tscn")
 
 func _power_death(player: Player) :
   var zone: Area2D = slowZoneScene.instantiate()
