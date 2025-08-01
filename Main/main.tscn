@@ -102,34 +102,64 @@ scroll_ignore_camera_zoom = true
 
 [node name="sky" type="ParallaxLayer" parent="parallax"]
 motion_scale = Vector2(0.063, 1)
-motion_mirroring = Vector2(900, 0)
+motion_mirroring = Vector2(910, 0)
 
-[node name="SkyBg" type="Sprite2D" parent="parallax/sky"]
+[node name="SkyBg" type="TextureRect" parent="parallax/sky"]
+offset_left = -456.0
+offset_top = -216.0
+offset_right = 1368.0
+offset_bottom = 216.0
 texture = ExtResource("8_f3gf5")
+expand_mode = 1
+stretch_mode = 1
 
 [node name="mountains" type="ParallaxLayer" parent="parallax"]
 motion_scale = Vector2(0.125, 1)
-motion_mirroring = Vector2(900, 0)
+motion_mirroring = Vector2(910, 0)
 
-[node name="MountainsBg" type="Sprite2D" parent="parallax/mountains"]
+[node name="MountainsBg" type="TextureRect" parent="parallax/mountains"]
+offset_left = -456.0
+offset_top = -216.0
+offset_right = 1368.0
+offset_bottom = 216.0
 texture = ExtResource("9_rix8b")
+expand_mode = 1
+stretch_mode = 1
 
 [node name="trees_back" type="ParallaxLayer" parent="parallax"]
 motion_scale = Vector2(0.25, 1)
-motion_mirroring = Vector2(900, 0)
+motion_mirroring = Vector2(910, 0)
 
-[node name="PineBackBg" type="Sprite2D" parent="parallax/trees_back"]
+[node name="PineBackBg" type="TextureRect" parent="parallax/trees_back"]
+offset_left = -456.0
+offset_top = -216.0
+offset_right = 1368.0
+offset_bottom = 216.0
 texture = ExtResource("10_0jx5h")
+expand_mode = 1
+stretch_mode = 1
 
 [node name="trees_front" type="ParallaxLayer" parent="parallax"]
 motion_scale = Vector2(0.5, 1)
-motion_mirroring = Vector2(900, 0)
+motion_mirroring = Vector2(910, 0)
 
-[node name="PineFrontBg" type="Sprite2D" parent="parallax/trees_front"]
+[node name="PineFrontBg" type="TextureRect" parent="parallax/trees_front"]
+offset_left = -456.0
+offset_top = -216.0
+offset_right = 1368.0
+offset_bottom = 216.0
 texture = ExtResource("11_uhr2j")
+expand_mode = 1
+stretch_mode = 1
 
 [node name="temple" type="ParallaxLayer" parent="parallax"]
-motion_mirroring = Vector2(900, 0)
+motion_mirroring = Vector2(910, 0)
 
-[node name="TempleBg" type="Sprite2D" parent="parallax/temple"]
+[node name="TempleBg" type="TextureRect" parent="parallax/temple"]
+offset_left = -456.0
+offset_top = -216.0
+offset_right = 1368.0
+offset_bottom = 216.0
 texture = ExtResource("12_l5bfp")
+expand_mode = 1
+stretch_mode = 1
