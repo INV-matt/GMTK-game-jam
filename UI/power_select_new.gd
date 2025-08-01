@@ -5,8 +5,7 @@ var slotsBtn: Array[TextureButton] = []
 
 @export var BlankSlot: CompressedTexture2D
 var BlankWrapper = PowerWrapper.new()
-
-var TextureToPowername: Dictionary[CompressedTexture2D, String]
+@export var btn_proceed: Button
 
 var GM: GameManager
 var toDisplay: Array[PowerWrapper]
@@ -19,41 +18,9 @@ func _ready() -> void:
   BlankWrapper.power = null
   GenerateNew()
 
-  var box_displayedPowers = $VBoxContainer/availiblePowers
-  var box_selectedPowers = $VBoxContainer/selectedPowers
-
-  # var btn_arr_displayed: Array[TextureButton] = box_displayedPowers.get_children().filter(func(el): el is TextureButton)
-  # var btn_arr_selected: Array[TextureButton] = box_selectedPowers.get_children().filter(func(el): el is TextureButton)
-  var btn_arr_displayed = box_displayedPowers.get_children()
-  var btn_arr_selected = box_selectedPowers.get_children()
-  
-
-  slotsBtn.resize(2)
-  slotsOccupied.resize(2)
-  chosenUpgrades.resize(2)
-
-  # Connect displayed powers' buttons
-  for i in range(len(btn_arr_displayed)):
-    if btn_arr_displayed[i] is TextureButton:
-      var btn: TextureButton = btn_arr_displayed[i]
-      btn.texture_normal = toDisplay[i].texture
-
-      (btn.get_child(0) as RichTextLabel).text = "[center]" + toDisplay[i].name + "[/center]"
-      btn.pressed.connect(_selectPower.bind(toDisplay[i]))
-
-  # Connect selected powers' buttons
-  for i in range(len(btn_arr_selected)):
-    if btn_arr_selected[i] is TextureButton:
-      var btn: TextureButton = btn_arr_selected[i]
-      btn.pressed.connect(_unselectPower.bind(i))
-
-      btn.texture_normal = BlankSlot
-
-      slotsOccupied[i] = false
-      slotsBtn[i] = btn
-  
-  (slotsBtn[0].get_child(0) as RichTextLabel).text = "[center]Active ability: None[/center]"
-  (slotsBtn[1].get_child(0) as RichTextLabel).text = "[center]On death ability: None[/center]"
+# Could be done better
+func _process(_delta) -> void:
+  btn_proceed.disabled = !(slotsOccupied[0] && slotsOccupied[1])
 
 
 func _selectPower(wrapper: PowerWrapper):
@@ -83,10 +50,7 @@ func _unselectPower(idx: int):
   else:
     (btn.get_child(0) as RichTextLabel).text = "[center]On death ability: None[/center]"
   return
-      
-
-func GenerateNew(): toDisplay = GM.ChoosePowersToDisplay()
-
+  
 
 func _on_select_powers_pressed() -> void:
   for b in slotsOccupied:
@@ -101,3 +65,49 @@ func _on_select_powers_pressed() -> void:
   powerOnDeath.PassiveEnabled = false # Disable passive effect
 
   GM.SetPowers(powerPassive, powerOnDeath)
+
+func GenerateNew():
+  toDisplay = GM.ChoosePowersToDisplay()
+  print(" TO DISPLAY: ")
+  for i in toDisplay: print(i.name)
+  Populate()
+
+func Populate():
+  var box_displayedPowers = $VBoxContainer/availablePowers
+  var box_selectedPowers = $VBoxContainer/selectedPowers
+
+  # var btn_arr_displayed: Array[TextureButton] = box_displayedPowers.get_children().filter(func(el): el is TextureButton)
+  # var btn_arr_selected: Array[TextureButton] = box_selectedPowers.get_children().filter(func(el): el is TextureButton)
+  var btn_arr_displayed = box_displayedPowers.get_children()
+  var btn_arr_selected = box_selectedPowers.get_children()
+  
+
+  slotsBtn.resize(2)
+  slotsOccupied.resize(2)
+  chosenUpgrades.resize(2)
+
+  # Connect displayed powers' buttons
+  for i in range(len(btn_arr_displayed)):
+    if btn_arr_displayed[i] is TextureButton:
+      var btn: TextureButton = btn_arr_displayed[i]
+      btn.texture_normal = toDisplay[i].texture
+      (btn.get_child(0) as RichTextLabel).text = "[center]" + toDisplay[i].name + "[/center]"
+
+      var temp_callable = _selectPower.bind(toDisplay[i])
+
+      btn.pressed.connect(temp_callable) # !TO FIX: When reshuffled, the bind doesn't change
+
+
+  # Connect selected powers' buttons
+  for i in range(len(btn_arr_selected)):
+    if btn_arr_selected[i] is TextureButton:
+      var btn: TextureButton = btn_arr_selected[i]
+      btn.pressed.connect(_unselectPower.bind(i))
+
+      btn.texture_normal = BlankSlot
+
+      slotsOccupied[i] = false
+      slotsBtn[i] = btn
+  
+  (slotsBtn[0].get_child(0) as RichTextLabel).text = "[center]Active ability: None[/center]"
+  (slotsBtn[1].get_child(0) as RichTextLabel).text = "[center]On death ability: None[/center]"
