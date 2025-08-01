@@ -29,8 +29,8 @@ var _isScouting = false
 
 var movementLocked = false
 
-func _setAnimation(name: String) :
-  if $Sprite2D.animation == name :
+func _setAnimation(name: String):
+  if $Sprite2D.animation == name:
     return
   
   $Sprite2D.play(name)
@@ -75,15 +75,15 @@ func _handleHorizontalMovement(delta) -> void:
   #   velocity.x = move_toward(velocity.x, 0, Deceleration)
   _direction = Input.get_axis("pl_left", "pl_right")
   
-  if _direction < 0 :
+  if _direction < 0:
     $Sprite2D.flip_h = true
-  elif _direction > 0 :
+  elif _direction > 0:
     $Sprite2D.flip_h = false
     
-  if is_on_floor() :
-    if _direction :
+  if is_on_floor():
+    if _direction:
       _setAnimation("walk")
-    else :
+    else:
       _setAnimation("idle")
   
   var target = _direction * Speed
@@ -101,13 +101,13 @@ func _getCurrentGravity():
 #region GRAVITY
 func _handleGravity(delta) -> void:
   if velocity.y > 0:
-    if not is_on_floor() :
+    if not is_on_floor():
       _setAnimation("fall")
     _localGravity = _getCurrentGravity() * FallGravityMultiplier
   else:
     _localGravity = _getCurrentGravity()
     
-    if velocity.y < 0 :
+    if velocity.y < 0:
       _setAnimation("jump")
 
   if not is_on_floor():

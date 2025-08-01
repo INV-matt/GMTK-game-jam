@@ -21,20 +21,23 @@ func _loadLevel():
   
   var lvl = levels[currLevel].instantiate()
   
-  # for i in lvl.get_children():
-  #   if "cookie" in i.get_groups() and i is Cookie:
-  #     i.connect("next_level", _nextLevel)
-  SignalBus.connect("next_level", _nextLevel)
+  for i in lvl.get_children():
+    if "cookie" in i.get_groups() and i is Cookie:
+      i.connect("next_level", _nextLevel)
+  # SignalBus.connect("next_level", _nextLevel)
   
+  # for k in addTo.get_children():
+  #   addTo.remove_child(k)
   for k in addTo.get_children():
-    addTo.remove_child(k)
-  
+    k.queue_free()
+
   var root = get_tree().get_root()
   for i in root.get_children():
     if i is StaticBody2D and "bodies" in i.get_groups():
       root.remove_child(i)
   
-  addTo.add_child(lvl)
+ #addTo.add_child(lvl)
+  addTo.call_deferred("add_child", lvl)
 
 func _ready() -> void:
   var root = get_tree().get_root()
