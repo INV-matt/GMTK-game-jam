@@ -50,9 +50,6 @@ func _onPlayerDeath():
   get_tree().get_root().call_deferred("add_child", body)
 
 
-func _onPlayerLostAllLives() -> void:
-  pass
-
 func _resetLevel():
   var root = get_tree().get_root()
   
