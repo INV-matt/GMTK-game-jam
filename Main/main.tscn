@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://b3ip2tsabj3dm"]
+[gd_scene load_steps=25 format=3 uid="uid://b3ip2tsabj3dm"]
 
 [ext_resource type="PackedScene" uid="uid://cnv1i1bs5daa0" path="res://Player/player.tscn" id="1_2w1kt"]
 [ext_resource type="Script" uid="uid://60ahfl7tx4bs" path="res://Main/GameManager.gd" id="1_rix8b"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://niau7oxw71ir" path="res://UI/HUD.gd" id="4_rix8b"]
 [ext_resource type="Theme" uid="uid://diigp8dh8nst4" path="res://UI/UI.tres" id="5_k3v36"]
 [ext_resource type="Texture2D" uid="uid://dvrpommi32nlv" path="res://UI/Assets/Life_Hud.png" id="6_liyct"]
+[ext_resource type="Texture2D" uid="uid://c61ayx76til5q" path="res://icon.svg" id="7_puekb"]
 [ext_resource type="PackedScene" uid="uid://5o18xxp7cefe" path="res://UI/power_select.tscn" id="8_0jx5h"]
 [ext_resource type="Texture2D" uid="uid://r1xbyvsy2n6q" path="res://UI/Parallax/Sky_BG.png" id="8_f3gf5"]
 [ext_resource type="Texture2D" uid="uid://dsjfhq3fg44o" path="res://UI/Assets/Life_Numbers-Sheet.png" id="8_rj11h"]
@@ -15,6 +16,11 @@
 [ext_resource type="Texture2D" uid="uid://dmyh3joob8tmy" path="res://UI/Parallax/Pine_Front_BG.png" id="11_uhr2j"]
 [ext_resource type="PackedScene" uid="uid://bna27rt0jdwg7" path="res://Main/LevelManager.tscn" id="12_f3gf5"]
 [ext_resource type="Texture2D" uid="uid://chit0sipr8kc1" path="res://UI/Parallax/Temple_BG.png" id="12_l5bfp"]
+[ext_resource type="Script" uid="uid://d7dn4j8wjask" path="res://Powers/power_wrapper.gd" id="16_wbdht"]
+[ext_resource type="Resource" uid="uid://tqa2j8ae73te" path="res://Powers/Resources/pw_DoubleJump.tres" id="17_puekb"]
+[ext_resource type="Resource" uid="uid://bhxx68oey8umb" path="res://Powers/Resources/pw_Climb.tres" id="18_xi84t"]
+[ext_resource type="Resource" uid="uid://nnrv1aakkpa6" path="res://Powers/Resources/pw_Dash.tres" id="19_j4inf"]
+[ext_resource type="Resource" uid="uid://dhajk4u4e0k06" path="res://Powers/Resources/pw_Attack.tres" id="21_xi84t"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qac2q"]
 atlas = ExtResource("8_rj11h")
@@ -46,9 +52,9 @@ ScoutZoomMult = 0.6
 
 [node name="HUD" type="CanvasLayer" parent="." node_paths=PackedStringArray("t_Lives")]
 script = ExtResource("4_rix8b")
-t_Lives = [NodePath("MarginContainer/BG/HBoxContainer/LivesUsed"), NodePath("MarginContainer/BG/HBoxContainer/LivesUsed2")]
+t_Lives = [NodePath("Box_Lifes/BG/Digits/LivesUsed"), NodePath("Box_Lifes/BG/Digits/LivesUsed2")]
 
-[node name="MarginContainer" type="MarginContainer" parent="HUD"]
+[node name="Box_Lifes" type="MarginContainer" parent="HUD"]
 offset_right = 267.0
 offset_bottom = 138.0
 size_flags_horizontal = 6
@@ -57,13 +63,13 @@ theme = ExtResource("5_k3v36")
 theme_override_constants/margin_left = 16
 theme_override_constants/margin_top = 16
 
-[node name="BG" type="TextureRect" parent="HUD/MarginContainer"]
+[node name="BG" type="TextureRect" parent="HUD/Box_Lifes"]
 layout_mode = 2
 texture = ExtResource("6_liyct")
 expand_mode = 5
 stretch_mode = 4
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HUD/MarginContainer/BG"]
+[node name="Digits" type="HBoxContainer" parent="HUD/Box_Lifes/BG"]
 layout_mode = 0
 offset_left = 110.0
 offset_top = 40.0
@@ -72,17 +78,58 @@ offset_bottom = 96.0
 theme_override_constants/separation = -12
 alignment = 1
 
-[node name="LivesUsed" type="TextureRect" parent="HUD/MarginContainer/BG/HBoxContainer"]
+[node name="LivesUsed" type="TextureRect" parent="HUD/Box_Lifes/BG/Digits"]
 custom_minimum_size = Vector2(56, 56)
 layout_mode = 2
 texture = SubResource("AtlasTexture_qac2q")
 stretch_mode = 5
 
-[node name="LivesUsed2" type="TextureRect" parent="HUD/MarginContainer/BG/HBoxContainer"]
+[node name="LivesUsed2" type="TextureRect" parent="HUD/Box_Lifes/BG/Digits"]
 custom_minimum_size = Vector2(56, 56)
 layout_mode = 2
 texture = SubResource("AtlasTexture_0jx5h")
 stretch_mode = 5
+
+[node name="Box_Powers" type="MarginContainer" parent="HUD"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -256.0
+offset_bottom = 136.0
+grow_horizontal = 0
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+
+[node name="Background" type="TextureRect" parent="HUD/Box_Powers"]
+layout_mode = 2
+texture = ExtResource("6_liyct")
+expand_mode = 5
+stretch_mode = 4
+flip_h = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HUD/Box_Powers/Background"]
+custom_minimum_size = Vector2(96, 48)
+layout_mode = 0
+offset_left = 65.0
+offset_top = 40.0
+offset_right = 161.0
+offset_bottom = 102.0
+
+[node name="PassivePower" type="TextureRect" parent="HUD/Box_Powers/Background/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 7
+size_flags_vertical = 4
+texture = ExtResource("7_puekb")
+expand_mode = 5
+stretch_mode = 4
+
+[node name="OnDeathPower" type="TextureRect" parent="HUD/Box_Powers/Background/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 7
+size_flags_vertical = 4
+texture = ExtResource("7_puekb")
+expand_mode = 5
+stretch_mode = 4
 
 [node name="PowerSelect" type="CanvasLayer" parent="." node_paths=PackedStringArray("powerSelect")]
 process_mode = 2
@@ -169,3 +216,4 @@ script = ExtResource("1_rix8b")
 HUD = NodePath("../HUD")
 UI_PowerSelect = NodePath("../PowerSelect")
 MinimumPowersLevel = 2
+PowersList = Array[ExtResource("16_wbdht")]([ExtResource("17_puekb"), ExtResource("18_xi84t"), ExtResource("19_j4inf"), ExtResource("21_xi84t")])

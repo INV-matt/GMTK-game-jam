@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="PowerWrapper" load_steps=4 format=3 uid="uid://dhajk4u4e0k06"]
+
+[ext_resource type="PackedScene" uid="uid://bcwjmekm2lobt" path="res://Powers/Attack Power/attack_power.tscn" id="1_a2pxg"]
+[ext_resource type="Script" uid="uid://d7dn4j8wjask" path="res://Powers/power_wrapper.gd" id="2_lf0bu"]
+[ext_resource type="Texture2D" uid="uid://besho5c1wrmfa" path="res://Enemies/Basic Enemy/Spritesheets/Walker-DeathSheet.png" id="3_uhrfg"]
+
+[resource]
+script = ExtResource("2_lf0bu")
+name = "Attack"
+power = ExtResource("1_a2pxg")
+texture = ExtResource("3_uhrfg")
+metadata/_custom_type_script = "uid://d7dn4j8wjask"

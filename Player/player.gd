@@ -39,7 +39,7 @@ func _ready():
   _jumpVelocity = sqrt(2 * JumpHeight * _localGravity) # TODO: HARDCODED FOR NOW
 
   # TODO: Move this to after the player select their power
-  _apply_powers()
+  _apply_powers_passive()
   
   _setAnimation("idle")
 
@@ -59,7 +59,7 @@ func _physics_process(delta: float) -> void:
     move_and_slide()
 
 #region APPLY POWERS
-func _apply_powers():
+func _apply_powers_passive():
   for i in get_children():
     # Only apply the powers of children of type "Power" and that have the group "power"
     if i is Power and "power" in i.get_groups():
