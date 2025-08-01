@@ -1,0 +1,39 @@
+[gd_scene load_steps=9 format=3 uid="uid://ck81r3hikcayl"]
+
+[ext_resource type="PackedScene" uid="uid://cnv1i1bs5daa0" path="res://Player/player.tscn" id="1_biqb7"]
+[ext_resource type="Script" uid="uid://c6vhf65b77vw7" path="res://Debugging/power_test_scene.gd" id="1_rmu8i"]
+[ext_resource type="PackedScene" uid="uid://bcwjmekm2lobt" path="res://Powers/Attack Power/attack_power.tscn" id="2_1mqgf"]
+[ext_resource type="PackedScene" uid="uid://bgbjkfr7hkkyh" path="res://Powers/Climb Power/climb_power.tscn" id="3_khw80"]
+[ext_resource type="PackedScene" uid="uid://sgp1mlwgotkw" path="res://Powers/Dash Power/dash_power.tscn" id="4_cana2"]
+[ext_resource type="PackedScene" uid="uid://cdpjrx4rk05n6" path="res://Powers/Double Jump Power/double_jump_power.tscn" id="5_4oqgs"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_rmu8i"]
+distance = -32.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1mqgf"]
+size = Vector2(48, 176)
+
+[node name="power_testing" type="Node2D"]
+script = ExtResource("1_rmu8i")
+powersToShow = Array[PackedScene]([ExtResource("2_1mqgf"), ExtResource("3_khw80"), ExtResource("4_cana2"), ExtResource("5_4oqgs")])
+
+[node name="Player" parent="." instance=ExtResource("1_biqb7")]
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(2, 2)
+position_smoothing_enabled = true
+
+[node name="floor" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="floor"]
+shape = SubResource("WorldBoundaryShape2D_rmu8i")
+
+[node name="wall" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall"]
+position = Vector2(-184, -24)
+shape = SubResource("RectangleShape2D_1mqgf")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="wall"]
+offset_right = 40.0
+offset_bottom = 40.0
