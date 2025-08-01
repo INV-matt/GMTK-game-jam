@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://b3ip2tsabj3dm"]
+[gd_scene load_steps=23 format=3 uid="uid://b3ip2tsabj3dm"]
 
 [ext_resource type="PackedScene" uid="uid://cnv1i1bs5daa0" path="res://Player/player.tscn" id="1_2w1kt"]
 [ext_resource type="Script" uid="uid://60ahfl7tx4bs" path="res://Main/GameManager.gd" id="1_rix8b"]
@@ -15,6 +15,10 @@
 [ext_resource type="Texture2D" uid="uid://dmyh3joob8tmy" path="res://UI/Parallax/Pine_Front_BG.png" id="11_uhr2j"]
 [ext_resource type="PackedScene" uid="uid://bna27rt0jdwg7" path="res://Main/LevelManager.tscn" id="12_f3gf5"]
 [ext_resource type="Texture2D" uid="uid://chit0sipr8kc1" path="res://UI/Parallax/Temple_BG.png" id="12_l5bfp"]
+[ext_resource type="Script" uid="uid://d7dn4j8wjask" path="res://Powers/power_wrapper.gd" id="16_wbdht"]
+[ext_resource type="Resource" uid="uid://tqa2j8ae73te" path="res://Powers/Resources/pw_DoubleJump.tres" id="17_puekb"]
+[ext_resource type="Resource" uid="uid://bhxx68oey8umb" path="res://Powers/Resources/pw_Climb.tres" id="18_xi84t"]
+[ext_resource type="Resource" uid="uid://nnrv1aakkpa6" path="res://Powers/Resources/pw_Dash.tres" id="19_j4inf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qac2q"]
 atlas = ExtResource("8_rj11h")
@@ -169,3 +173,4 @@ script = ExtResource("1_rix8b")
 HUD = NodePath("../HUD")
 UI_PowerSelect = NodePath("../PowerSelect")
 MinimumPowersLevel = 2
+PowersList = Array[ExtResource("16_wbdht")]([ExtResource("17_puekb"), ExtResource("18_xi84t"), ExtResource("19_j4inf")])

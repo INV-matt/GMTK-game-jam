@@ -6,6 +6,8 @@ var slotsBtn: Array[TextureButton] = []
 @export var BlankSlot: CompressedTexture2D
 @export var TextureToPower: Dictionary[CompressedTexture2D, PackedScene]
 
+@export var PowersDict: Dictionary[int, PowerWrapper]
+
 var TextureToPowername: Dictionary[CompressedTexture2D, String]
 
 var GM: GameManager

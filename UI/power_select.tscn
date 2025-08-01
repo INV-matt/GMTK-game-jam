@@ -1,14 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://5o18xxp7cefe"]
+[gd_scene load_steps=7 format=3 uid="uid://5o18xxp7cefe"]
 
 [ext_resource type="Theme" uid="uid://diigp8dh8nst4" path="res://UI/UI.tres" id="1_0sgcx"]
-[ext_resource type="Script" uid="uid://y3test2wyvet" path="res://UI/power_select.gd" id="1_51ka4"]
+[ext_resource type="Script" uid="uid://coqao33cnc1ek" path="res://UI/power_select_new.gd" id="1_51ka4"]
 [ext_resource type="Texture2D" uid="uid://dya7ry5w11q6x" path="res://Enemies/Chaser Enemy/Spritesheets/Chaser-FallSheet.png" id="2_qt35a"]
 [ext_resource type="Texture2D" uid="uid://5qs33bf53mo4" path="res://Enemies/Basic Enemy/Spritesheets/Walker-FallSheet.png" id="3_51ka4"]
 [ext_resource type="Texture2D" uid="uid://dbkto7el2ftp1" path="res://Player/Spritesheets/Blank-JumpSheet.png" id="4_d5eav"]
-[ext_resource type="PackedScene" uid="uid://bcwjmekm2lobt" path="res://Powers/Attack Power/attack_power.tscn" id="4_ljnuh"]
 [ext_resource type="Texture2D" uid="uid://dv4xchma5hf1y" path="res://Player/Spritesheets/Blank-FallSheet.png" id="5_qt35a"]
-[ext_resource type="PackedScene" uid="uid://bgbjkfr7hkkyh" path="res://Powers/Climb Power/climb_power.tscn" id="6_3osa7"]
-[ext_resource type="PackedScene" uid="uid://sgp1mlwgotkw" path="res://Powers/Dash Power/dash_power.tscn" id="8_r1dh8"]
 
 [node name="powerSelect" type="Control"]
 layout_mode = 3
@@ -19,11 +16,6 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_51ka4")
 BlankSlot = ExtResource("5_qt35a")
-TextureToPower = Dictionary[CompressedTexture2D, PackedScene]({
-ExtResource("2_qt35a"): ExtResource("4_ljnuh"),
-ExtResource("3_51ka4"): ExtResource("6_3osa7"),
-ExtResource("4_d5eav"): ExtResource("8_r1dh8")
-})
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
