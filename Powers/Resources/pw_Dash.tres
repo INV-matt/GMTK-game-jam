@@ -2,11 +2,11 @@
 
 [ext_resource type="PackedScene" uid="uid://sgp1mlwgotkw" path="res://Powers/Dash Power/dash_power.tscn" id="1_bj1li"]
 [ext_resource type="Script" uid="uid://d7dn4j8wjask" path="res://Powers/power_wrapper.gd" id="2_budyn"]
-[ext_resource type="Texture2D" uid="uid://dbkto7el2ftp1" path="res://Player/Spritesheets/Blank-JumpSheet.png" id="3_y3848"]
+[ext_resource type="Texture2D" uid="uid://dw5jg6wpuv220" path="res://Powers/Icons/dash.png" id="3_bj1li"]
 
 [resource]
 script = ExtResource("2_budyn")
 name = "Dash"
 power = ExtResource("1_bj1li")
-texture = ExtResource("3_y3848")
+texture = ExtResource("3_bj1li")
 metadata/_custom_type_script = "uid://d7dn4j8wjask"

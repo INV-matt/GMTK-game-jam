@@ -2,11 +2,11 @@
 
 [ext_resource type="PackedScene" uid="uid://cdpjrx4rk05n6" path="res://Powers/Double Jump Power/double_jump_power.tscn" id="1_0yryj"]
 [ext_resource type="Script" uid="uid://d7dn4j8wjask" path="res://Powers/power_wrapper.gd" id="2_khq1e"]
-[ext_resource type="Texture2D" uid="uid://dya7ry5w11q6x" path="res://Enemies/Chaser Enemy/Spritesheets/Chaser-FallSheet.png" id="3_8kvqy"]
+[ext_resource type="Texture2D" uid="uid://b7vgavqvmahdc" path="res://Powers/Icons/doublejump.png" id="3_0yryj"]
 
 [resource]
 script = ExtResource("2_khq1e")
 name = "Double Jump"
 power = ExtResource("1_0yryj")
-texture = ExtResource("3_8kvqy")
+texture = ExtResource("3_0yryj")
 metadata/_custom_type_script = "uid://d7dn4j8wjask"

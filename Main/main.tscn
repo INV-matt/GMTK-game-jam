@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://b3ip2tsabj3dm"]
+[gd_scene load_steps=33 format=3 uid="uid://b3ip2tsabj3dm"]
 
 [ext_resource type="PackedScene" uid="uid://cnv1i1bs5daa0" path="res://Player/player.tscn" id="1_2w1kt"]
 [ext_resource type="Script" uid="uid://60ahfl7tx4bs" path="res://Main/GameManager.gd" id="1_rix8b"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://c61ayx76til5q" path="res://icon.svg" id="7_puekb"]
 [ext_resource type="PackedScene" uid="uid://5o18xxp7cefe" path="res://UI/power_select.tscn" id="8_0jx5h"]
 [ext_resource type="Texture2D" uid="uid://r1xbyvsy2n6q" path="res://UI/Parallax/Sky_BG.png" id="8_f3gf5"]
+[ext_resource type="Texture2D" uid="uid://c6h2x1g6skha" path="res://UI/Powers_Hud.png" id="8_nf7xu"]
 [ext_resource type="Texture2D" uid="uid://dsjfhq3fg44o" path="res://UI/Assets/Life_Numbers-Sheet.png" id="8_rj11h"]
 [ext_resource type="Script" uid="uid://cnd2baij5a45g" path="res://UI/PowerSelectUI.gd" id="8_uhr2j"]
 [ext_resource type="Texture2D" uid="uid://b04eryfan18sc" path="res://UI/Parallax/Mountains_BG.png" id="9_rix8b"]
@@ -22,6 +23,12 @@
 [ext_resource type="Resource" uid="uid://bhxx68oey8umb" path="res://Powers/Resources/pw_Climb.tres" id="18_xi84t"]
 [ext_resource type="Resource" uid="uid://nnrv1aakkpa6" path="res://Powers/Resources/pw_Dash.tres" id="19_j4inf"]
 [ext_resource type="Resource" uid="uid://dhajk4u4e0k06" path="res://Powers/Resources/pw_Attack.tres" id="21_xi84t"]
+[ext_resource type="Resource" uid="uid://1xxlw6viiic1" path="res://Powers/Resources/pw_Float.tres" id="24_qded6"]
+[ext_resource type="Resource" uid="uid://bsl42bpe7kjbt" path="res://Powers/Resources/pw_ChargeJump.tres" id="25_4uyae"]
+[ext_resource type="Resource" uid="uid://dnme70i62ehr0" path="res://Powers/Resources/pw_GravityControl.tres" id="26_21byg"]
+[ext_resource type="Resource" uid="uid://vl0mf7dlwyat" path="res://Powers/Resources/pw_Lantern.tres" id="27_pcl83"]
+[ext_resource type="Resource" uid="uid://wryci5qd3a0w" path="res://Powers/Resources/pw_Mini.tres" id="28_2jdh1"]
+[ext_resource type="Resource" uid="uid://ds13mjdq0dhwn" path="res://Powers/Resources/pw_SuperSpeed.tres" id="29_bq3qr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qac2q"]
 atlas = ExtResource("8_rj11h")
@@ -59,8 +66,8 @@ script = ExtResource("4_rix8b")
 t_Lives = [NodePath("Box_Lifes/BG/Digits/LivesUsed"), NodePath("Box_Lifes/BG/Digits/LivesUsed2")]
 
 [node name="Box_Lifes" type="MarginContainer" parent="HUD"]
-offset_right = 267.0
-offset_bottom = 138.0
+offset_right = 272.0
+offset_bottom = 141.5
 size_flags_horizontal = 6
 size_flags_vertical = 6
 theme = ExtResource("5_k3v36")
@@ -99,6 +106,7 @@ anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -256.0
+offset_right = 16.0
 offset_bottom = 136.0
 grow_horizontal = 0
 theme_override_constants/margin_top = 16
@@ -106,10 +114,9 @@ theme_override_constants/margin_right = 16
 
 [node name="Background" type="TextureRect" parent="HUD/Box_Powers"]
 layout_mode = 2
-texture = ExtResource("6_liyct")
+texture = ExtResource("8_nf7xu")
 expand_mode = 5
 stretch_mode = 4
-flip_h = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HUD/Box_Powers/Background"]
 custom_minimum_size = Vector2(96, 48)
@@ -220,7 +227,7 @@ script = ExtResource("1_rix8b")
 HUD = NodePath("../HUD")
 UI_PowerSelect = NodePath("../PowerSelect")
 MinimumPowersLevel = 2
-PowersList = Array[ExtResource("16_wbdht")]([ExtResource("17_puekb"), ExtResource("18_xi84t"), ExtResource("19_j4inf"), ExtResource("21_xi84t")])
+PowersList = Array[ExtResource("16_wbdht")]([ExtResource("17_puekb"), ExtResource("18_xi84t"), ExtResource("19_j4inf"), ExtResource("21_xi84t"), ExtResource("24_qded6"), ExtResource("25_4uyae"), ExtResource("26_21byg"), ExtResource("27_pcl83"), ExtResource("28_2jdh1"), ExtResource("29_bq3qr")])
 PossiblePowersForLevel = Dictionary[int, PackedStringArray]({
 0: PackedStringArray("ALL"),
 1: PackedStringArray("Dash"),

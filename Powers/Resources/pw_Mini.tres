@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="PowerWrapper" load_steps=3 format=3 uid="uid://wryci5qd3a0w"]
+
+[ext_resource type="Script" uid="uid://d7dn4j8wjask" path="res://Powers/power_wrapper.gd" id="1_qyop6"]
+[ext_resource type="Texture2D" uid="uid://ded3fwvb5y5jt" path="res://Powers/Icons/mini.png" id="2_t2jt5"]
+
+[resource]
+script = ExtResource("1_qyop6")
+name = "Mini"
+texture = ExtResource("2_t2jt5")
+metadata/_custom_type_script = "uid://d7dn4j8wjask"

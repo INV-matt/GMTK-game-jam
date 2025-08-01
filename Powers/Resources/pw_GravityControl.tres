@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="PowerWrapper" load_steps=3 format=3 uid="uid://dnme70i62ehr0"]
+
+[ext_resource type="Script" uid="uid://d7dn4j8wjask" path="res://Powers/power_wrapper.gd" id="1_8jdla"]
+[ext_resource type="Texture2D" uid="uid://b2n4x6fuad5jb" path="res://Powers/Icons/gravitycontrol.png" id="2_vrx74"]
+
+[resource]
+script = ExtResource("1_8jdla")
+name = "GravityControl"
+texture = ExtResource("2_vrx74")
+metadata/_custom_type_script = "uid://d7dn4j8wjask"

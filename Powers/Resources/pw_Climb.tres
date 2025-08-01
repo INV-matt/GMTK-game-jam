@@ -2,11 +2,11 @@
 
 [ext_resource type="PackedScene" uid="uid://bgbjkfr7hkkyh" path="res://Powers/Climb Power/climb_power.tscn" id="1_jlrg5"]
 [ext_resource type="Script" uid="uid://d7dn4j8wjask" path="res://Powers/power_wrapper.gd" id="2_ceqjn"]
-[ext_resource type="Texture2D" uid="uid://5qs33bf53mo4" path="res://Enemies/Basic Enemy/Spritesheets/Walker-FallSheet.png" id="3_6ivfm"]
+[ext_resource type="Texture2D" uid="uid://drco0gg30iyuy" path="res://Powers/Icons/climb.png" id="3_jlrg5"]
 
 [resource]
 script = ExtResource("2_ceqjn")
 name = "Climb"
 power = ExtResource("1_jlrg5")
-texture = ExtResource("3_6ivfm")
+texture = ExtResource("3_jlrg5")
 metadata/_custom_type_script = "uid://d7dn4j8wjask"

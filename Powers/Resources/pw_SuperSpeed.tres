@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="PowerWrapper" load_steps=4 format=3 uid="uid://ds13mjdq0dhwn"]
+
+[ext_resource type="PackedScene" uid="uid://458iu8swbsj" path="res://Powers/Super Speed Power/super_speed_power.tscn" id="1_1sulv"]
+[ext_resource type="Script" uid="uid://d7dn4j8wjask" path="res://Powers/power_wrapper.gd" id="2_1p25j"]
+[ext_resource type="Texture2D" uid="uid://cxtbg85k158fn" path="res://Powers/Icons/superspeed.png" id="3_4121r"]
+
+[resource]
+script = ExtResource("2_1p25j")
+name = "SuperSpeed"
+power = ExtResource("1_1sulv")
+texture = ExtResource("3_4121r")
+metadata/_custom_type_script = "uid://d7dn4j8wjask"

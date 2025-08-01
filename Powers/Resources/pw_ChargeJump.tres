@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="PowerWrapper" load_steps=3 format=3 uid="uid://bsl42bpe7kjbt"]
+
+[ext_resource type="Script" uid="uid://d7dn4j8wjask" path="res://Powers/power_wrapper.gd" id="1_u5a1d"]
+[ext_resource type="Texture2D" uid="uid://c37nis0k32wvl" path="res://Powers/Icons/chargejump.png" id="2_al3lw"]
+
+[resource]
+script = ExtResource("1_u5a1d")
+name = "ChargeJump"
+texture = ExtResource("2_al3lw")
+metadata/_custom_type_script = "uid://d7dn4j8wjask"
