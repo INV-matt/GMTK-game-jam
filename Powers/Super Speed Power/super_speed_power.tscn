@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://458iu8swbsj"]
+
+[ext_resource type="Script" uid="uid://cbnm515fiuprr" path="res://Powers/Super Speed Power/super_speed_power.gd" id="1_j3ngj"]
+
+[node name="super_speed_power" type="Node2D" groups=["power"]]
+script = ExtResource("1_j3ngj")
+PowerName = "Super Speed Power"
