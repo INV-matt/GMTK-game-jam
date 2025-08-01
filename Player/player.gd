@@ -18,6 +18,7 @@ class_name Player
 @export var FallGravityMultiplier = 1.5
 @export var FastFallGravityMultiplier = 1.5
 @export var GlobalGravityMult = 1
+@export var GlobalGravityDir = 1
 
 var _jumpCount = 0
 var _lastOnFloor = 0.0
@@ -57,6 +58,13 @@ func _ready():
 
 func _physics_process(delta: float) -> void:
   _frameSinceJumpPressed += 1
+  
+  up_direction = Vector2(0, -GlobalGravityDir)
+  
+  if GlobalGravityDir < 0 :
+    $Sprite2D.flip_v = true
+  elif GlobalGravityDir > 0 :
+    $Sprite2D.flip_v = false
   
   if is_on_floor():
     _jumpCount = 0
@@ -114,7 +122,7 @@ func _handleHorizontalMovement(delta) -> void:
 #endregion
 
 func _getCurrentGravity():
-  return get_gravity() * GlobalGravityMult
+  return get_gravity() * GlobalGravityMult * GlobalGravityDir
 
 #region GRAVITY
 func _handleGravity(delta) -> void:
