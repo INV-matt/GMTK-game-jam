@@ -1,6 +1,6 @@
 extends Control
 
-var slotsOccupied: Array[bool] = []
+var slotsOccupied: Array[bool] = [false, false]
 var slotsBtn: Array[TextureButton] = []
 
 @export var BlankSlot: CompressedTexture2D
@@ -13,17 +13,23 @@ var chosenUpgrades: Array[PackedScene]
 
 func _ready() -> void:
   GM = Globals.getGameManager()
+  slotsBtn.resize(2)
+  chosenUpgrades.resize(2)
+
   BlankWrapper.name = "@NULL"
   BlankWrapper.texture = BlankSlot
   BlankWrapper.power = null
   GenerateNew()
+  Populate()
+
 
 # Could be done better
 func _process(_delta) -> void:
   btn_proceed.disabled = !(slotsOccupied[0] && slotsOccupied[1])
 
 
-func _selectPower(wrapper: PowerWrapper):
+func _selectPower(idx: int):
+  var wrapper = toDisplay[idx]
   for i in range(len(slotsOccupied)):
     if !slotsOccupied[i]:
       slotsOccupied[i] = true
@@ -70,7 +76,6 @@ func GenerateNew():
   toDisplay = GM.ChoosePowersToDisplay()
   print(" TO DISPLAY: ")
   for i in toDisplay: print(i.name)
-  Populate()
 
 func Populate():
   var box_displayedPowers = $VBoxContainer/availablePowers
@@ -82,10 +87,6 @@ func Populate():
   var btn_arr_selected = box_selectedPowers.get_children()
   
 
-  slotsBtn.resize(2)
-  slotsOccupied.resize(2)
-  chosenUpgrades.resize(2)
-
   # Connect displayed powers' buttons
   for i in range(len(btn_arr_displayed)):
     if btn_arr_displayed[i] is TextureButton:
@@ -93,9 +94,9 @@ func Populate():
       btn.texture_normal = toDisplay[i].texture
       (btn.get_child(0) as RichTextLabel).text = "[center]" + toDisplay[i].name + "[/center]"
 
-      var temp_callable = _selectPower.bind(toDisplay[i])
-
-      btn.pressed.connect(temp_callable) # !TO FIX: When reshuffled, the bind doesn't change
+      # btn.pressed.connect(_selectPower.bind(toDisplay[i])) # !TO FIX: When reshuffled, the bind doesn't change
+      # btn.pressed.connect(func(): _selectPower(toDisplay[i]))
+      btn.pressed.connect(_selectPower.bind(i))
 
 
   # Connect selected powers' buttons

@@ -59,8 +59,6 @@ func SetPowers(passive: Power, onDeath: Power) -> void:
 func ChoosePowersToDisplay() -> Array[PowerWrapper]:
   var res = PowersList.duplicate(true)
   res.shuffle()
-  for i in res:
-    print(i.name)
   return res
 
 #! DEBUG
