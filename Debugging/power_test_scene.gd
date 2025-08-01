@@ -49,3 +49,6 @@ func _ready() -> void:
     add_child(area)
     
     px += 64
+
+func _on_light_switch_body_entered(body: Node2D) -> void:
+  $lightsout.visible = !$lightsout.visible

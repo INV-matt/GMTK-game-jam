@@ -1,0 +1,49 @@
+[gd_scene load_steps=8 format=3 uid="uid://ovdh0c3ur6qc"]
+
+[ext_resource type="Texture2D" uid="uid://cx8qbxwyxw3x0" path="res://Powers/Dash Power/Dash_Effect-Sheet.png" id="1_6ot0h"]
+[ext_resource type="Script" uid="uid://cuwww35ltsbfn" path="res://Powers/Dash Power/dash_trail.gd" id="2_xocgo"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lhdlt"]
+atlas = ExtResource("1_6ot0h")
+region = Rect2(0, 0, 80, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tgnwp"]
+atlas = ExtResource("1_6ot0h")
+region = Rect2(80, 0, 80, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ymadd"]
+atlas = ExtResource("1_6ot0h")
+region = Rect2(160, 0, 80, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vctb4"]
+atlas = ExtResource("1_6ot0h")
+region = Rect2(0, 48, 80, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rtyhd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lhdlt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tgnwp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ymadd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vctb4")
+}],
+"loop": false,
+"name": &"default",
+"speed": 15.0
+}]
+
+[node name="dash_trail" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_rtyhd")
+autoplay = "default"
+frame = 3
+frame_progress = 1.0
+script = ExtResource("2_xocgo")
+
+[connection signal="animation_finished" from="." to="." method="_on_animation_finished"]

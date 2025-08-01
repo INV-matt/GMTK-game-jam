@@ -57,6 +57,7 @@ func _onPlayerDeath():
 
 func _resetLevel():
   player = Globals.getPlayer()
+  
   # var root = get_tree().get_root()
   
   # for element in get_all_children(root):
