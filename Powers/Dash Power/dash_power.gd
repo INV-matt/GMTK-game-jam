@@ -44,10 +44,11 @@ func _process(delta: float) -> void:
     return
   else:
     player.movementLocked = false
+    
+  var dx = Input.get_axis("pl_left", "pl_right")
+  var dy = Input.get_axis("pl_up", "pl_down")
   
-  if canDash and Input.is_action_pressed("pl_dash"):
-    var dx = Input.get_axis("pl_left", "pl_right")
-    var dy = Input.get_axis("pl_up", "pl_down")
+  if canDash and Input.is_action_pressed("pl_dash") and abs(dx) + abs(dy) > 0:
     
     dir = Vector2(dx, dy).normalized()
     

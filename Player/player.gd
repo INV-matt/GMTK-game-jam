@@ -30,9 +30,18 @@ var _isClimbing = false
 
 var movementLocked = false
 
+@export var DoNotInterrupt = ["swing"]
+
+var _animFinished = false
+
 func _setAnimation(name: String):
+  if $Sprite2D.animation in DoNotInterrupt and !_animFinished :
+    return
+  
   if $Sprite2D.animation == name:
     return
+  
+  _animFinished = false
   
   $Sprite2D.play(name)
 
@@ -165,3 +174,6 @@ func _handleScout() -> void:
     _isScouting = true
     SignalBus.scout_enter.emit()
 #endregion
+
+func _on_sprite_2d_animation_finished() -> void:
+  _animFinished = true

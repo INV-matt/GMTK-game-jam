@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://d3p5qby24bnlv"]
 
-[ext_resource type="Script" uid="uid://bn0c6tayv7yh6" path="res://Powers/Lantern power/lantern_power.gd" id="1_5mstu"]
-[ext_resource type="Texture2D" uid="uid://58q0opyiwp4" path="res://Powers/Lantern power/Lantern_Light.png" id="2_mo85d"]
+[ext_resource type="Script" uid="uid://bn0c6tayv7yh6" path="res://Powers/Lantern Power/lantern_power.gd" id="1_5mstu"]
+[ext_resource type="Texture2D" uid="uid://58q0opyiwp4" path="res://Powers/Lantern Power/Lantern_Light.png" id="2_mo85d"]
 
 [node name="lantern_power" type="Node2D" groups=["power"]]
 script = ExtResource("1_5mstu")

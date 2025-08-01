@@ -43,6 +43,8 @@ func _physics_process(delta: float) -> void:
   
   cooldown = MaxCooldown
   
+  player._setAnimation("swing")
+  
   var time = Timer.new()
   
   var damageArea = Area2D.new()

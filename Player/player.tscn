@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://cnv1i1bs5daa0"]
+[gd_scene load_steps=53 format=3 uid="uid://cnv1i1bs5daa0"]
 
 [ext_resource type="Script" uid="uid://cw3ket1027r37" path="res://Player/player.gd" id="1_dynme"]
 [ext_resource type="Texture2D" uid="uid://bbilrechvkb87" path="res://Player/Spritesheets/Blank-ClimbSheet.png" id="2_od3ui"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bbdeegv4efmd1" path="res://Player/Spritesheets/Blank-IdleSheet.png" id="3_od3ui"]
 [ext_resource type="Texture2D" uid="uid://dbkto7el2ftp1" path="res://Player/Spritesheets/Blank-JumpSheet.png" id="4_00tjw"]
 [ext_resource type="Texture2D" uid="uid://c74bqj6g6oaxk" path="res://Player/Spritesheets/Blank-WalkSheet.png" id="5_x3vf3"]
+[ext_resource type="Texture2D" uid="uid://lbtctouavp3p" path="res://Player/Spritesheets/Blank-SwordSheet.png" id="6_od3ui"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_00tjw"]
 atlas = ExtResource("2_od3ui")
@@ -123,6 +124,26 @@ region = Rect2(0, 64, 48, 64)
 [sub_resource type="AtlasTexture" id="AtlasTexture_i4o1l"]
 atlas = ExtResource("4_00tjw")
 region = Rect2(48, 64, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1l10g"]
+atlas = ExtResource("6_od3ui")
+region = Rect2(0, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6rl0i"]
+atlas = ExtResource("6_od3ui")
+region = Rect2(80, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7x5p2"]
+atlas = ExtResource("6_od3ui")
+region = Rect2(160, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6eb1q"]
+atlas = ExtResource("6_od3ui")
+region = Rect2(0, 64, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wvbyc"]
+atlas = ExtResource("6_od3ui")
+region = Rect2(80, 64, 80, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j2n6q"]
 atlas = ExtResource("5_x3vf3")
@@ -267,6 +288,26 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_1l10g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6rl0i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7x5p2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6eb1q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wvbyc")
+}],
+"loop": false,
+"name": &"swing",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_j2n6q")
 }, {
 "duration": 1.0,
@@ -305,9 +346,10 @@ script = ExtResource("1_dynme")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_6pogt")
-animation = &"climb"
+animation = &"swing"
 autoplay = "idle"
-frame_progress = 0.517824
+frame = 4
+frame_progress = 1.0
 
 [node name="collider" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_75muk")
@@ -325,3 +367,5 @@ script = ExtResource("3_btcbx")
 DisplayHealthBar = NodePath("../healthbar")
 IsPlayer = true
 metadata/_custom_type_script = "uid://b6pxf2yjv2tmg"
+
+[connection signal="animation_finished" from="Sprite2D" to="." method="_on_sprite_2d_animation_finished"]
