@@ -149,16 +149,16 @@ powerSelect = NodePath("powerSelect")
 
 [node name="powerSelect" parent="PowerSelect" instance=ExtResource("8_0jx5h")]
 
-[node name="parallax" type="ParallaxBackground" parent="."]
+[node name="parallaxBG" type="ParallaxBackground" parent="."]
 scale = Vector2(2.5, 2.5)
 transform = Transform2D(2.5, 0, 0, 2.5, 0, 0)
 scroll_ignore_camera_zoom = true
 
-[node name="sky" type="ParallaxLayer" parent="parallax"]
+[node name="sky" type="ParallaxLayer" parent="parallaxBG"]
 motion_scale = Vector2(0.063, 1)
 motion_mirroring = Vector2(910, 0)
 
-[node name="SkyBg" type="TextureRect" parent="parallax/sky"]
+[node name="SkyBg" type="TextureRect" parent="parallaxBG/sky"]
 offset_left = -456.0
 offset_top = -216.0
 offset_right = 1368.0
@@ -167,11 +167,11 @@ texture = ExtResource("8_f3gf5")
 expand_mode = 1
 stretch_mode = 1
 
-[node name="mountains" type="ParallaxLayer" parent="parallax"]
+[node name="mountains" type="ParallaxLayer" parent="parallaxBG"]
 motion_scale = Vector2(0.125, 1)
 motion_mirroring = Vector2(910, 0)
 
-[node name="MountainsBg" type="TextureRect" parent="parallax/mountains"]
+[node name="MountainsBg" type="TextureRect" parent="parallaxBG/mountains"]
 offset_left = -456.0
 offset_top = -216.0
 offset_right = 1368.0
@@ -180,11 +180,11 @@ texture = ExtResource("9_rix8b")
 expand_mode = 1
 stretch_mode = 1
 
-[node name="trees_back" type="ParallaxLayer" parent="parallax"]
+[node name="trees_back" type="ParallaxLayer" parent="parallaxBG"]
 motion_scale = Vector2(0.25, 1)
 motion_mirroring = Vector2(910, 0)
 
-[node name="PineBackBg" type="TextureRect" parent="parallax/trees_back"]
+[node name="PineBackBg" type="TextureRect" parent="parallaxBG/trees_back"]
 offset_left = -456.0
 offset_top = -216.0
 offset_right = 1368.0
@@ -193,11 +193,11 @@ texture = ExtResource("10_0jx5h")
 expand_mode = 1
 stretch_mode = 1
 
-[node name="trees_front" type="ParallaxLayer" parent="parallax"]
+[node name="trees_front" type="ParallaxLayer" parent="parallaxBG"]
 motion_scale = Vector2(0.5, 1)
 motion_mirroring = Vector2(910, 0)
 
-[node name="PineFrontBg" type="TextureRect" parent="parallax/trees_front"]
+[node name="PineFrontBg" type="TextureRect" parent="parallaxBG/trees_front"]
 offset_left = -456.0
 offset_top = -216.0
 offset_right = 1368.0
@@ -206,10 +206,10 @@ texture = ExtResource("11_uhr2j")
 expand_mode = 1
 stretch_mode = 1
 
-[node name="temple" type="ParallaxLayer" parent="parallax"]
+[node name="temple" type="ParallaxLayer" parent="parallaxBG"]
 motion_mirroring = Vector2(910, 0)
 
-[node name="TempleBg" type="TextureRect" parent="parallax/temple"]
+[node name="TempleBg" type="TextureRect" parent="parallaxBG/temple"]
 offset_left = -456.0
 offset_top = -216.0
 offset_right = 1368.0

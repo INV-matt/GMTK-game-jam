@@ -10,7 +10,7 @@ func _ready() -> void:
   SignalBus.connect("scout_enter", Callable(self, "_on_scout_enter"))
   SignalBus.connect("scout_exit", Callable(self, "_on_scout_exit"))
 
-@onready var parallax = $"../../parallax"
+@onready var parallaxBG = $"../../parallaxBG"
 
 func _process(delta: float) -> void:
   if _isScouting:
@@ -22,7 +22,7 @@ func _process(delta: float) -> void:
   var viewport_size = get_viewport_rect().size
   
   # I pulled that 1.335 out of my ass so do not ask how I got it
-  parallax.offset.y = get_screen_center_position().y*2.5 - viewport_size.y/1.335
+  parallaxBG.offset.y = get_screen_center_position().y*2.5 - viewport_size.y/1.335
 
 func _on_scout_enter() -> void:
   print("scout entered")
