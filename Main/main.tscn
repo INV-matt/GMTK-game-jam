@@ -92,8 +92,8 @@ powerSelect = NodePath("powerSelect")
 [node name="powerSelect" parent="PowerSelect" instance=ExtResource("8_0jx5h")]
 
 [node name="parallax" type="ParallaxBackground" parent="."]
-scale = Vector2(3, 3)
-transform = Transform2D(3, 0, 0, 3, 0, 0)
+scale = Vector2(2.5, 2.5)
+transform = Transform2D(2.5, 0, 0, 2.5, 0, 0)
 scroll_ignore_camera_zoom = true
 
 [node name="sky" type="ParallaxLayer" parent="parallax"]
