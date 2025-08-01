@@ -20,7 +20,8 @@ func _process(delta: float) -> void:
     position += ScoutSpeed * delta * Vector2(xdir, ydir) * ScoutCameraSpeed
 
   var viewport_size = get_viewport_rect().size
-
+  
+  # I pulled that 1.335 out of my ass so do not ask how I got it
   parallax.offset.y = get_screen_center_position().y*2.5 - viewport_size.y/1.335
 
 func _on_scout_enter() -> void:
