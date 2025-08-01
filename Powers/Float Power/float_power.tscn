@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bjmx3pbinedyv"]
+
+[ext_resource type="Script" uid="uid://wq8kbfux0bg5" path="res://Powers/Float Power/float_power.gd" id="1_x8a8r"]
+
+[node name="float_power" type="Node2D" groups=["power"]]
+script = ExtResource("1_x8a8r")
+PowerName = "Float Power"
