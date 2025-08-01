@@ -21,9 +21,10 @@ func _loadLevel():
   
   var lvl = levels[currLevel].instantiate()
   
-  for i in lvl.get_children():
-    if "cookie" in i.get_groups() and i is Cookie:
-      i.connect("next_level", _nextLevel)
+  # for i in lvl.get_children():
+  #   if "cookie" in i.get_groups() and i is Cookie:
+  #     i.connect("next_level", _nextLevel)
+  SignalBus.connect("next_level", _nextLevel)
   
   for k in addTo.get_children():
     addTo.call_deferred("remove_child", k)
