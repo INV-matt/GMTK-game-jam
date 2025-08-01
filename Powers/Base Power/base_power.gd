@@ -2,6 +2,10 @@ extends Node
 
 class_name Power
 
+@export var PassiveEnabled: bool = true
+@export var OnDeathEnabled: bool = true
+@export var PowerName: String = "Base Power"
+
 func _get_player() :
   var parent = get_parent()
 
@@ -12,6 +16,9 @@ func _get_player() :
 
 # Apply the power's passive effects eg. activating a double jump
 func apply_power_passive() -> void :
+  if !PassiveEnabled :
+    return
+  
   var player = _get_player()
   
   if player :
@@ -19,6 +26,9 @@ func apply_power_passive() -> void :
 
 # Apply the power's on-death effects eg. exploding violently
 func apply_power_death() -> void :
+  if !OnDeathEnabled :
+    return
+  
   var player = _get_player()
   
   if player :

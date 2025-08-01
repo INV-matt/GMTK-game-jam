@@ -4,3 +4,4 @@
 
 [node name="double_jump" type="Node2D" groups=["power"]]
 script = ExtResource("1_v882p")
+PowerName = "Double-Jump Power"
