@@ -52,17 +52,23 @@ func _onPlayerDeath():
 
 
 func _resetLevel():
-  var root = get_tree().get_root()
+  player = Globals.getPlayer()
+  # var root = get_tree().get_root()
   
-  for element in get_all_children(root):
-    if element is Player:
-      respawnPosition = element.global_position
-      player = element
+  # for element in get_all_children(root):
+  #   if element is Player:
+  #     respawnPosition = element.global_position
+  #     player = element
       
-      for i in element.get_children():
-        if i is HealthComponent:
-          playerhealth = i
-          i.death.connect(_onPlayerDeath)
+  #     for i in element.get_children():
+  #       if i is HealthComponent:
+  #         playerhealth = i
+  #         i.death.connect(_onPlayerDeath)
+  respawnPosition = player.global_position
+  for i in player.get_children():
+    if i is HealthComponent:
+      playerhealth = i
+      playerhealth.death.connect(_onPlayerDeath)
 
 func _ready() -> void:
   _resetLevel()

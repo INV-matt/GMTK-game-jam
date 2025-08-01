@@ -11,3 +11,7 @@ signal next_level
 
 signal open_power_select
 signal hide_power_select
+
+
+func _ready() -> void:
+  player_death.connect(print.bind("DEAD"))
