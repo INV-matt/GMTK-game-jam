@@ -29,8 +29,9 @@ func _loadLevel():
   # for k in addTo.get_children():
   #   addTo.remove_child(k)
   for k in addTo.get_children():
-    k.queue_free()
-
+    #k.queue_free()
+    addTo.call_deferred("remove_child", k)
+  
   var root = get_tree().get_root()
   for i in root.get_children():
     if i is StaticBody2D and "bodies" in i.get_groups():

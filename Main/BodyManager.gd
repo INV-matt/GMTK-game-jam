@@ -47,6 +47,7 @@ func _onPlayerDeath():
   body.add_to_group("bodies")
   
   #get_tree().get_root().add_child(body)
+
   get_tree().get_root().call_deferred("add_child", body)
 
 
