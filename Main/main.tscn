@@ -44,6 +44,7 @@ unique_name_in_owner = true
 zoom = Vector2(2, 2)
 position_smoothing_enabled = true
 script = ExtResource("2_qvhan")
+ScoutZoomMult = 0.6
 
 [node name="UI" type="CanvasLayer" parent="." node_paths=PackedStringArray("t_Lives")]
 script = ExtResource("5_f6fdm")
@@ -85,47 +86,73 @@ layout_mode = 2
 texture = SubResource("AtlasTexture_0jx5h")
 stretch_mode = 5
 
+[node name="LevelManager" parent="." instance=ExtResource("12_f3gf5")]
+
 [node name="parallax" type="ParallaxBackground" parent="."]
-scroll_base_offset = Vector2(0, -200)
+scale = Vector2(3, 3)
+transform = Transform2D(3, 0, 0, 3, 0, 0)
+scroll_ignore_camera_zoom = true
 
 [node name="sky" type="ParallaxLayer" parent="parallax"]
-motion_scale = Vector2(0.032, 0)
-motion_offset = Vector2(0, 200)
-motion_mirroring = Vector2(912, 0)
+motion_scale = Vector2(0.063, 1)
+motion_mirroring = Vector2(910, 0)
 
-[node name="SkyBg" type="Sprite2D" parent="parallax/sky"]
+[node name="SkyBg" type="TextureRect" parent="parallax/sky"]
+offset_left = -456.0
+offset_top = -216.0
+offset_right = 1368.0
+offset_bottom = 216.0
 texture = ExtResource("8_f3gf5")
+expand_mode = 1
+stretch_mode = 1
 
 [node name="mountains" type="ParallaxLayer" parent="parallax"]
-motion_scale = Vector2(0.063, 0)
-motion_offset = Vector2(0, 200)
-motion_mirroring = Vector2(912, 0)
+motion_scale = Vector2(0.125, 1)
+motion_mirroring = Vector2(910, 0)
 
-[node name="MountainsBg" type="Sprite2D" parent="parallax/mountains"]
+[node name="MountainsBg" type="TextureRect" parent="parallax/mountains"]
+offset_left = -456.0
+offset_top = -216.0
+offset_right = 1368.0
+offset_bottom = 216.0
 texture = ExtResource("9_rix8b")
+expand_mode = 1
+stretch_mode = 1
 
 [node name="trees_back" type="ParallaxLayer" parent="parallax"]
-motion_scale = Vector2(0.125, 0)
-motion_offset = Vector2(0, 200)
-motion_mirroring = Vector2(912, 0)
+motion_scale = Vector2(0.25, 1)
+motion_mirroring = Vector2(910, 0)
 
-[node name="PineBackBg" type="Sprite2D" parent="parallax/trees_back"]
+[node name="PineBackBg" type="TextureRect" parent="parallax/trees_back"]
+offset_left = -456.0
+offset_top = -216.0
+offset_right = 1368.0
+offset_bottom = 216.0
 texture = ExtResource("10_0jx5h")
+expand_mode = 1
+stretch_mode = 1
 
 [node name="trees_front" type="ParallaxLayer" parent="parallax"]
-motion_scale = Vector2(0.25, 0)
-motion_offset = Vector2(0, 200)
-motion_mirroring = Vector2(912, 0)
+motion_scale = Vector2(0.5, 1)
+motion_mirroring = Vector2(910, 0)
 
-[node name="PineFrontBg" type="Sprite2D" parent="parallax/trees_front"]
+[node name="PineFrontBg" type="TextureRect" parent="parallax/trees_front"]
+offset_left = -456.0
+offset_top = -216.0
+offset_right = 1368.0
+offset_bottom = 216.0
 texture = ExtResource("11_uhr2j")
+expand_mode = 1
+stretch_mode = 1
 
 [node name="temple" type="ParallaxLayer" parent="parallax"]
-motion_scale = Vector2(0.5, 0)
-motion_offset = Vector2(0, 200)
-motion_mirroring = Vector2(912, 0)
+motion_mirroring = Vector2(910, 0)
 
-[node name="TempleBg" type="Sprite2D" parent="parallax/temple"]
+[node name="TempleBg" type="TextureRect" parent="parallax/temple"]
+offset_left = -456.0
+offset_top = -216.0
+offset_right = 1368.0
+offset_bottom = 216.0
 texture = ExtResource("12_l5bfp")
-
-[node name="LevelManager" parent="." instance=ExtResource("12_f3gf5")]
+expand_mode = 1
+stretch_mode = 1
