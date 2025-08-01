@@ -157,6 +157,8 @@ offset_top = -216.0
 offset_right = 1368.0
 offset_bottom = 216.0
 texture = ExtResource("12_l5bfp")
+expand_mode = 1
+stretch_mode = 1
 
 [node name="LevelManager" parent="." instance=ExtResource("12_f3gf5")]
 
@@ -167,5 +169,3 @@ script = ExtResource("1_rix8b")
 HUD = NodePath("../HUD")
 UI_PowerSelect = NodePath("../PowerSelect")
 MinimumPowersLevel = 2
-expand_mode = 1
-stretch_mode = 1
