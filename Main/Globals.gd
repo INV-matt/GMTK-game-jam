@@ -8,8 +8,8 @@ var _gameManager: GameManager
 func _ready() -> void:
   _main = get_node("../Main") as Node2D
   
-  # I just want to bedug in peace
-  if not _main :
+  # I just want to bedug in peace | me too, me too
+  if not _main:
     return
   
   _player = _main.get_node("%Player") as Player

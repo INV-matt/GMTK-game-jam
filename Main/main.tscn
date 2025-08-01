@@ -1,13 +1,15 @@
-[gd_scene load_steps=17 format=3 uid="uid://b3ip2tsabj3dm"]
+[gd_scene load_steps=19 format=3 uid="uid://b3ip2tsabj3dm"]
 
 [ext_resource type="PackedScene" uid="uid://cnv1i1bs5daa0" path="res://Player/player.tscn" id="1_2w1kt"]
 [ext_resource type="Script" uid="uid://60ahfl7tx4bs" path="res://Main/GameManager.gd" id="1_rix8b"]
 [ext_resource type="Script" uid="uid://jy3cw8fsadki" path="res://Main/camera_movement.gd" id="2_qvhan"]
-[ext_resource type="Script" uid="uid://niau7oxw71ir" path="res://UI/UI.gd" id="5_f6fdm"]
+[ext_resource type="Script" uid="uid://niau7oxw71ir" path="res://UI/HUD.gd" id="4_rix8b"]
 [ext_resource type="Theme" uid="uid://diigp8dh8nst4" path="res://UI/UI.tres" id="5_k3v36"]
 [ext_resource type="Texture2D" uid="uid://dvrpommi32nlv" path="res://UI/Assets/Life_Hud.png" id="6_liyct"]
+[ext_resource type="PackedScene" uid="uid://5o18xxp7cefe" path="res://UI/power_select.tscn" id="8_0jx5h"]
 [ext_resource type="Texture2D" uid="uid://r1xbyvsy2n6q" path="res://UI/Parallax/Sky_BG.png" id="8_f3gf5"]
 [ext_resource type="Texture2D" uid="uid://dsjfhq3fg44o" path="res://UI/Assets/Life_Numbers-Sheet.png" id="8_rj11h"]
+[ext_resource type="Script" uid="uid://cnd2baij5a45g" path="res://UI/PowerSelectUI.gd" id="8_uhr2j"]
 [ext_resource type="Texture2D" uid="uid://b04eryfan18sc" path="res://UI/Parallax/Mountains_BG.png" id="9_rix8b"]
 [ext_resource type="Texture2D" uid="uid://5brpqwx2eose" path="res://UI/Parallax/Pine_Back_BG.png" id="10_0jx5h"]
 [ext_resource type="Texture2D" uid="uid://dmyh3joob8tmy" path="res://UI/Parallax/Pine_Front_BG.png" id="11_uhr2j"]
@@ -29,11 +31,6 @@ margin = Rect2(-8, -8, -16, -16)
 
 [node name="Main" type="Node2D"]
 
-[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("UI")]
-unique_name_in_owner = true
-script = ExtResource("1_rix8b")
-UI = NodePath("../UI")
-
 [node name="levelcontainer" type="Node2D" parent="." groups=["levelcontainer"]]
 unique_name_in_owner = true
 
@@ -44,13 +41,14 @@ unique_name_in_owner = true
 zoom = Vector2(2, 2)
 position_smoothing_enabled = true
 script = ExtResource("2_qvhan")
+ScoutSpeed = 1500.0
 ScoutZoomMult = 0.6
 
-[node name="UI" type="CanvasLayer" parent="." node_paths=PackedStringArray("t_Lives")]
-script = ExtResource("5_f6fdm")
+[node name="HUD" type="CanvasLayer" parent="." node_paths=PackedStringArray("t_Lives")]
+script = ExtResource("4_rix8b")
 t_Lives = [NodePath("MarginContainer/BG/HBoxContainer/LivesUsed"), NodePath("MarginContainer/BG/HBoxContainer/LivesUsed2")]
 
-[node name="MarginContainer" type="MarginContainer" parent="UI"]
+[node name="MarginContainer" type="MarginContainer" parent="HUD"]
 offset_right = 267.0
 offset_bottom = 138.0
 size_flags_horizontal = 6
@@ -59,13 +57,13 @@ theme = ExtResource("5_k3v36")
 theme_override_constants/margin_left = 16
 theme_override_constants/margin_top = 16
 
-[node name="BG" type="TextureRect" parent="UI/MarginContainer"]
+[node name="BG" type="TextureRect" parent="HUD/MarginContainer"]
 layout_mode = 2
 texture = ExtResource("6_liyct")
 expand_mode = 5
 stretch_mode = 4
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UI/MarginContainer/BG"]
+[node name="HBoxContainer" type="HBoxContainer" parent="HUD/MarginContainer/BG"]
 layout_mode = 0
 offset_left = 110.0
 offset_top = 40.0
@@ -74,19 +72,24 @@ offset_bottom = 96.0
 theme_override_constants/separation = -12
 alignment = 1
 
-[node name="LivesUsed" type="TextureRect" parent="UI/MarginContainer/BG/HBoxContainer"]
+[node name="LivesUsed" type="TextureRect" parent="HUD/MarginContainer/BG/HBoxContainer"]
 custom_minimum_size = Vector2(56, 56)
 layout_mode = 2
 texture = SubResource("AtlasTexture_qac2q")
 stretch_mode = 5
 
-[node name="LivesUsed2" type="TextureRect" parent="UI/MarginContainer/BG/HBoxContainer"]
+[node name="LivesUsed2" type="TextureRect" parent="HUD/MarginContainer/BG/HBoxContainer"]
 custom_minimum_size = Vector2(56, 56)
 layout_mode = 2
 texture = SubResource("AtlasTexture_0jx5h")
 stretch_mode = 5
 
-[node name="LevelManager" parent="." instance=ExtResource("12_f3gf5")]
+[node name="PowerSelect" type="CanvasLayer" parent="." node_paths=PackedStringArray("powerSelect")]
+process_mode = 2
+script = ExtResource("8_uhr2j")
+powerSelect = NodePath("powerSelect")
+
+[node name="powerSelect" parent="PowerSelect" instance=ExtResource("8_0jx5h")]
 
 [node name="parallax" type="ParallaxBackground" parent="."]
 scale = Vector2(3, 3)
@@ -154,5 +157,15 @@ offset_top = -216.0
 offset_right = 1368.0
 offset_bottom = 216.0
 texture = ExtResource("12_l5bfp")
+
+[node name="LevelManager" parent="." instance=ExtResource("12_f3gf5")]
+
+[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("HUD", "UI_PowerSelect")]
+unique_name_in_owner = true
+process_mode = 3
+script = ExtResource("1_rix8b")
+HUD = NodePath("../HUD")
+UI_PowerSelect = NodePath("../PowerSelect")
+MinimumPowersLevel = 2
 expand_mode = 1
 stretch_mode = 1
