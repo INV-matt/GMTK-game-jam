@@ -1,11 +1,12 @@
 extends Control
 
-var slotsOccupied: Array[bool] = []
+var slotsOccupied: Array[bool] = [false, false]
 var slotsBtn: Array[TextureButton] = []
 
 @export var BlankSlot: CompressedTexture2D
 var BlankWrapper = PowerWrapper.new()
 @export var btn_proceed: Button
+@export var scn_btn_power: PackedScene
 
 var GM: GameManager
 var toDisplay: Array[PowerWrapper]
@@ -13,17 +14,23 @@ var chosenUpgrades: Array[PackedScene]
 
 func _ready() -> void:
   GM = Globals.getGameManager()
+  slotsBtn.resize(2)
+  chosenUpgrades.resize(2)
+
   BlankWrapper.name = "@NULL"
   BlankWrapper.texture = BlankSlot
   BlankWrapper.power = null
   GenerateNew()
+  #Populate()
+
 
 # Could be done better
 func _process(_delta) -> void:
   btn_proceed.disabled = !(slotsOccupied[0] && slotsOccupied[1])
 
 
-func _selectPower(wrapper: PowerWrapper):
+func _selectPower(idx: int):
+  var wrapper = toDisplay[idx]
   for i in range(len(slotsOccupied)):
     if !slotsOccupied[i]:
       slotsOccupied[i] = true
@@ -67,35 +74,35 @@ func _on_select_powers_pressed() -> void:
   GM.SetPowers(powerPassive, powerOnDeath)
 
 func GenerateNew():
+  toDisplay.clear()
   toDisplay = GM.ChoosePowersToDisplay()
-  print(" TO DISPLAY: ")
-  for i in toDisplay: print(i.name)
   Populate()
+  # print(" TO DISPLAY: ")
+  # for i in toDisplay: print(i.name)
 
 func Populate():
   var box_displayedPowers = $VBoxContainer/availablePowers
   var box_selectedPowers = $VBoxContainer/selectedPowers
 
-  # var btn_arr_displayed: Array[TextureButton] = box_displayedPowers.get_children().filter(func(el): el is TextureButton)
-  # var btn_arr_selected: Array[TextureButton] = box_selectedPowers.get_children().filter(func(el): el is TextureButton)
-  var btn_arr_displayed = box_displayedPowers.get_children()
+  for el in box_displayedPowers.get_children(): el.queue_free()
+
+  #var btn_arr_displayed = box_displayedPowers.get_children()
   var btn_arr_selected = box_selectedPowers.get_children()
-  
-
-  slotsBtn.resize(2)
-  slotsOccupied.resize(2)
-  chosenUpgrades.resize(2)
-
+  print(len(toDisplay))
   # Connect displayed powers' buttons
-  for i in range(len(btn_arr_displayed)):
-    if btn_arr_displayed[i] is TextureButton:
-      var btn: TextureButton = btn_arr_displayed[i]
-      btn.texture_normal = toDisplay[i].texture
-      (btn.get_child(0) as RichTextLabel).text = "[center]" + toDisplay[i].name + "[/center]"
+  for i in range(len(toDisplay)):
+    # if btn_arr_displayed[i] is TextureButton:
+    #   var btn: TextureButton = btn_arr_displayed[i]
+    #   btn.texture_normal = toDisplay[i].texture
+    #   (btn.get_child(0) as RichTextLabel).text = "[center]" + toDisplay[i].name + "[/center]"
 
-      var temp_callable = _selectPower.bind(toDisplay[i])
-
-      btn.pressed.connect(temp_callable) # !TO FIX: When reshuffled, the bind doesn't change
+    #   # btn.pressed.connect(_selectPower.bind(toDisplay[i])) # !TO FIX: When reshuffled, the bind doesn't change
+    #   btn.pressed.connect(_selectPower.bind(i))
+    var btn = scn_btn_power.instantiate() as TextureButton
+    box_displayedPowers.add_child(btn)
+    btn.texture_normal = toDisplay[i].texture
+    (btn.get_child(0) as RichTextLabel).text = "[center]" + toDisplay[i].name + "[/center]"
+    btn.pressed.connect(_selectPower.bind(i))
 
 
   # Connect selected powers' buttons
