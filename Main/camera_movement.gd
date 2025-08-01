@@ -17,7 +17,10 @@ func _process(delta: float) -> void:
 
     position += ScoutSpeed * delta * Vector2(xdir, ydir) * ScoutCameraSpeed
 
-  $"../../parallax".offset.y = -200 + global_position.y*2
+  var viewport_size = get_viewport_rect().size
+
+  $"../../parallax".offset.y = (-viewport_size.y/3 + global_position.y)*3
+  
 
 func _on_scout_enter() -> void:
   print("scout entered")
