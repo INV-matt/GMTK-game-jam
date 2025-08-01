@@ -13,6 +13,8 @@ func _ready() -> void:
 
 
 func _displayPowerSelect() -> void:
+  powerSelect.GenerateNew()
+  powerSelect.Populate()
   powerSelect.visible = true
   get_tree().paused = true
 

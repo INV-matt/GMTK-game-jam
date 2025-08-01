@@ -18,7 +18,7 @@ func UpdateLives() -> void:
 
 func _separateDigits(value: int) -> Array:
   var str_val = str(value)
-  print(len(str_val))
+  # print(len(str_val))
 
   if len(str_val) == 1:
     return [0, value]

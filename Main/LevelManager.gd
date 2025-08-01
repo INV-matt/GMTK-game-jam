@@ -11,6 +11,7 @@ var currLevel: int
 func _nextLevel():
   currLevel += 1
   Globals.setCurrentLevel(currLevel)
+  SignalBus.next_level.emit()
   _loadLevel()
 
 func _loadLevel():
