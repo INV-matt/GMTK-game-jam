@@ -10,6 +10,15 @@ func _power_passive(p: Player) :
   player = p
   isReady = true
 
+var canPlayerClimb = false
+var ropeScene = preload("res://Powers/Climb Power/rope.tscn")
+
+func _power_death(p: Player) :  
+  var rope = ropeScene.instantiate()
+  rope.global_position = p.global_position
+ 
+  get_tree().get_root().call_deferred("add_child", rope)
+
 func _process(delta: float) -> void:
   if not isReady :
     return

@@ -13,6 +13,14 @@ var cooldown = 0
 func _power_passive(p: Player) :
   player = p
 
+var damageArea = preload("res://Powers/Attack Power/damage_area.tscn")
+
+func _power_death(p: Player) :
+  var area: Area2D = damageArea.instantiate()
+  area.global_position = p.global_position
+  
+  get_tree().get_root().call_deferred("add_child", area)
+
 var _aimDirection = 0
 
 func _dealDamageToEnemy(enemy: Enemy) :

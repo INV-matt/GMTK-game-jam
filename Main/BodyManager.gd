@@ -16,11 +16,15 @@ func _respawnPlayer():
 
 var _bodyTexture = preload("res://Main/Blank-CorpseSheet.png")
 
+signal apply_powers
+
 func _onPlayerDeath():
   var pos = player.global_position
   
   if Vector2.ZERO.distance_squared_to(pos) < 100:
     return
+  
+  emit_signal("apply_powers")
   
   _respawnPlayer()
   
