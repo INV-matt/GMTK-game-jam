@@ -1,11 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://5o18xxp7cefe"]
+[gd_scene load_steps=10 format=3 uid="uid://5o18xxp7cefe"]
 
 [ext_resource type="Theme" uid="uid://diigp8dh8nst4" path="res://UI/UI.tres" id="1_0sgcx"]
 [ext_resource type="Script" uid="uid://y3test2wyvet" path="res://UI/power_select.gd" id="1_51ka4"]
 [ext_resource type="Texture2D" uid="uid://dya7ry5w11q6x" path="res://Enemies/Chaser Enemy/Spritesheets/Chaser-FallSheet.png" id="2_qt35a"]
 [ext_resource type="Texture2D" uid="uid://5qs33bf53mo4" path="res://Enemies/Basic Enemy/Spritesheets/Walker-FallSheet.png" id="3_51ka4"]
 [ext_resource type="Texture2D" uid="uid://dbkto7el2ftp1" path="res://Player/Spritesheets/Blank-JumpSheet.png" id="4_d5eav"]
+[ext_resource type="PackedScene" uid="uid://bcwjmekm2lobt" path="res://Powers/Attack Power/attack_power.tscn" id="4_ljnuh"]
 [ext_resource type="Texture2D" uid="uid://dv4xchma5hf1y" path="res://Player/Spritesheets/Blank-FallSheet.png" id="5_qt35a"]
+[ext_resource type="PackedScene" uid="uid://bgbjkfr7hkkyh" path="res://Powers/Climb Power/climb_power.tscn" id="6_3osa7"]
+[ext_resource type="PackedScene" uid="uid://sgp1mlwgotkw" path="res://Powers/Dash Power/dash_power.tscn" id="8_r1dh8"]
 
 [node name="powerSelect" type="Control"]
 layout_mode = 3
@@ -16,6 +19,11 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_51ka4")
 BlankSlot = ExtResource("5_qt35a")
+TextureToPower = Dictionary[CompressedTexture2D, PackedScene]({
+ExtResource("2_qt35a"): ExtResource("4_ljnuh"),
+ExtResource("3_51ka4"): ExtResource("6_3osa7"),
+ExtResource("4_d5eav"): ExtResource("8_r1dh8")
+})
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -24,7 +32,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource("1_0sgcx")
 alignment = 1
-metadata/_edit_use_anchors_ = true
 
 [node name="availiblePowers" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
@@ -35,23 +42,100 @@ alignment = 1
 layout_mode = 2
 texture_normal = ExtResource("2_qt35a")
 
+[node name="powerName" type="RichTextLabel" parent="VBoxContainer/availiblePowers/power1"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("1_0sgcx")
+bbcode_enabled = true
+text = "[center]Power Name[/center]"
+
 [node name="power2" type="TextureButton" parent="VBoxContainer/availiblePowers"]
 layout_mode = 2
 texture_normal = ExtResource("3_51ka4")
 
+[node name="powerName" type="RichTextLabel" parent="VBoxContainer/availiblePowers/power2"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("1_0sgcx")
+bbcode_enabled = true
+text = "[center]Power Name[/center]"
+
 [node name="power3" type="TextureButton" parent="VBoxContainer/availiblePowers"]
 layout_mode = 2
 texture_normal = ExtResource("4_d5eav")
+
+[node name="powerName" type="RichTextLabel" parent="VBoxContainer/availiblePowers/power3"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("1_0sgcx")
+bbcode_enabled = true
+text = "[center]Power Name[/center]"
 
 [node name="selectedPowers" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("1_0sgcx")
 alignment = 1
 
-[node name="powerSlot1" type="TextureButton" parent="VBoxContainer/selectedPowers"]
+[node name="passiveActive" type="TextureButton" parent="VBoxContainer/selectedPowers"]
 layout_mode = 2
 texture_normal = ExtResource("5_qt35a")
 
-[node name="powerSlot2" type="TextureButton" parent="VBoxContainer/selectedPowers"]
+[node name="powerName" type="RichTextLabel" parent="VBoxContainer/selectedPowers/passiveActive"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.416667
+anchor_top = 1.0
+anchor_right = 1.41667
+anchor_bottom = 1.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("1_0sgcx")
+bbcode_enabled = true
+text = "[center]Power Name[/center]"
+metadata/_edit_use_anchors_ = true
+
+[node name="onDeathActive" type="TextureButton" parent="VBoxContainer/selectedPowers"]
 layout_mode = 2
 texture_normal = ExtResource("5_qt35a")
+
+[node name="powerName" type="RichTextLabel" parent="VBoxContainer/selectedPowers/onDeathActive"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_right = 40.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("1_0sgcx")
+bbcode_enabled = true
+text = "[center]Power Name[/center]"
+
+[node name="selectPowers" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("1_0sgcx")
+text = "Select Powers"
+
+[connection signal="pressed" from="VBoxContainer/selectPowers" to="." method="_on_select_powers_pressed"]
