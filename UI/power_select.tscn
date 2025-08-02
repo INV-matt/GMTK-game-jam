@@ -37,14 +37,16 @@ layout_mode = 2
 theme = ExtResource("1_0sgcx")
 alignment = 1
 
-[node name="availablePowers" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+[node name="availablePowers" type="GridContainer" parent="PanelContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 4
 theme = ExtResource("1_0sgcx")
-alignment = 1
+theme_override_constants/h_separation = 32
+theme_override_constants/v_separation = 32
+columns = 5
 
 [node name="btn_power" parent="PanelContainer/VBoxContainer/availablePowers" instance=ExtResource("4_0sgcx")]
-visible = false
 layout_mode = 2
 
 [node name="power2" type="TextureButton" parent="PanelContainer/VBoxContainer/availablePowers"]
@@ -52,6 +54,7 @@ visible = false
 layout_mode = 2
 
 [node name="powerName" type="RichTextLabel" parent="PanelContainer/VBoxContainer/availablePowers/power2"]
+visible = false
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -69,6 +72,7 @@ visible = false
 layout_mode = 2
 
 [node name="powerName" type="RichTextLabel" parent="PanelContainer/VBoxContainer/availablePowers/power3"]
+visible = false
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
