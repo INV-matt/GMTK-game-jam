@@ -152,7 +152,6 @@ powerSelect = NodePath("powerSelect")
 [node name="powerSelect" parent="PowerSelect" instance=ExtResource("8_0jx5h")]
 
 [node name="parallaxBG" type="ParallaxBackground" parent="."]
-visible = false
 scale = Vector2(2.5, 2.5)
 transform = Transform2D(2.5, 0, 0, 2.5, 0, 0)
 scroll_ignore_camera_zoom = true

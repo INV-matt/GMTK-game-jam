@@ -35,4 +35,4 @@ func _process(delta: float) -> void:
 
 func _exit_tree() -> void:
   Globals.getPlayer().SetScaleMultiplier(1)
-  player._jumpVelocity = originalvelocity
+  Globals.getPlayer()._jumpVelocity = originalvelocity
