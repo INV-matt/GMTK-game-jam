@@ -17,7 +17,8 @@ var PL: Player
 var _livesUsed = 1
 
 func getLivesUsed() -> int: return _livesUsed
-
+func setLivesUsed(amt: int): _livesUsed = amt; HUD.UpdateLives()
+func resetLivesUsed(): setLivesUsed(1)
 
 func _ready() -> void:
   PL = Globals.getPlayer() as Player

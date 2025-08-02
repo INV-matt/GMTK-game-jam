@@ -7,10 +7,49 @@ extends Node
 @onready var player: Player = %Player
 
 var currLevel: int
+var GM: GameManager
+
+var LevelScores: Dictionary = {}
+
+func loadSaveFile() :
+  var save_file = FileAccess.open("user://savegame.save", FileAccess.READ)
+  var json_string = save_file.get_line()
+  
+  var json = JSON.new()
+  
+  var parse_result = json.parse(json_string)
+  if parse_result != OK :
+    print("Error loading savefile")
+    return
+  
+  LevelScores = json.data
+  
+  print("Loaded savefile:")
+  print(LevelScores)
+
+func saveScores() :
+  var save_file = FileAccess.open("user://savegame.save", FileAccess.WRITE)
+  var json_string = JSON.stringify(LevelScores)
+  
+  save_file.store_line(json_string)
+  
+  print("Saved savefile")
+  print(json_string)
 
 func _nextLevel():
+  var usedThisLevel = GM.getLivesUsed()
+  GM.resetLivesUsed()
+  
+  if currLevel in LevelScores :
+    LevelScores[currLevel] = min(LevelScores[currLevel], usedThisLevel)
+  else :
+    LevelScores[currLevel] = usedThisLevel  
+  
+  saveScores()
+  
   currLevel += 1
   Globals.setCurrentLevel(currLevel)
+  
   SignalBus.next_level.emit()
   _loadLevel()
 
@@ -51,5 +90,12 @@ func _ready() -> void:
       
   currLevel = startingLevel
   Globals.setCurrentLevel(currLevel)
+  
+  GM = Globals.getGameManager()
+  
+  if !FileAccess.file_exists("user://savegame.save") :
+    print("No save file found")
+  else :
+    loadSaveFile()
   
   _loadLevel()
