@@ -136,8 +136,8 @@ func _handleHorizontalMovement(delta) -> void:
   var accelRate = Acceleration if abs(dv) > 0.1 else Deceleration
   var mov = pow(abs(dv) * accelRate, AccelerationPower) * sign(dv)
   velocity.x += mov * delta
-  # print(mov)
-  # print(velocity.x)
+  print(mov)
+  print(velocity.x)
 #endregion
 
 func _getCurrentGravity():

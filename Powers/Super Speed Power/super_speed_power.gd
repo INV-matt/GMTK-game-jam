@@ -2,7 +2,7 @@ extends Power
 
 var p: Player
 
-@export var Multiplier = 1.5
+@export var Multiplier = 2
 
 func _power_passive(player: Player):
   p = player
