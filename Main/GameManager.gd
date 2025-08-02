@@ -69,9 +69,8 @@ func ChoosePowersToDisplay() -> Array[PowerWrapper]:
       res.push_back(wrp)
     elif wrp.name in PossiblePowersForLevel[lvl]:
       res.push_back(wrp)
-
-  res.shuffle()
-  for i in res: print(i.name)
+  # res.shuffle()
+  # for i in res: print(i.name)
   return res
 
   # var res = PowersList.duplicate(true)
