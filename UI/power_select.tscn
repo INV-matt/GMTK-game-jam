@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://5o18xxp7cefe"]
+[gd_scene load_steps=6 format=3 uid="uid://5o18xxp7cefe"]
 
 [ext_resource type="Theme" uid="uid://diigp8dh8nst4" path="res://UI/UI.tres" id="1_0sgcx"]
-[ext_resource type="Script" uid="uid://coqao33cnc1ek" path="res://UI/power_select_new.gd" id="1_51ka4"]
+[ext_resource type="Script" uid="uid://coqao33cnc1ek" path="res://UI/power_select.gd" id="1_qt35a"]
+[ext_resource type="Texture2D" uid="uid://c61ayx76til5q" path="res://icon.svg" id="2_qt35a"]
 [ext_resource type="PackedScene" uid="uid://cvkn3sj7itjql" path="res://UI/btn_power.tscn" id="4_0sgcx"]
 [ext_resource type="Texture2D" uid="uid://dv4xchma5hf1y" path="res://Player/Spritesheets/Blank-FallSheet.png" id="5_qt35a"]
 
@@ -12,8 +13,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_51ka4")
-BlankSlot = ExtResource("5_qt35a")
+script = ExtResource("1_qt35a")
+BlankSlot = ExtResource("2_qt35a")
 btn_proceed = NodePath("VBoxContainer/selectPowers")
 scn_btn_power = ExtResource("4_0sgcx")
 

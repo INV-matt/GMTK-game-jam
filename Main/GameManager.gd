@@ -23,6 +23,7 @@ func _ready() -> void:
   PL = Globals.getPlayer() as Player
   SignalBus.player_death.connect(_on_player_death)
   SignalBus.next_level.connect(_on_next_level)
+  ChosenPowers.resize(2)
 
 
 func _on_player_death() -> void:
@@ -57,6 +58,7 @@ func SetPowers(passive: Power, onDeath: Power) -> void:
   PL.add_child(PassivePower)
   PL.add_child(OnDeathPower)
   PL._apply_powers_passive()
+  HUD.UpdatePowers()
   
 func ChoosePowersToDisplay() -> Array[PowerWrapper]:
   var res: Array[PowerWrapper] = []
@@ -75,6 +77,10 @@ func ChoosePowersToDisplay() -> Array[PowerWrapper]:
   # var res = PowersList.duplicate(true)
   # res.shuffle()
   # return res
+
+# Decides if the hud can show powers (it's better to hide it in the first 3 levels)
+func CanShowPowers() -> bool:
+  return Globals.getCurrentLevel() >= 2
 
 #! DEBUG
 func _input(event: InputEvent) -> void:
