@@ -82,5 +82,20 @@ func _resetLevel():
     if "power" in i.get_groups():
       i.queue_free()
 
+var HasBeenLoaded = false
+
 func _ready() -> void:
+  # Disable if in main menu
+  if !get_tree().current_scene or get_tree().current_scene.scene_file_path in Globals.ScenesWhereToNotLoad :
+    return
+    
+  HasBeenLoaded = true
+    
   _resetLevel()
+
+# Attempt to load if in the correct scene
+func _process(delta: float) -> void:
+  if HasBeenLoaded :
+    return
+  
+  _ready()

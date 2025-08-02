@@ -33,10 +33,18 @@ func _process(delta: float) -> void:
   elif currentVelocity > originalvelocity / 60:
     pl._jump()
     currentVelocity = 0
-  
-  print(currentVelocity)
 
 func _exit_tree() -> void:
   var pl = Globals.getPlayer()
   pl.getPlayer().SetScaleMultiplier(1)
   pl.getPlayer()._jumpVelocity = originalvelocity
+
+
+var jumpZoneScene = preload("res://Powers/Charge Jump Power/jump_power_area.tscn")
+
+func _power_death(p: Player) :
+  var zone: Area2D = jumpZoneScene.instantiate()
+  
+  zone.global_position = p.global_position
+  
+  get_tree().get_root().add_child(zone)
