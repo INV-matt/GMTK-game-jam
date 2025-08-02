@@ -52,7 +52,7 @@ func SetPowers(passive: Power, onDeath: Power) -> void:
   # Remove previous powers from player
   for i in PL.get_children():
     if i is Power and "power" in i.get_groups():
-      i.free()
+      i.queue_free()
 
   #Apply to player
   
@@ -65,13 +65,18 @@ func ChoosePowersToDisplay() -> Array[PowerWrapper]:
   var res: Array[PowerWrapper] = []
   var lvl = Globals.getCurrentLevel()
 
+  if lvl >= len(PossiblePowersForLevel) :
+    get_tree().change_scene_to_file("res://UI/End Screen/end_screen.tscn")
+    return []
+
   for wrp in PowersList:
     if PossiblePowersForLevel[lvl][0] == 'ALL':
       res.push_back(wrp)
     elif wrp.name in PossiblePowersForLevel[lvl]:
       res.push_back(wrp)
-  # res.shuffle()
-  # for i in res: print(i.name)
+
+  res.shuffle()
+  for i in res: print(i.name)
   return res
 
   # var res = PowersList.duplicate(true)
