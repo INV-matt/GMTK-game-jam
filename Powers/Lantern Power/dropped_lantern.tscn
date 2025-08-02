@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dng0p5jl6mhxb"]
+[gd_scene load_steps=5 format=3 uid="uid://dng0p5jl6mhxb"]
 
 [ext_resource type="Texture2D" uid="uid://58q0opyiwp4" path="res://Powers/Lantern Power/Lantern_Light.png" id="1_gssh5"]
 [ext_resource type="Script" uid="uid://xsdqpkcbahx7" path="res://Powers/Lantern Power/dropped_lantern.gd" id="2_a2fvd"]
+[ext_resource type="Texture2D" uid="uid://b8oivhj1a2jp4" path="res://Powers/Lantern Power/Lantern_Death_Effect.png" id="3_bh5kt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a2fvd"]
 
@@ -19,6 +20,9 @@ shape = SubResource("RectangleShape2D_a2fvd")
 [node name="Timer" type="Timer" parent="."]
 wait_time = 20.0
 one_shot = true
+
+[node name="LanternDeathEffect" type="Sprite2D" parent="."]
+texture = ExtResource("3_bh5kt")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

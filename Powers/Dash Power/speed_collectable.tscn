@@ -1,8 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://bh86ft1kcf5an"]
+[gd_scene load_steps=4 format=3 uid="uid://bh86ft1kcf5an"]
 
 [ext_resource type="Script" uid="uid://btc77tf72gyeh" path="res://Powers/Dash Power/speed_collectable.gd" id="1_6ovr7"]
+[ext_resource type="Texture2D" uid="uid://bkuint6bo5ybk" path="res://Powers/Dash Power/Dash_Death_Effect.png" id="2_wuitf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lgxjm"]
+size = Vector2(16, 24)
 
 [node name="speed_collectable" type="Area2D"]
 collision_layer = 0
@@ -10,10 +12,15 @@ collision_mask = 2
 script = ExtResource("1_6ovr7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -12)
 shape = SubResource("RectangleShape2D_lgxjm")
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
+
+[node name="DashDeathEffect" type="Sprite2D" parent="."]
+position = Vector2(0, -16)
+texture = ExtResource("2_wuitf")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

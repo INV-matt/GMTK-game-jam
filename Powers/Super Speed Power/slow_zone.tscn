@@ -1,9 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://duau7oeooj6c0"]
+[gd_scene load_steps=4 format=3 uid="uid://duau7oeooj6c0"]
 
 [ext_resource type="Script" uid="uid://dxlf8yf5qx4yx" path="res://Powers/Super Speed Power/slow_zone.gd" id="1_4bsrs"]
+[ext_resource type="Texture2D" uid="uid://d0c0bwfsvuye1" path="res://Powers/Super Speed Power/Super_Speed_Death_Effect-1.png" id="2_m26nv"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_mvfys"]
-radius = 75.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uclty"]
+size = Vector2(192, 10)
 
 [node name="slow_zone" type="Area2D"]
 collision_layer = 0
@@ -11,7 +12,16 @@ collision_mask = 4
 script = ExtResource("1_4bsrs")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_mvfys")
+position = Vector2(0, -5)
+shape = SubResource("RectangleShape2D_uclty")
+
+[node name="SuperSpeedDeathEffect-1" type="Sprite2D" parent="."]
+position = Vector2(-48, -8)
+texture = ExtResource("2_m26nv")
+
+[node name="SuperSpeedDeathEffect-2" type="Sprite2D" parent="."]
+position = Vector2(48, -8)
+texture = ExtResource("2_m26nv")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

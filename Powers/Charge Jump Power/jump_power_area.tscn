@@ -1,9 +1,39 @@
-[gd_scene load_steps=3 format=3 uid="uid://blcp1hehn84rr"]
+[gd_scene load_steps=8 format=3 uid="uid://blcp1hehn84rr"]
 
 [ext_resource type="Script" uid="uid://bui6lrxud7bki" path="res://Powers/Charge Jump Power/jump_power_area.gd" id="1_ggtqg"]
+[ext_resource type="Texture2D" uid="uid://cmvp2u3lg7ap5" path="res://Powers/Charge Jump Power/Charge_Jump_Death_Effect-Sheet.png" id="2_iamub"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iamub"]
-size = Vector2(120, 120)
+size = Vector2(80, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iamub"]
+atlas = ExtResource("2_iamub")
+region = Rect2(0, 0, 80, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a5crn"]
+atlas = ExtResource("2_iamub")
+region = Rect2(80, 0, 80, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p2k1t"]
+atlas = ExtResource("2_iamub")
+region = Rect2(0, 48, 80, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vqoii"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iamub")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a5crn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p2k1t")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="jump_power_area" type="Area2D"]
 collision_layer = 0
@@ -11,7 +41,14 @@ collision_mask = 2
 script = ExtResource("1_ggtqg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -23.5)
 shape = SubResource("RectangleShape2D_iamub")
+
+[node name="ChargeJumpDeathEffect-sheet" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -23.5)
+sprite_frames = SubResource("SpriteFrames_vqoii")
+autoplay = "default"
+frame_progress = 0.768669
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
