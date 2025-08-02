@@ -1,9 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://5o18xxp7cefe"]
+[gd_scene load_steps=7 format=3 uid="uid://5o18xxp7cefe"]
 
 [ext_resource type="Theme" uid="uid://diigp8dh8nst4" path="res://UI/UI.tres" id="1_0sgcx"]
-[ext_resource type="Script" uid="uid://coqao33cnc1ek" path="res://UI/power_select_new.gd" id="1_51ka4"]
+[ext_resource type="Script" uid="uid://coqao33cnc1ek" path="res://UI/power_select.gd" id="1_qt35a"]
 [ext_resource type="PackedScene" uid="uid://cvkn3sj7itjql" path="res://UI/btn_power.tscn" id="4_0sgcx"]
 [ext_resource type="Texture2D" uid="uid://dv4xchma5hf1y" path="res://Player/Spritesheets/Blank-FallSheet.png" id="5_qt35a"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_0sgcx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qt35a"]
+bg_color = Color(0.110342, 0.110342, 0.110342, 1)
 
 [node name="powerSelect" type="Control" node_paths=PackedStringArray("btn_proceed")]
 layout_mode = 3
@@ -12,33 +17,44 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_51ka4")
-BlankSlot = ExtResource("5_qt35a")
-btn_proceed = NodePath("VBoxContainer/selectPowers")
+script = ExtResource("1_qt35a")
+BlankSlot = SubResource("CompressedTexture2D_0sgcx")
+btn_proceed = NodePath("PanelContainer/VBoxContainer/selectPowers")
 scn_btn_power = ExtResource("4_0sgcx")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 1
-anchors_preset = -1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_0sgcx")
+theme_override_styles/panel = SubResource("StyleBoxFlat_qt35a")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
 theme = ExtResource("1_0sgcx")
 alignment = 1
 
-[node name="availablePowers" type="HBoxContainer" parent="VBoxContainer"]
+[node name="availablePowers" type="GridContainer" parent="PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 4
 theme = ExtResource("1_0sgcx")
-alignment = 1
+theme_override_constants/h_separation = 32
+theme_override_constants/v_separation = 32
+columns = 5
 
-[node name="btn_power" parent="VBoxContainer/availablePowers" instance=ExtResource("4_0sgcx")]
+[node name="btn_power" parent="PanelContainer/VBoxContainer/availablePowers" instance=ExtResource("4_0sgcx")]
+layout_mode = 2
+
+[node name="power2" type="TextureButton" parent="PanelContainer/VBoxContainer/availablePowers"]
 visible = false
 layout_mode = 2
 
-[node name="power2" type="TextureButton" parent="VBoxContainer/availablePowers"]
+[node name="powerName" type="RichTextLabel" parent="PanelContainer/VBoxContainer/availablePowers/power2"]
 visible = false
-layout_mode = 2
-
-[node name="powerName" type="RichTextLabel" parent="VBoxContainer/availablePowers/power2"]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -51,11 +67,12 @@ theme = ExtResource("1_0sgcx")
 bbcode_enabled = true
 text = "[center]Power Name[/center]"
 
-[node name="power3" type="TextureButton" parent="VBoxContainer/availablePowers"]
+[node name="power3" type="TextureButton" parent="PanelContainer/VBoxContainer/availablePowers"]
 visible = false
 layout_mode = 2
 
-[node name="powerName" type="RichTextLabel" parent="VBoxContainer/availablePowers/power3"]
+[node name="powerName" type="RichTextLabel" parent="PanelContainer/VBoxContainer/availablePowers/power3"]
+visible = false
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -68,16 +85,18 @@ theme = ExtResource("1_0sgcx")
 bbcode_enabled = true
 text = "[center]Power Name[/center]"
 
-[node name="selectedPowers" type="HBoxContainer" parent="VBoxContainer"]
+[node name="selectedPowers" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 theme = ExtResource("1_0sgcx")
 alignment = 1
 
-[node name="passiveActive" type="TextureButton" parent="VBoxContainer/selectedPowers"]
+[node name="passiveActive" type="TextureButton" parent="PanelContainer/VBoxContainer/selectedPowers"]
 layout_mode = 2
 texture_normal = ExtResource("5_qt35a")
 
-[node name="powerName" type="RichTextLabel" parent="VBoxContainer/selectedPowers/passiveActive"]
+[node name="powerName" type="RichTextLabel" parent="PanelContainer/VBoxContainer/selectedPowers/passiveActive"]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -0.416667
@@ -90,13 +109,15 @@ grow_vertical = 0
 theme = ExtResource("1_0sgcx")
 bbcode_enabled = true
 text = "[center]Power Name[/center]"
-metadata/_edit_use_anchors_ = true
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="onDeathActive" type="TextureButton" parent="VBoxContainer/selectedPowers"]
+[node name="onDeathActive" type="TextureButton" parent="PanelContainer/VBoxContainer/selectedPowers"]
 layout_mode = 2
 texture_normal = ExtResource("5_qt35a")
 
-[node name="powerName" type="RichTextLabel" parent="VBoxContainer/selectedPowers/onDeathActive"]
+[node name="powerName" type="RichTextLabel" parent="PanelContainer/VBoxContainer/selectedPowers/onDeathActive"]
+visible = false
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -110,11 +131,13 @@ grow_vertical = 0
 theme = ExtResource("1_0sgcx")
 bbcode_enabled = true
 text = "[center]Power Name[/center]"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="selectPowers" type="Button" parent="VBoxContainer"]
+[node name="selectPowers" type="Button" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("1_0sgcx")
 text = "Select Powers"
 
-[connection signal="pressed" from="VBoxContainer/selectPowers" to="." method="_on_select_powers_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/selectPowers" to="." method="_on_select_powers_pressed"]

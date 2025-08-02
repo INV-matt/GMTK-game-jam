@@ -4,15 +4,14 @@ var p: Player
 
 @export var Multiplier = 1.25
 
-func _power_passive(player: Player) :
+func _power_passive(player: Player):
   p = player
   
-  p.Speed *= Multiplier
-  p.Acceleration *= Multiplier
+  p.SetSuperSpeedMultiplier(Multiplier)
 
 var slowZoneScene = preload("res://Powers/Super Speed Power/slow_zone.tscn")
 
-func _power_death(player: Player) :
+func _power_death(player: Player):
   var zone: Area2D = slowZoneScene.instantiate()
   
   zone.global_position = player.global_position
@@ -20,5 +19,4 @@ func _power_death(player: Player) :
   get_tree().get_root().call_deferred("add_child", zone)
 
 func _exit_tree() -> void:
-  p.Speed /= Multiplier
-  p.Acceleration /= Multiplier
+  Globals.getPlayer().SetSuperSpeedMultiplier(1)
