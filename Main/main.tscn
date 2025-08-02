@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://b3ip2tsabj3dm"]
+[gd_scene load_steps=39 format=3 uid="uid://b3ip2tsabj3dm"]
 
 [ext_resource type="PackedScene" uid="uid://cnv1i1bs5daa0" path="res://Player/player.tscn" id="1_2w1kt"]
 [ext_resource type="Script" uid="uid://60ahfl7tx4bs" path="res://Main/GameManager.gd" id="1_rix8b"]
@@ -20,9 +20,15 @@
 [ext_resource type="Texture2D" uid="uid://chit0sipr8kc1" path="res://UI/Parallax/Temple_BG.png" id="12_l5bfp"]
 [ext_resource type="Script" uid="uid://d7dn4j8wjask" path="res://Powers/power_wrapper.gd" id="16_wbdht"]
 [ext_resource type="Resource" uid="uid://tqa2j8ae73te" path="res://Powers/Resources/pw_DoubleJump.tres" id="17_puekb"]
+[ext_resource type="PackedScene" uid="uid://wga2vjnx5wwx" path="res://Levels/level_1.tscn" id="18_2jdh1"]
 [ext_resource type="Resource" uid="uid://bhxx68oey8umb" path="res://Powers/Resources/pw_Climb.tres" id="18_xi84t"]
+[ext_resource type="PackedScene" uid="uid://dxph7wr16q4qq" path="res://Levels/level_2.tscn" id="19_bq3qr"]
 [ext_resource type="Resource" uid="uid://nnrv1aakkpa6" path="res://Powers/Resources/pw_Dash.tres" id="19_j4inf"]
+[ext_resource type="PackedScene" uid="uid://b0xmu2kq0cyv5" path="res://Levels/level_3.tscn" id="20_7k2ad"]
+[ext_resource type="PackedScene" uid="uid://cc7vdteo3xij6" path="res://Levels/level_4.tscn" id="21_28m4a"]
 [ext_resource type="Resource" uid="uid://dhajk4u4e0k06" path="res://Powers/Resources/pw_Attack.tres" id="21_xi84t"]
+[ext_resource type="PackedScene" uid="uid://4du7ooa26nhh" path="res://Levels/level_5.tscn" id="22_bq3qr"]
+[ext_resource type="PackedScene" uid="uid://qfgx15805wu1" path="res://Levels/level_6.tscn" id="23_7k2ad"]
 [ext_resource type="Resource" uid="uid://1xxlw6viiic1" path="res://Powers/Resources/pw_Float.tres" id="24_qded6"]
 [ext_resource type="Resource" uid="uid://bsl42bpe7kjbt" path="res://Powers/Resources/pw_ChargeJump.tres" id="25_4uyae"]
 [ext_resource type="Resource" uid="uid://dnme70i62ehr0" path="res://Powers/Resources/pw_GravityControl.tres" id="26_21byg"]
@@ -221,6 +227,7 @@ expand_mode = 1
 stretch_mode = 1
 
 [node name="LevelManager" parent="." instance=ExtResource("12_f3gf5")]
+levels = Array[PackedScene]([ExtResource("18_2jdh1"), ExtResource("19_bq3qr"), ExtResource("20_7k2ad"), ExtResource("21_28m4a"), ExtResource("22_bq3qr"), ExtResource("23_7k2ad")])
 
 [node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("HUD", "UI_PowerSelect")]
 unique_name_in_owner = true
@@ -228,15 +235,15 @@ process_mode = 3
 script = ExtResource("1_rix8b")
 HUD = NodePath("../HUD")
 UI_PowerSelect = NodePath("../PowerSelect")
-MinimumPowersLevel = 2
+MinimumPowersLevel = 4
 PowersList = Array[ExtResource("16_wbdht")]([ExtResource("17_puekb"), ExtResource("18_xi84t"), ExtResource("19_j4inf"), ExtResource("21_xi84t"), ExtResource("24_qded6"), ExtResource("25_4uyae"), ExtResource("26_21byg"), ExtResource("27_pcl83"), ExtResource("28_2jdh1"), ExtResource("29_bq3qr")])
 PossiblePowersForLevel = Dictionary[int, PackedStringArray]({
 0: PackedStringArray("ALL"),
 1: PackedStringArray("ALL"),
 2: PackedStringArray("ALL"),
 3: PackedStringArray("ALL"),
-4: PackedStringArray("ALL"),
-5: PackedStringArray("ALL")
+4: PackedStringArray("DoubleJump"),
+5: PackedStringArray("Dash")
 })
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
