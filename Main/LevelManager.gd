@@ -19,6 +19,7 @@ func _loadLevel():
     return
     
   player.position = Vector2.ZERO
+  player.velocity = Vector2.ZERO
   
   var lvl = levels[currLevel].instantiate()
   

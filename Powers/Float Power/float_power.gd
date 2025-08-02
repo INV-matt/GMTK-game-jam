@@ -3,15 +3,15 @@ extends Power
 var active = false
 var player: Player
 
-func _power_passive(p: Player) :
+func _power_passive(p: Player):
   active = true
   player = p
 
 func _process(delta: float) -> void:
-  if !active :
+  if !active:
     return
   
-  if player.GlobalGravityMult == 1 :
+  if player.GlobalGravityMult == 1:
     player.GlobalGravityMult = .5
 
 var boardScene = preload("res://Powers/Float Power/surfboard.tscn")
@@ -24,5 +24,5 @@ func _power_death(p: Player) :
   
   get_tree().get_root().call_deferred("add_child", board)
 
-func _exit_tree() :
-  player.GlobalGravityMult = 1
+func _exit_tree():
+  Globals.getPlayer().GlobalGravityMult = 1

@@ -1,10 +1,28 @@
-[gd_scene load_steps=2 format=3 uid="uid://cvkn3sj7itjql"]
+[gd_scene load_steps=3 format=3 uid="uid://cvkn3sj7itjql"]
 
+[ext_resource type="Texture2D" uid="uid://c37nis0k32wvl" path="res://Powers/Icons/chargejump.png" id="1_edcdc"]
 [ext_resource type="Theme" uid="uid://diigp8dh8nst4" path="res://UI/UI.tres" id="1_h73bl"]
 
 [node name="power1" type="TextureButton"]
+custom_minimum_size = Vector2(96, 96)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -48.0
+offset_top = -48.0
+offset_right = 144.0
+offset_bottom = 144.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = ExtResource("1_edcdc")
+stretch_mode = 4
 
 [node name="powerName" type="RichTextLabel" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0

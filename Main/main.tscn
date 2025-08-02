@@ -61,9 +61,11 @@ ScoutZoomMult = 0.6
 [node name="PointLight2D" type="PointLight2D" parent="Player"]
 texture = ExtResource("3_j4inf")
 
-[node name="HUD" type="CanvasLayer" parent="." node_paths=PackedStringArray("t_Lives")]
+[node name="HUD" type="CanvasLayer" parent="." node_paths=PackedStringArray("textures_Lives", "PowerContainer", "textures_Powers")]
 script = ExtResource("4_rix8b")
-t_Lives = [NodePath("Box_Lifes/BG/Digits/LivesUsed"), NodePath("Box_Lifes/BG/Digits/LivesUsed2")]
+textures_Lives = [NodePath("Box_Lifes/BG/Digits/LivesUsed"), NodePath("Box_Lifes/BG/Digits/LivesUsed2")]
+PowerContainer = NodePath("Box_Powers")
+textures_Powers = [NodePath("Box_Powers/Background/HBoxContainer/PassivePower"), NodePath("Box_Powers/Background/HBoxContainer/OnDeathPower")]
 
 [node name="Box_Lifes" type="MarginContainer" parent="HUD"]
 offset_right = 272.0
@@ -230,7 +232,7 @@ MinimumPowersLevel = 2
 PowersList = Array[ExtResource("16_wbdht")]([ExtResource("17_puekb"), ExtResource("18_xi84t"), ExtResource("19_j4inf"), ExtResource("21_xi84t"), ExtResource("24_qded6"), ExtResource("25_4uyae"), ExtResource("26_21byg"), ExtResource("27_pcl83"), ExtResource("28_2jdh1"), ExtResource("29_bq3qr")])
 PossiblePowersForLevel = Dictionary[int, PackedStringArray]({
 0: PackedStringArray("ALL"),
-1: PackedStringArray("Dash"),
+1: PackedStringArray("ALL"),
 2: PackedStringArray("ALL"),
 3: PackedStringArray("ALL"),
 4: PackedStringArray("ALL"),
