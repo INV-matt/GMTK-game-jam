@@ -10,10 +10,10 @@ config_version=5
 
 [application]
 
-config/name="GMTK-game-jam-2025"
+config/name="The Temple's Loop"
 run/main_scene="uid://yudk03obnltg"
 config/features=PackedStringArray("4.4", "Mobile")
-config/icon="res://icon.svg"
+config/icon="uid://bwnr4om56diy0"
 
 [autoload]
 
