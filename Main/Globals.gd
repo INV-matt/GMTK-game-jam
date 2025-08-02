@@ -5,9 +5,11 @@ var _main: Node2D
 var _currentLevel: int
 var _gameManager: GameManager
 
+var ScenesWhereToNotLoad: Array[String] = ["res://UI/Main Menu/main_menu.tscn"]
+
 func _ready() -> void:
   # Disable if in main menu
-  if !get_tree().current_scene or get_tree().current_scene.scene_file_path == "res://UI/Main Menu/main_menu.tscn" :
+  if !get_tree().current_scene or get_tree().current_scene.scene_file_path in ScenesWhereToNotLoad :
     return
   
   _main = get_node("../Main") as Node2D
