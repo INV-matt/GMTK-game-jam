@@ -1,5 +1,7 @@
 extends Node
 
+class_name LevelManager
+
 @export var levels: Array[PackedScene]
 @export var startingLevel = 0
 
@@ -82,6 +84,9 @@ func _loadLevel():
   addTo.call_deferred("add_child", lvl)
 
 func _ready() -> void:
+  if !get_tree().current_scene or get_tree().current_scene.scene_file_path in Globals.ScenesWhereToNotLoad :
+    return
+  
   var root = get_tree().get_root()
   
   for i in root.get_children():

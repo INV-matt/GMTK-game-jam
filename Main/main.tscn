@@ -227,6 +227,7 @@ expand_mode = 1
 stretch_mode = 1
 
 [node name="LevelManager" parent="." instance=ExtResource("12_f3gf5")]
+unique_name_in_owner = true
 levels = Array[PackedScene]([ExtResource("18_2jdh1"), ExtResource("19_bq3qr"), ExtResource("20_7k2ad"), ExtResource("21_28m4a"), ExtResource("22_bq3qr"), ExtResource("23_7k2ad")])
 
 [node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("HUD", "UI_PowerSelect")]
