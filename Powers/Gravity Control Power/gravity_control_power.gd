@@ -20,6 +20,5 @@ func _power_death(p: Player) :
   var anti: Area2D = antiScene.instantiate()
   
   anti.global_position = p.global_position
-  anti.position.y -= 50
   
   get_tree().get_root().call_deferred("add_child", anti)

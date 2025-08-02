@@ -15,6 +15,7 @@ func _power_death(player: Player):
   var zone: Area2D = slowZoneScene.instantiate()
   
   zone.global_position = player.global_position
+  zone.position.y += 14
   
   get_tree().get_root().call_deferred("add_child", zone)
 
