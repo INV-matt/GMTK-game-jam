@@ -109,9 +109,9 @@ texture_hover = SubResource("AtlasTexture_vq10u")
 [node name="TextureRect2" type="TextureRect" parent="."]
 layout_mode = 1
 offset_left = 48.0
-offset_top = 40.0
+offset_top = 20.0
 offset_right = 688.0
-offset_bottom = 232.0
+offset_bottom = 212.0
 texture = ExtResource("5_vq10u")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
