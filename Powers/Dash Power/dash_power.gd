@@ -30,6 +30,7 @@ func _process(delta: float) -> void:
     return
     
   if length > 0:
+    player.set_collision_mask_value(5, false)
     length -= 1
     player.velocity = dir * Speed
     player.move_and_slide()
@@ -44,6 +45,8 @@ func _process(delta: float) -> void:
     return
   else:
     player.movementLocked = false
+    player.set_collision_mask_value(5, true)
+
     
   var dx = Input.get_axis("pl_left", "pl_right")
   var dy = Input.get_axis("pl_up", "pl_down")
