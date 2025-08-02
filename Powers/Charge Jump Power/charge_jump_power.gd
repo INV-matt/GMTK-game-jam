@@ -9,7 +9,8 @@ var currentVelocity = 0
 
 func _power_passive(p: Player):
   isActive = true
-  player = p
+  # player = p
+  player = Globals.getPlayer()
   
   originalvelocity = player._jumpVelocity
   
@@ -18,21 +19,24 @@ func _power_passive(p: Player):
 func _process(delta: float) -> void:
   if !isActive:
     return
+
+  var pl = Globals.getPlayer()
     
-  player._jumpVelocity = currentVelocity
-  player.scale.y = 1 - currentVelocity / (originalvelocity * MaxVelocityMult) * .5
+  pl._jumpVelocity = currentVelocity
+  pl.scale.y = 1 - currentVelocity / (originalvelocity * MaxVelocityMult) * .5
   
   if Input.is_action_pressed("pl_jump"):
-    if player.is_on_floor():
+    if pl.is_on_floor():
       currentVelocity += originalvelocity / 60
       if currentVelocity >= originalvelocity * MaxVelocityMult:
         currentVelocity = originalvelocity * MaxVelocityMult
   elif currentVelocity > originalvelocity / 60:
-    player._jump()
+    pl._jump()
     currentVelocity = 0
   
   print(currentVelocity)
 
 func _exit_tree() -> void:
-  Globals.getPlayer().SetScaleMultiplier(1)
-  Globals.getPlayer()._jumpVelocity = originalvelocity
+  var pl = Globals.getPlayer()
+  pl.getPlayer().SetScaleMultiplier(1)
+  pl.getPlayer()._jumpVelocity = originalvelocity

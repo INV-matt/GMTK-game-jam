@@ -54,6 +54,11 @@ func _setAnimation(name: String):
   
   $Sprite2D.play(name)
 
+func _prepare_on_next_level() -> void:
+  movementLocked = false
+  _isClimbing = false
+  position = Vector2.ZERO
+
 func _ready():
   _jumpVelocity = sqrt(2 * JumpHeight * _localGravity) # TODO: HARDCODED FOR NOW
 
@@ -63,6 +68,7 @@ func _ready():
   _setAnimation("idle")
   
   BodyManager.connect("apply_powers", _apply_powers_ondeath)
+  SignalBus.connect("next_level", _prepare_on_next_level)
 
   _baseScale = scale
   _baseMaxJumps = MaxJumps

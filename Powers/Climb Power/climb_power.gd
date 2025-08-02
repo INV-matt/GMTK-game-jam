@@ -39,6 +39,7 @@ func _process(delta: float) -> void:
   # If you asked me how I came up with this I would not be able to explain
   # var hangingOnWall = !abs(floor(player.global_position.x) - floor(expected_pos.x)) < ClimbRange
   var hangingOnWall = player.is_on_wall_only() && player._direction != 0
+  var isWallRight = 1 if player._direction > 0 else -1
   
   player.global_position = last_pos
   player.velocity = last_vel
@@ -53,7 +54,7 @@ func _process(delta: float) -> void:
       player._jumpCount = 0
       
       if Input.is_action_pressed("pl_jump"):
-        player._jump()
         player.GlobalGravityMult = 1
+        player._jump()
   else:
     player.GlobalGravityMult = 1

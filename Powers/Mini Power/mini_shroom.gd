@@ -8,10 +8,10 @@ func _on_body_exited(body: Node2D) -> void:
 var player: Player
 
 func _on_body_entered(body: Player) -> void:
-  if !canGrab :
+  if !canGrab:
     return
   
-  body.scale /= 2
+  body.SetScaleMultiplier(.5)
   player = body
   
   $Timer.start()
@@ -19,6 +19,6 @@ func _on_body_entered(body: Player) -> void:
   monitoring = false
 
 func _on_timer_timeout() -> void:
-  player.scale *= 2
+  player.SetScaleMultiplier(1)
   
   queue_free()
