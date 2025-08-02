@@ -21,8 +21,8 @@ class_name Player
 @export var GlobalGravityDir = 1
 
 @export_group("Powers")
-@export var ScaleMultiplier = 1
-var _baseScale = Vector2(1, 1)
+@export var ScaleMultiplier = 1.0
+var _baseScale = Vector2(1.0, 1.0)
 @export var BaseJumpModifier = 0
 var _baseMaxJumps = 0
 @export var SuperSpeedMultiplier = 1
@@ -201,7 +201,7 @@ func _on_sprite_2d_animation_finished() -> void:
 
 
 # Calling with value = 1 is equal to resetting it
-func SetScaleMultiplier(value: int) -> Vector2:
+func SetScaleMultiplier(value: float) -> Vector2:
   ScaleMultiplier = value
   scale = _baseScale * ScaleMultiplier
   return scale
