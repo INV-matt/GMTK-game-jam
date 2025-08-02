@@ -3,7 +3,6 @@ extends Power
 @export var Speed = 300
 @export var Length = 10
 
-
 var isReady = false
 var player: Player
 var canDash = true
