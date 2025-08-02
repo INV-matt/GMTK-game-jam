@@ -42,10 +42,12 @@ func _nextLevel():
   var usedThisLevel = GM.getLivesUsed()
   GM.resetLivesUsed()
   
-  if currLevel in LevelScores :
-    LevelScores[currLevel] = min(LevelScores[currLevel], usedThisLevel)
+  var lvl = str(currLevel)
+  
+  if lvl in LevelScores :
+    LevelScores[lvl] = min(LevelScores[lvl], usedThisLevel)
   else :
-    LevelScores[currLevel] = usedThisLevel  
+    LevelScores[lvl] = usedThisLevel  
   
   saveScores()
   
