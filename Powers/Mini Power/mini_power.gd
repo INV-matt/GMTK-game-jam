@@ -2,16 +2,17 @@ extends Power
 
 var player: Player
 
-func _power_passive(p: Player) :
-  p.scale /= 2
+func _power_passive(p: Player):
+  # p.scale /= 2
+  p.SetScaleMultiplier(.5)
   player = p
 
 func _exit_tree() -> void:
-  player.scale *= 2
+  Globals.getPlayer().SetScaleMultiplier(1)
 
 var shroomScene = preload("res://Powers/Mini Power/mini_shroom.tscn")
 
-func _power_death(p: Player) :
+func _power_death(p: Player):
   var shroom = shroomScene.instantiate()
   
   shroom.global_position = p.global_position

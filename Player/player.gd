@@ -20,6 +20,15 @@ class_name Player
 @export var GlobalGravityMult = 1
 @export var GlobalGravityDir = 1
 
+@export_group("Powers")
+@export var ScaleMultiplier = 1
+var _baseScale = Vector2(1, 1)
+@export var BaseJumpModifier = 0
+var _baseMaxJumps = 0
+@export var SuperSpeedMultiplier = 1
+var _baseSpeed = 0
+var _baseAccel = 0
+
 var _jumpCount = 0
 var _lastOnFloor = 0.0
 var _frameSinceJumpPressed = INF
@@ -32,11 +41,10 @@ var _isClimbing = false
 var movementLocked = false
 
 @export var DoNotInterrupt = ["swing"]
-
 var _animFinished = false
 
 func _setAnimation(name: String):
-  if $Sprite2D.animation in DoNotInterrupt and !_animFinished :
+  if $Sprite2D.animation in DoNotInterrupt and !_animFinished:
     return
   
   if $Sprite2D.animation == name:
@@ -56,14 +64,19 @@ func _ready():
   
   BodyManager.connect("apply_powers", _apply_powers_ondeath)
 
+  _baseScale = scale
+  _baseMaxJumps = MaxJumps
+  _baseSpeed = Speed
+  _baseAccel = Acceleration
+
 func _physics_process(delta: float) -> void:
   _frameSinceJumpPressed += 1
   
   up_direction = Vector2(0, -GlobalGravityDir)
   
-  if GlobalGravityDir < 0 :
+  if GlobalGravityDir < 0:
     $Sprite2D.flip_v = true
-  elif GlobalGravityDir > 0 :
+  elif GlobalGravityDir > 0:
     $Sprite2D.flip_v = false
   
   if is_on_floor():
@@ -85,7 +98,7 @@ func _apply_powers_passive():
     if i is Power and "power" in i.get_groups():
       i.apply_power_passive()
 
-func _apply_powers_ondeath() :
+func _apply_powers_ondeath():
   for i in get_children():
     # Only apply the powers of children of type "Power" and that have the group "power"
     if i is Power and "power" in i.get_groups():
@@ -185,3 +198,25 @@ func _handleScout() -> void:
 
 func _on_sprite_2d_animation_finished() -> void:
   _animFinished = true
+
+
+# Calling with value = 1 is equal to resetting it
+func SetScaleMultiplier(value: int) -> Vector2:
+  ScaleMultiplier = value
+  scale = _baseScale * ScaleMultiplier
+  return scale
+
+func IncreaseMaxJumps(amount: int) -> int:
+  BaseJumpModifier = amount
+  MaxJumps += amount
+  return MaxJumps
+
+func ResetMaxJumps():
+  MaxJumps = _baseMaxJumps
+
+# returns vector2(Speed, Accel)
+func SetSuperSpeedMultiplier(value: int) -> Vector2:
+  SuperSpeedMultiplier = value
+  Speed = _baseSpeed * SuperSpeedMultiplier
+  Acceleration = _baseAccel * SuperSpeedMultiplier
+  return Vector2(Speed, Acceleration)

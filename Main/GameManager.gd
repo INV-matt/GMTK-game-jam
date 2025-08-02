@@ -78,4 +78,4 @@ func ChoosePowersToDisplay() -> Array[PowerWrapper]:
 
 #! DEBUG
 func _input(event: InputEvent) -> void:
-  if event.is_action_pressed("pl_dash"): SignalBus.open_power_select.emit()
+  if event is InputEventKey && event.keycode == KEY_P: SignalBus.open_power_select.emit()

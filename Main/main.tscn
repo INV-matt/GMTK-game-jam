@@ -230,7 +230,7 @@ MinimumPowersLevel = 2
 PowersList = Array[ExtResource("16_wbdht")]([ExtResource("17_puekb"), ExtResource("18_xi84t"), ExtResource("19_j4inf"), ExtResource("21_xi84t"), ExtResource("24_qded6"), ExtResource("25_4uyae"), ExtResource("26_21byg"), ExtResource("27_pcl83"), ExtResource("28_2jdh1"), ExtResource("29_bq3qr")])
 PossiblePowersForLevel = Dictionary[int, PackedStringArray]({
 0: PackedStringArray("ALL"),
-1: PackedStringArray("Dash"),
+1: PackedStringArray("ALL"),
 2: PackedStringArray("ALL"),
 3: PackedStringArray("ALL"),
 4: PackedStringArray("ALL"),
