@@ -66,6 +66,7 @@ func ChoosePowersToDisplay() -> Array[PowerWrapper]:
   var lvl = Globals.getCurrentLevel()
 
   if lvl >= len(PossiblePowersForLevel) :
+    MusicManager.playTrack("levelcomplete")
     get_tree().change_scene_to_file("res://UI/End Screen/end_screen.tscn")
     return []
 

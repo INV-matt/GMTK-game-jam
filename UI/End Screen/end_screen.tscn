@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://cou7btocpt00s"]
+[gd_scene load_steps=2 format=3 uid="uid://cou7btocpt00s"]
+
+[ext_resource type="Texture2D" uid="uid://wrm8gq5qngeo" path="res://UI/End Screen/Thank_you_for_playing_Scene.png" id="1_nuwqm"]
 
 [node name="end_screen" type="Control"]
 layout_mode = 3
@@ -8,8 +10,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
-layout_mode = 0
-offset_right = 1152.0
-offset_bottom = 40.0
-text = "thank you for playing"
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_nuwqm")
