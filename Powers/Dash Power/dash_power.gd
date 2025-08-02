@@ -16,7 +16,7 @@ func _power_passive(p: Player):
 
 var collectScene = preload("res://Powers/Dash Power/speed_collectable.tscn")
 
-func _power_death(p: Player) :
+func _power_death(p: Player):
   var collect: Area2D = collectScene.instantiate()
   
   collect.global_position = p.global_position
@@ -34,7 +34,7 @@ func _process(delta: float) -> void:
     player.velocity = dir * Speed
     player.move_and_slide()
     
-    if length % 2 == 0 :
+    if length % 2 == 0:
       var trail: AnimatedSprite2D = trailScene.instantiate()
       trail.global_position = player.global_position
       trail.rotation = player.velocity.angle()

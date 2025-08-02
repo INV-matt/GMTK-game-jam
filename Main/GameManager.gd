@@ -80,7 +80,7 @@ func ChoosePowersToDisplay() -> Array[PowerWrapper]:
 
 # Decides if the hud can show powers (it's better to hide it in the first 3 levels)
 func CanShowPowers() -> bool:
-  return Globals.getCurrentLevel() >= 2
+  return Globals.getCurrentLevel() >= MinimumPowersLevel
 
 #! DEBUG
 func _input(event: InputEvent) -> void:
