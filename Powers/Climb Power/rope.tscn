@@ -1,9 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://bq87pbb0mvmcs"]
+[gd_scene load_steps=4 format=3 uid="uid://bq87pbb0mvmcs"]
 
 [ext_resource type="Script" uid="uid://epbwmigppd2j" path="res://Powers/Climb Power/rope.gd" id="1_mlxsr"]
+[ext_resource type="Texture2D" uid="uid://bead1453nw8fi" path="res://Powers/Climb Power/Rope_Tile_setù.png" id="2_ke2jr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ke2jr"]
-size = Vector2(20, 200)
+size = Vector2(16, 160)
 
 [node name="rope" type="Area2D"]
 collision_layer = 0
@@ -11,5 +12,95 @@ collision_mask = 2
 script = ExtResource("1_mlxsr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -100)
+position = Vector2(0, -80)
 shape = SubResource("RectangleShape2D_ke2jr")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -1
+texture = ExtResource("2_ke2jr")
+region_enabled = true
+region_rect = Rect2(48, 32, 16, 16)
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(0, -192)
+texture = ExtResource("2_ke2jr")
+region_enabled = true
+region_rect = Rect2(64, 16, 16, 16)
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(0, -176)
+texture = ExtResource("2_ke2jr")
+region_enabled = true
+region_rect = Rect2(48, 16, 16, 16)
+
+[node name="Sprite2D4" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(0, -160)
+texture = ExtResource("2_ke2jr")
+region_enabled = true
+region_rect = Rect2(48, 16, 16, 16)
+
+[node name="Sprite2D5" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(0, -144)
+texture = ExtResource("2_ke2jr")
+region_enabled = true
+region_rect = Rect2(48, 16, 16, 16)
+
+[node name="Sprite2D6" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(0, -128)
+texture = ExtResource("2_ke2jr")
+region_enabled = true
+region_rect = Rect2(48, 16, 16, 16)
+
+[node name="Sprite2D7" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(0, -112)
+texture = ExtResource("2_ke2jr")
+region_enabled = true
+region_rect = Rect2(48, 16, 16, 16)
+
+[node name="Sprite2D8" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(0, -96)
+texture = ExtResource("2_ke2jr")
+region_enabled = true
+region_rect = Rect2(48, 16, 16, 16)
+
+[node name="Sprite2D9" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(0, -80)
+texture = ExtResource("2_ke2jr")
+region_enabled = true
+region_rect = Rect2(48, 16, 16, 16)
+
+[node name="Sprite2D10" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(0, -64)
+texture = ExtResource("2_ke2jr")
+region_enabled = true
+region_rect = Rect2(48, 16, 16, 16)
+
+[node name="Sprite2D11" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(0, -48)
+texture = ExtResource("2_ke2jr")
+region_enabled = true
+region_rect = Rect2(48, 16, 16, 16)
+
+[node name="Sprite2D12" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(0, -32)
+texture = ExtResource("2_ke2jr")
+region_enabled = true
+region_rect = Rect2(48, 16, 16, 16)
+
+[node name="Sprite2D13" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(0, -16)
+texture = ExtResource("2_ke2jr")
+region_enabled = true
+region_rect = Rect2(48, 16, 16, 16)
