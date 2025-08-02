@@ -1,0 +1,40 @@
+[gd_scene load_steps=3 format=3 uid="uid://d1aceh5uo5bq"]
+
+[ext_resource type="Theme" uid="uid://diigp8dh8nst4" path="res://UI/UI.tres" id="1_3g31d"]
+[ext_resource type="Script" uid="uid://b88wg2sijqkng" path="res://UI/Main Menu/main_menu.gd" id="1_v04x6"]
+
+[node name="main_menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_v04x6")
+
+[node name="buttons" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -272.0
+offset_top = 280.0
+offset_right = 272.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_3g31d")
+
+[node name="start" type="Button" parent="buttons"]
+layout_mode = 2
+text = "Start"
+
+[node name="level_select" type="Button" parent="buttons"]
+layout_mode = 2
+text = "Level Select"
+
+[node name="quit" type="Button" parent="buttons"]
+layout_mode = 2
+text = "Quit"
+
+[connection signal="pressed" from="buttons/start" to="." method="_on_start_pressed"]
