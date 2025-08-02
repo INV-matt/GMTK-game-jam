@@ -1,17 +1,19 @@
-[gd_scene load_steps=4 format=3 uid="uid://magllufkp1h"]
+[gd_scene load_steps=5 format=3 uid="uid://magllufkp1h"]
 
 [ext_resource type="Script" uid="uid://dpj7lwpmdjaoe" path="res://Powers/Float Power/surfboard.gd" id="1_u6t7d"]
+[ext_resource type="Texture2D" uid="uid://b7jwqldokjjw0" path="res://Powers/Float Power/Surf_Board_Platform.png" id="2_f2pcp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f2pcp"]
-size = Vector2(150, 20)
+size = Vector2(64, 8)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4a6a5"]
-size = Vector2(128, 26)
+size = Vector2(48, 13)
 
 [node name="surfboard" type="CharacterBody2D"]
 script = ExtResource("1_u6t7d")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_f2pcp")
 
 [node name="grab_area" type="Area2D" parent="."]
@@ -19,11 +21,14 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="grab_area"]
-position = Vector2(0, -3)
+position = Vector2(0, -1.5)
 shape = SubResource("RectangleShape2D_4a6a5")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 20.0
+
+[node name="SurfBoardPlatform" type="Sprite2D" parent="."]
+texture = ExtResource("2_f2pcp")
 
 [connection signal="body_entered" from="grab_area" to="." method="_on_grab_area_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
