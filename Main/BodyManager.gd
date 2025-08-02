@@ -76,4 +76,8 @@ func _resetLevel():
       playerhealth.death.connect(_onPlayerDeath)
 
 func _ready() -> void:
+  # Disable if in main menu
+  if !get_tree().current_scene or get_tree().current_scene.scene_file_path == "res://UI/Main Menu/main_menu.tscn" :
+    return
+    
   _resetLevel()

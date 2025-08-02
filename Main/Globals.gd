@@ -6,6 +6,10 @@ var _currentLevel: int
 var _gameManager: GameManager
 
 func _ready() -> void:
+  # Disable if in main menu
+  if !get_tree().current_scene or get_tree().current_scene.scene_file_path == "res://UI/Main Menu/main_menu.tscn" :
+    return
+  
   _main = get_node("../Main") as Node2D
   
   # I just want to bedug in peace | me too, me too
@@ -17,16 +21,31 @@ func _ready() -> void:
   _gameManager = _main.get_node("%GameManager") as GameManager
 
 func getPlayer() -> Player:
+  if not _main :
+    _ready()
+    
   return _player
 
 func getMain() -> Node2D:
+  if not _main :
+    _ready()
+    
   return _main
 
 func getCurrentLevel() -> int:
+  if not _main :
+    _ready()
+    
   return _currentLevel
 
 func setCurrentLevel(level: int) -> void:
+  if not _main :
+    _ready()
+    
   _currentLevel = level
 
 func getGameManager() -> GameManager:
+  if not _main :
+    _ready()
+    
   return _gameManager
