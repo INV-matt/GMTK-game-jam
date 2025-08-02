@@ -9,4 +9,5 @@ script = ExtResource("2_hw03x")
 name = "Float"
 power = ExtResource("1_bwk12")
 texture = ExtResource("3_r61rx")
+tooltip = ""
 metadata/_custom_type_script = "uid://d7dn4j8wjask"
