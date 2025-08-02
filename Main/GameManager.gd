@@ -51,7 +51,7 @@ func SetPowers(passive: Power, onDeath: Power) -> void:
   # Remove previous powers from player
   for i in PL.get_children():
     if i is Power and "power" in i.get_groups():
-      i.queue_free()
+      i.free()
 
   #Apply to player
   

@@ -2,6 +2,9 @@ extends Area2D
 
 var canGrab = false
 
+func _ready() -> void:
+  SignalBus.next_level.connect(_on_next_level)
+
 func _on_body_exited(body: Node2D) -> void:
   canGrab = true
 
@@ -16,9 +19,14 @@ func _on_body_entered(body: Player) -> void:
   
   $Timer.start()
   
-  monitoring = false
+  set_deferred("monitoring", false)
 
 func _on_timer_timeout() -> void:
-  player.SetScaleMultiplier(1)
+  Globals.getPlayer().SetScaleMultiplier(1)
   
+  queue_free()
+
+
+func _on_next_level() -> void:
+  Globals.getPlayer().SetScaleMultiplier(1)
   queue_free()

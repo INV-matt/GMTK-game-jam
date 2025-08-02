@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://b3ip2tsabj3dm"]
+[gd_scene load_steps=40 format=3 uid="uid://b3ip2tsabj3dm"]
 
 [ext_resource type="PackedScene" uid="uid://cnv1i1bs5daa0" path="res://Player/player.tscn" id="1_2w1kt"]
 [ext_resource type="Script" uid="uid://60ahfl7tx4bs" path="res://Main/GameManager.gd" id="1_rix8b"]
@@ -29,6 +29,7 @@
 [ext_resource type="PackedScene" uid="uid://4du7ooa26nhh" path="res://Levels/level_5.tscn" id="22_bq3qr"]
 [ext_resource type="PackedScene" uid="uid://qfgx15805wu1" path="res://Levels/level_6.tscn" id="23_7k2ad"]
 [ext_resource type="PackedScene" uid="uid://bk67whgxfiaq4" path="res://Levels/level_7.tscn" id="23_28m4a"]
+[ext_resource type="PackedScene" uid="uid://cg466nv1tj76e" path="res://Levels/level_8.tscn" id="24_28m4a"]
 [ext_resource type="Resource" uid="uid://1xxlw6viiic1" path="res://Powers/Resources/pw_Float.tres" id="24_qded6"]
 [ext_resource type="Resource" uid="uid://bsl42bpe7kjbt" path="res://Powers/Resources/pw_ChargeJump.tres" id="25_4uyae"]
 [ext_resource type="Resource" uid="uid://dnme70i62ehr0" path="res://Powers/Resources/pw_GravityControl.tres" id="26_21byg"]
@@ -236,7 +237,7 @@ expand_mode = 1
 stretch_mode = 1
 
 [node name="LevelManager" parent="." instance=ExtResource("12_f3gf5")]
-levels = Array[PackedScene]([ExtResource("18_2jdh1"), ExtResource("19_bq3qr"), ExtResource("20_7k2ad"), ExtResource("21_28m4a"), ExtResource("22_bq3qr"), ExtResource("23_7k2ad"), ExtResource("23_28m4a")])
+levels = Array[PackedScene]([ExtResource("18_2jdh1"), ExtResource("19_bq3qr"), ExtResource("20_7k2ad"), ExtResource("21_28m4a"), ExtResource("22_bq3qr"), ExtResource("23_7k2ad"), ExtResource("23_28m4a"), ExtResource("24_28m4a")])
 
 [node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("HUD", "UI_PowerSelect")]
 unique_name_in_owner = true
@@ -253,5 +254,6 @@ PossiblePowersForLevel = Dictionary[int, PackedStringArray]({
 3: PackedStringArray("ALL"),
 4: PackedStringArray("DoubleJump"),
 5: PackedStringArray("Dash"),
-6: PackedStringArray("Mini")
+6: PackedStringArray("Mini"),
+7: PackedStringArray("GravityControl")
 })
