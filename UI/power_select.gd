@@ -7,6 +7,7 @@ var slotsBtn: Array[TextureButton] = []
 var BlankWrapper = PowerWrapper.new()
 @export var btn_proceed: Button
 @export var scn_btn_power: PackedScene
+@export var label_Tooltip: RichTextLabel
 
 var GM: GameManager
 var toDisplay: Array[PowerWrapper]
@@ -22,6 +23,9 @@ func _ready() -> void:
   BlankWrapper.name = "@NULL"
   BlankWrapper.texture = BlankSlot
   BlankWrapper.power = null
+
+  label_Tooltip.text = ""
+
   GenerateNew()
   #Populate()
 
@@ -41,6 +45,8 @@ func _selectPower(idx: int):
 
       chosenUpgrades[i] = wrapper.power
       chosenPowerWrappers[i] = wrapper
+
+      label_Tooltip.text = wrapper.tooltip
 
       if i == 0:
         (btn_slot.get_child(0) as RichTextLabel).text = "[center]Active ability: " + wrapper.name + "[/center]"
@@ -82,6 +88,7 @@ func _on_select_powers_pressed() -> void:
 func GenerateNew():
   toDisplay.clear()
   toDisplay = GM.ChoosePowersToDisplay()
+  label_Tooltip.text = ""
   Populate()
   # print(" TO DISPLAY: ")
   # for i in toDisplay: print(i.name)
@@ -94,16 +101,9 @@ func Populate():
 
   #var btn_arr_displayed = box_displayedPowers.get_children()
   var btn_arr_selected = box_selectedPowers.get_children()
-  print(len(toDisplay))
+
   # Connect displayed powers' buttons
   for i in range(len(toDisplay)):
-    # if btn_arr_displayed[i] is TextureButton:
-    #   var btn: TextureButton = btn_arr_displayed[i]
-    #   btn.texture_normal = toDisplay[i].texture
-    #   (btn.get_child(0) as RichTextLabel).text = "[center]" + toDisplay[i].name + "[/center]"
-
-    #   # btn.pressed.connect(_selectPower.bind(toDisplay[i])) # !TO FIX: When reshuffled, the bind doesn't change
-    #   btn.pressed.connect(_selectPower.bind(i))
     var btn = scn_btn_power.instantiate() as TextureButton
     box_displayedPowers.add_child(btn)
     btn.texture_normal = toDisplay[i].texture

@@ -54,6 +54,11 @@ func _setAnimation(name: String):
   
   $Sprite2D.play(name)
 
+func _prepare_on_next_level() -> void:
+  movementLocked = false
+  _isClimbing = false
+  position = Vector2.ZERO
+
 func _ready():
   _jumpVelocity = sqrt(2 * JumpHeight * _localGravity) # TODO: HARDCODED FOR NOW
 
@@ -63,6 +68,7 @@ func _ready():
   _setAnimation("idle")
   
   BodyManager.connect("apply_powers", _apply_powers_ondeath)
+  SignalBus.connect("next_level", _prepare_on_next_level)
 
   _baseScale = scale
   _baseMaxJumps = MaxJumps
@@ -125,13 +131,13 @@ func _handleHorizontalMovement(delta) -> void:
     else:
       _setAnimation("idle")
   
-  var target = _direction * Speed
+  var target = _direction * Speed * SuperSpeedMultiplier
   var dv = target - velocity.x
   var accelRate = Acceleration if abs(dv) > 0.1 else Deceleration
   var mov = pow(abs(dv) * accelRate, AccelerationPower) * sign(dv)
   velocity.x += mov * delta
-  # print(mov)
-  # print(velocity.x)
+  print(mov)
+  print(velocity.x)
 #endregion
 
 func _getCurrentGravity():
@@ -215,8 +221,11 @@ func ResetMaxJumps():
   MaxJumps = _baseMaxJumps
 
 # returns vector2(Speed, Accel)
-func SetSuperSpeedMultiplier(value: int) -> Vector2:
+# func SetSuperSpeedMultiplier(value: int) -> Vector2:
+#   SuperSpeedMultiplier = value
+#   Speed = _baseSpeed * SuperSpeedMultiplier
+#   Acceleration = _baseAccel * SuperSpeedMultiplier
+#   return Vector2(Speed, Acceleration)
+
+func SetSuperSpeedMultiplier(value: int) -> void:
   SuperSpeedMultiplier = value
-  Speed = _baseSpeed * SuperSpeedMultiplier
-  Acceleration = _baseAccel * SuperSpeedMultiplier
-  return Vector2(Speed, Acceleration)

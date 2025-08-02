@@ -9,4 +9,5 @@ script = ExtResource("2_khq1e")
 name = "DoubleJump"
 power = ExtResource("1_0yryj")
 texture = ExtResource("3_0yryj")
+tooltip = "Big ahh veiny dih"
 metadata/_custom_type_script = "uid://d7dn4j8wjask"

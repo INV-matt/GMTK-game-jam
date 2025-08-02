@@ -77,6 +77,10 @@ func _resetLevel():
     if i is HealthComponent:
       playerhealth = i
       playerhealth.death.connect(_onPlayerDeath)
+    
+    # Remove powerups when respawning player
+    if "power" in i.get_groups():
+      i.queue_free()
 
 var HasBeenLoaded = false
 

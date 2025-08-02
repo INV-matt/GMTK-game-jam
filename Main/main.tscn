@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://b3ip2tsabj3dm"]
+[gd_scene load_steps=41 format=3 uid="uid://b3ip2tsabj3dm"]
 
 [ext_resource type="PackedScene" uid="uid://cnv1i1bs5daa0" path="res://Player/player.tscn" id="1_2w1kt"]
 [ext_resource type="Script" uid="uid://60ahfl7tx4bs" path="res://Main/GameManager.gd" id="1_rix8b"]
@@ -6,8 +6,8 @@
 [ext_resource type="Script" uid="uid://niau7oxw71ir" path="res://UI/HUD.gd" id="4_rix8b"]
 [ext_resource type="Theme" uid="uid://diigp8dh8nst4" path="res://UI/UI.tres" id="5_k3v36"]
 [ext_resource type="Texture2D" uid="uid://dvrpommi32nlv" path="res://UI/Assets/Life_Hud.png" id="6_liyct"]
-[ext_resource type="Texture2D" uid="uid://c61ayx76til5q" path="res://icon.svg" id="7_puekb"]
 [ext_resource type="PackedScene" uid="uid://5o18xxp7cefe" path="res://UI/power_select.tscn" id="8_0jx5h"]
+[ext_resource type="Texture2D" uid="uid://cxtbg85k158fn" path="res://Powers/Icons/superspeed.png" id="8_bq3qr"]
 [ext_resource type="Texture2D" uid="uid://r1xbyvsy2n6q" path="res://UI/Parallax/Sky_BG.png" id="8_f3gf5"]
 [ext_resource type="Texture2D" uid="uid://c6h2x1g6skha" path="res://UI/Powers_Hud.png" id="8_nf7xu"]
 [ext_resource type="Texture2D" uid="uid://dsjfhq3fg44o" path="res://UI/Assets/Life_Numbers-Sheet.png" id="8_rj11h"]
@@ -28,8 +28,11 @@
 [ext_resource type="Resource" uid="uid://dhajk4u4e0k06" path="res://Powers/Resources/pw_Attack.tres" id="21_xi84t"]
 [ext_resource type="PackedScene" uid="uid://4du7ooa26nhh" path="res://Levels/level_5.tscn" id="22_bq3qr"]
 [ext_resource type="PackedScene" uid="uid://qfgx15805wu1" path="res://Levels/level_6.tscn" id="23_7k2ad"]
+[ext_resource type="PackedScene" uid="uid://bk67whgxfiaq4" path="res://Levels/level_7.tscn" id="23_28m4a"]
+[ext_resource type="PackedScene" uid="uid://cg466nv1tj76e" path="res://Levels/level_8.tscn" id="24_28m4a"]
 [ext_resource type="Resource" uid="uid://1xxlw6viiic1" path="res://Powers/Resources/pw_Float.tres" id="24_qded6"]
 [ext_resource type="Resource" uid="uid://bsl42bpe7kjbt" path="res://Powers/Resources/pw_ChargeJump.tres" id="25_4uyae"]
+[ext_resource type="PackedScene" uid="uid://bjbs8vq5hq2r5" path="res://Levels/level_9.tscn" id="25_safcc"]
 [ext_resource type="Resource" uid="uid://dnme70i62ehr0" path="res://Powers/Resources/pw_GravityControl.tres" id="26_21byg"]
 [ext_resource type="Resource" uid="uid://vl0mf7dlwyat" path="res://Powers/Resources/pw_Lantern.tres" id="27_pcl83"]
 [ext_resource type="Resource" uid="uid://wryci5qd3a0w" path="res://Powers/Resources/pw_Mini.tres" id="28_2jdh1"]
@@ -124,25 +127,35 @@ stretch_mode = 4
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HUD/Box_Powers/Background"]
 custom_minimum_size = Vector2(96, 48)
-layout_mode = 0
-offset_left = 65.0
-offset_top = 40.0
-offset_right = 161.0
-offset_bottom = 102.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -68.0
+offset_top = -55.0
+offset_right = 68.0
+offset_bottom = 61.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = -8
 
 [node name="PassivePower" type="TextureRect" parent="HUD/Box_Powers/Background/HBoxContainer"]
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 7
 size_flags_vertical = 4
-texture = ExtResource("7_puekb")
+texture = ExtResource("8_bq3qr")
 expand_mode = 5
 stretch_mode = 4
 
 [node name="OnDeathPower" type="TextureRect" parent="HUD/Box_Powers/Background/HBoxContainer"]
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 7
 size_flags_vertical = 4
-texture = ExtResource("7_puekb")
+texture = ExtResource("8_bq3qr")
 expand_mode = 5
 stretch_mode = 4
 
@@ -152,8 +165,10 @@ script = ExtResource("8_uhr2j")
 powerSelect = NodePath("powerSelect")
 
 [node name="powerSelect" parent="PowerSelect" instance=ExtResource("8_0jx5h")]
+visible = false
 
 [node name="parallaxBG" type="ParallaxBackground" parent="."]
+visible = false
 scale = Vector2(2.5, 2.5)
 transform = Transform2D(2.5, 0, 0, 2.5, 0, 0)
 scroll_ignore_camera_zoom = true
@@ -223,7 +238,7 @@ expand_mode = 1
 stretch_mode = 1
 
 [node name="LevelManager" parent="." instance=ExtResource("12_f3gf5")]
-levels = Array[PackedScene]([ExtResource("18_2jdh1"), ExtResource("19_bq3qr"), ExtResource("20_7k2ad"), ExtResource("21_28m4a"), ExtResource("22_bq3qr"), ExtResource("23_7k2ad")])
+levels = Array[PackedScene]([ExtResource("18_2jdh1"), ExtResource("19_bq3qr"), ExtResource("20_7k2ad"), ExtResource("21_28m4a"), ExtResource("22_bq3qr"), ExtResource("23_7k2ad"), ExtResource("23_28m4a"), ExtResource("24_28m4a"), ExtResource("25_safcc")])
 
 [node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("HUD", "UI_PowerSelect")]
 unique_name_in_owner = true
@@ -239,5 +254,12 @@ PossiblePowersForLevel = Dictionary[int, PackedStringArray]({
 2: PackedStringArray("ALL"),
 3: PackedStringArray("ALL"),
 4: PackedStringArray("DoubleJump"),
-5: PackedStringArray("Dash")
+5: PackedStringArray("Dash"),
+6: PackedStringArray("Mini"),
+7: PackedStringArray("GravityControl"),
+8: PackedStringArray("Float"),
+9: PackedStringArray(),
+10: PackedStringArray(),
+11: PackedStringArray(),
+12: PackedStringArray()
 })
