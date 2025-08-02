@@ -5,7 +5,7 @@ func _power_passive(p: Player) -> void:
 
 var lanternScene = preload("res://Powers/Lantern Power/dropped_lantern.tscn")
 
-func _power_death(p: Player) :
+func _power_death(p: Player):
   var lantern: PointLight2D = lanternScene.instantiate()
   
   lantern.global_position = p.global_position

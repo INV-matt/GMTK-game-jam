@@ -131,7 +131,7 @@ func _handleHorizontalMovement(delta) -> void:
     else:
       _setAnimation("idle")
   
-  var target = _direction * Speed
+  var target = _direction * Speed * SuperSpeedMultiplier
   var dv = target - velocity.x
   var accelRate = Acceleration if abs(dv) > 0.1 else Deceleration
   var mov = pow(abs(dv) * accelRate, AccelerationPower) * sign(dv)
@@ -221,8 +221,11 @@ func ResetMaxJumps():
   MaxJumps = _baseMaxJumps
 
 # returns vector2(Speed, Accel)
-func SetSuperSpeedMultiplier(value: int) -> Vector2:
+# func SetSuperSpeedMultiplier(value: int) -> Vector2:
+#   SuperSpeedMultiplier = value
+#   Speed = _baseSpeed * SuperSpeedMultiplier
+#   Acceleration = _baseAccel * SuperSpeedMultiplier
+#   return Vector2(Speed, Acceleration)
+
+func SetSuperSpeedMultiplier(value: int) -> void:
   SuperSpeedMultiplier = value
-  Speed = _baseSpeed * SuperSpeedMultiplier
-  Acceleration = _baseAccel * SuperSpeedMultiplier
-  return Vector2(Speed, Acceleration)

@@ -25,6 +25,7 @@ func _loadLevel():
   for el in player.get_children():
     if "power" in el.get_groups():
       el.queue_free()
+
   
   var lvl = levels[currLevel].instantiate()
   
