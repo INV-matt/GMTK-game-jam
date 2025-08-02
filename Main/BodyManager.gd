@@ -49,6 +49,9 @@ func _onPlayerDeath():
   body.global_position.y += 10
   body.rotation_degrees = 90
   body.add_to_group("bodies")
+  # Added them to layer bodies
+  body.set_collision_layer_value(5, true)
+  body.set_collision_layer_value(1, false)
   
   #get_tree().get_root().add_child(body)
 
