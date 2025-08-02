@@ -87,8 +87,8 @@ func GenerateNew():
   # for i in toDisplay: print(i.name)
 
 func Populate():
-  var box_displayedPowers = $VBoxContainer/availablePowers
-  var box_selectedPowers = $VBoxContainer/selectedPowers
+  var box_displayedPowers = %availablePowers
+  var box_selectedPowers = %selectedPowers
 
   for el in box_displayedPowers.get_children(): el.queue_free()
 
