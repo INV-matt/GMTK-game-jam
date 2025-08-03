@@ -32,6 +32,8 @@ func _ready() -> void:
 
 # Could be done better
 func _process(_delta) -> void:
+  $TutorialText.visible = Globals._currentLevel == 4
+  
   btn_proceed.disabled = !(slotsOccupied[0] && slotsOccupied[1])
 
 
