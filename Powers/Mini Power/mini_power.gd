@@ -4,7 +4,7 @@ var player: Player
 
 func _power_passive(p: Player):
   # p.scale /= 2
-  p.SetScaleMultiplier(.5)
+  Globals.getPlayer().SetScaleMultiplier(.5)
   player = p
 
 func _exit_tree() -> void:

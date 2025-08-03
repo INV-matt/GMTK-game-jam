@@ -134,7 +134,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="onDeathActive" type="TextureButton" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/selectedPowers"]
-visible = false
 custom_minimum_size = Vector2(192, 192)
 layout_mode = 2
 stretch_mode = 4

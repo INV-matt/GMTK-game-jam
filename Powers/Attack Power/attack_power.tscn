@@ -6,6 +6,7 @@
 
 [node name="attack_power" type="Node2D" groups=["power"]]
 script = ExtResource("1_8i07b")
+AtkDamage = 30
 PowerName = "Attack Power"
 
 [node name="RandomizedPlayer" parent="." instance=ExtResource("2_pvts4")]
