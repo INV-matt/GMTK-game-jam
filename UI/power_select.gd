@@ -26,18 +26,25 @@ func _ready() -> void:
 
   label_Tooltip.text = ""
 
+  slotsBtn[0] = BlankWrapper.texture
+  slotsBtn[1] = BlankWrapper.texture
+
   GenerateNew()
   #Populate()
 
 
 # Could be done better
 func _process(_delta) -> void:
-  btn_proceed.disabled = !(slotsOccupied[0] && slotsOccupied[1])
+  if GM.CanShowOnDeathPowers():
+    btn_proceed.disabled = !(slotsOccupied[0] && slotsOccupied[1])
+  else: btn_proceed.disabled = !slotsOccupied[0]
 
 
 func _selectPower(idx: int):
   var wrapper = toDisplay[idx]
-  for i in range(len(slotsOccupied)):
+  var length = 2 if GM.CanShowOnDeathPowers() else 1
+
+  for i in range(length):
     if !slotsOccupied[i]:
       slotsOccupied[i] = true
       var btn_slot = slotsBtn[i]
@@ -70,20 +77,24 @@ func _unselectPower(idx: int):
   
 
 func _on_select_powers_pressed() -> void:
-  for b in slotsOccupied:
-    if !b:
-      print("Slot empty")
-      return
+  # for b in slotsOccupied:
+  #   if !b:
+  #     print("Slot empty")
+  #     return
 
   var powerPassive: Power = chosenUpgrades[0].instantiate()
-  var powerOnDeath: Power = chosenUpgrades[1].instantiate()
-
   powerPassive.OnDeathEnabled = false # Disable ondeath effect
-  powerOnDeath.PassiveEnabled = false # Disable passive effect
   GM.ChosenPowers[0] = chosenPowerWrappers[0]
-  GM.ChosenPowers[1] = chosenPowerWrappers[1]
+  
+  if !GM.CanShowOnDeathPowers():
+    GM.SetPassive(powerPassive)
+    return
 
+  var powerOnDeath: Power = chosenUpgrades[1].instantiate()
+  powerOnDeath.PassiveEnabled = false # Disable passive effect
+  GM.ChosenPowers[1] = chosenPowerWrappers[1]
   GM.SetPowers(powerPassive, powerOnDeath)
+
 
 func GenerateNew():
   toDisplay.clear()
@@ -112,7 +123,8 @@ func Populate():
 
 
   # Connect selected powers' buttons
-  for i in range(len(btn_arr_selected)):
+  var length = 2 if GM.CanShowOnDeathPowers() else 1
+  for i in range(length):
     if btn_arr_selected[i] is TextureButton:
       var btn: TextureButton = btn_arr_selected[i]
       btn.pressed.connect(_unselectPower.bind(i))
@@ -122,5 +134,6 @@ func Populate():
       slotsOccupied[i] = false
       slotsBtn[i] = btn
   
-  (slotsBtn[0].get_child(0) as RichTextLabel).text = "[center]Active ability: None[/center]"
-  (slotsBtn[1].get_child(0) as RichTextLabel).text = "[center]On death ability: None[/center]"
+  #(slotsBtn[0].get_child(0) as RichTextLabel).text = "[center]Active ability: None[/center]"
+  #(slotsBtn[1].get_child(0) as RichTextLabel).text = "[center]On death ability: None[/center]"
+  #slotsBtn[1].visible = GM.CanShowOnDeathPowers()

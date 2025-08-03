@@ -5,6 +5,7 @@ class_name GameManager
 @export var UI_PowerSelect: PowerSelectUI
 
 @export var MinimumPowersLevel: int
+@export var MinimumOnDeathPowersLevel: int
 
 @export var PowersList: Array[PowerWrapper]
 var ChosenPowers: Array[PowerWrapper]
@@ -43,6 +44,21 @@ func _handlePowerMenuOpening() -> void:
 
   SignalBus.open_power_select.emit()
 
+func SetPassive(passive: Power) -> void:
+  PassivePower = passive
+  OnDeathPower = null
+  SignalBus.hide_power_select.emit()
+
+  # Remove previous powers from player
+  for i in PL.get_children():
+    if i is Power and "power" in i.get_groups():
+      i.free()
+      
+  #Apply to player
+  PL.add_child(PassivePower)
+  PL._apply_powers_passive()
+  HUD.UpdatePowers()
+
 func SetPowers(passive: Power, onDeath: Power) -> void:
   PassivePower = passive
   OnDeathPower = onDeath
@@ -54,7 +70,6 @@ func SetPowers(passive: Power, onDeath: Power) -> void:
       i.free()
 
   #Apply to player
-  
   PL.add_child(PassivePower)
   PL.add_child(OnDeathPower)
   PL._apply_powers_passive()
@@ -80,6 +95,9 @@ func ChoosePowersToDisplay() -> Array[PowerWrapper]:
 # Decides if the hud can show powers (it's better to hide it in the first 3 levels)
 func CanShowPowers() -> bool:
   return Globals.getCurrentLevel() >= MinimumPowersLevel
+
+func CanShowOnDeathPowers() -> bool:
+  return Globals.getCurrentLevel() >= MinimumOnDeathPowersLevel
 
 #! DEBUG
 func _input(event: InputEvent) -> void:
