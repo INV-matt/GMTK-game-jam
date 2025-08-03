@@ -48,8 +48,6 @@ func _selectPower(idx: int):
       chosenUpgrades[i] = wrapper.power
       chosenPowerWrappers[i] = wrapper
 
-      label_Tooltip.text = wrapper.tooltip
-
       if i == 0:
         (btn_slot.get_child(0) as RichTextLabel).text = "[center]Active ability: " + wrapper.name + "[/center]"
       else:
@@ -111,6 +109,9 @@ func Populate():
     btn.texture_normal = toDisplay[i].texture
     (btn.get_child(0) as RichTextLabel).text = "[center]" + toDisplay[i].name + "[/center]"
     btn.pressed.connect(_selectPower.bind(i))
+    btn.mouse_entered.connect(func():
+      label_Tooltip.text = toDisplay[i].tooltip
+    )
 
 
   # Connect selected powers' buttons
