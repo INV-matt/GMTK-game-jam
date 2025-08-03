@@ -7,7 +7,7 @@ func _on_start_pressed() -> void:
   Globals._ready() # Reload globals, eg. player
 
 func _on_level_select_pressed() -> void:
-  get_tree().change_scene_to_file("res://UI/Main Menu/level_select.tscn")
+  get_tree().change_scene_to_file("res://UI/Main Menu/record_view.tscn")
 
 func _on_quit_pressed() -> void:
   get_tree().quit()

@@ -5,7 +5,7 @@ var _main: Node2D
 var _currentLevel: int
 var _gameManager: GameManager
 
-var ScenesWhereToNotLoad: Array[String] = ["res://UI/Main Menu/main_menu.tscn", "res://UI/Main Menu/level_select.tscn", "res://UI/Intro Cutscene/intro_cutscene.tscn"]
+var ScenesWhereToNotLoad: Array[String] = ["res://UI/Main Menu/main_menu.tscn", "res://UI/Main Menu/level_select.tscn", "res://UI/Intro Cutscene/intro_cutscene.tscn", "res://UI/Main Menu/record_view.tscn"]
 
 func _ready() -> void:
   # Disable if in main menu

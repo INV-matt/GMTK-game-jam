@@ -96,10 +96,10 @@ layout_mode = 2
 texture_normal = SubResource("AtlasTexture_k0v0h")
 texture_hover = SubResource("AtlasTexture_ajqx1")
 
-[node name="level_select" type="Button" parent="buttons"]
-visible = false
+[node name="records" type="Button" parent="buttons"]
 layout_mode = 2
-text = "Level Select"
+text = "View Records
+"
 
 [node name="quit" type="TextureButton" parent="buttons"]
 layout_mode = 2
@@ -121,5 +121,5 @@ libraries = {
 autoplay = "wobble"
 
 [connection signal="pressed" from="buttons/start" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="buttons/level_select" to="." method="_on_level_select_pressed"]
+[connection signal="pressed" from="buttons/records" to="." method="_on_level_select_pressed"]
 [connection signal="pressed" from="buttons/quit" to="." method="_on_quit_pressed"]

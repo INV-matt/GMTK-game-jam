@@ -1,0 +1,71 @@
+[gd_scene load_steps=7 format=3 uid="uid://m544ur4j38gl"]
+
+[ext_resource type="Theme" uid="uid://diigp8dh8nst4" path="res://UI/UI.tres" id="1_s8dub"]
+[ext_resource type="Script" uid="uid://0kcc42u2wsx5" path="res://UI/Main Menu/record_view.gd" id="2_k280w"]
+[ext_resource type="Texture2D" uid="uid://c5od5m4ix6lhd" path="res://UI/Main Menu/Main_Menu_Scene.png" id="3_4iteg"]
+[ext_resource type="Texture2D" uid="uid://dbq45floeioji" path="res://UI/End Screen/Return_Button-Sheet.png" id="3_k280w"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4iteg"]
+atlas = ExtResource("3_k280w")
+region = Rect2(0, 0, 112, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v1r77"]
+atlas = ExtResource("3_k280w")
+region = Rect2(112, 0, 112, 32)
+
+[node name="record_view" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_s8dub")
+script = ExtResource("2_k280w")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+z_index = -2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_4iteg")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_s8dub")
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="GridContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("1_s8dub")
+columns = 5
+
+[node name="TextureButton" type="TextureButton" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+texture_normal = SubResource("AtlasTexture_4iteg")
+texture_hover = SubResource("AtlasTexture_v1r77")
+
+[node name="Label" type="Label" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = ExtResource("1_s8dub")
+theme_override_font_sizes/font_size = 43
+text = "Level Records"
+
+[connection signal="pressed" from="MarginContainer/TextureButton" to="." method="_on_texture_button_pressed"]

@@ -187,7 +187,7 @@ func _handleJump() -> void:
 
 func _jump() -> void:
   _jumpCount += 1
-  velocity.y = -_jumpVelocity
+  velocity.y = -_jumpVelocity * GlobalGravityDir
 #endregion
 
 #region SCOUT
