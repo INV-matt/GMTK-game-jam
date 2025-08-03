@@ -65,22 +65,23 @@ theme = ExtResource("1_0sgcx")
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_51ka4")
 
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer"]
+[node name="margin_grid" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 32
 theme_override_constants/margin_right = 32
 theme_override_constants/margin_bottom = 16
 
-[node name="availablePowers" type="GridContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer"]
+[node name="availablePowers" type="GridContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/margin_grid"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
+size_flags_vertical = 4
 theme = ExtResource("1_0sgcx")
-theme_override_constants/h_separation = 32
 columns = 2
 
-[node name="btn_power" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/availablePowers" instance=ExtResource("4_0sgcx")]
+[node name="btn_power" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/margin_grid/availablePowers" instance=ExtResource("4_0sgcx")]
 layout_mode = 2
 theme = ExtResource("1_0sgcx")
 
@@ -180,7 +181,7 @@ theme_override_constants/margin_bottom = 16
 layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("1_0sgcx")
-theme_override_font_sizes/normal_font_size = 64
+theme_override_font_sizes/normal_font_size = 32
 text = "Lorem ipsum dolor sit amet "
 horizontal_alignment = 1
 vertical_alignment = 1

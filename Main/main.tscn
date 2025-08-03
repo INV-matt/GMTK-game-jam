@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://b3ip2tsabj3dm"]
+[gd_scene load_steps=43 format=3 uid="uid://b3ip2tsabj3dm"]
 
 [ext_resource type="PackedScene" uid="uid://cnv1i1bs5daa0" path="res://Player/player.tscn" id="1_2w1kt"]
 [ext_resource type="Script" uid="uid://60ahfl7tx4bs" path="res://Main/GameManager.gd" id="1_rix8b"]
@@ -6,12 +6,13 @@
 [ext_resource type="Script" uid="uid://niau7oxw71ir" path="res://UI/HUD.gd" id="4_rix8b"]
 [ext_resource type="Theme" uid="uid://diigp8dh8nst4" path="res://UI/UI.tres" id="5_k3v36"]
 [ext_resource type="Texture2D" uid="uid://dvrpommi32nlv" path="res://UI/Assets/Life_Hud.png" id="6_liyct"]
-[ext_resource type="Texture2D" uid="uid://c61ayx76til5q" path="res://icon.svg" id="7_puekb"]
 [ext_resource type="PackedScene" uid="uid://5o18xxp7cefe" path="res://UI/power_select.tscn" id="8_0jx5h"]
+[ext_resource type="Texture2D" uid="uid://cxtbg85k158fn" path="res://Powers/Icons/superspeed.png" id="8_bm08s"]
 [ext_resource type="Texture2D" uid="uid://r1xbyvsy2n6q" path="res://UI/Parallax/Sky_BG.png" id="8_f3gf5"]
 [ext_resource type="Texture2D" uid="uid://c6h2x1g6skha" path="res://UI/Powers_Hud.png" id="8_nf7xu"]
 [ext_resource type="Texture2D" uid="uid://dsjfhq3fg44o" path="res://UI/Assets/Life_Numbers-Sheet.png" id="8_rj11h"]
 [ext_resource type="Script" uid="uid://cnd2baij5a45g" path="res://UI/PowerSelectUI.gd" id="8_uhr2j"]
+[ext_resource type="Texture2D" uid="uid://c37nis0k32wvl" path="res://Powers/Icons/chargejump.png" id="9_8dfe0"]
 [ext_resource type="Texture2D" uid="uid://b04eryfan18sc" path="res://UI/Parallax/Mountains_BG.png" id="9_rix8b"]
 [ext_resource type="Texture2D" uid="uid://5brpqwx2eose" path="res://UI/Parallax/Pine_Back_BG.png" id="10_0jx5h"]
 [ext_resource type="Texture2D" uid="uid://dmyh3joob8tmy" path="res://UI/Parallax/Pine_Front_BG.png" id="11_uhr2j"]
@@ -127,27 +128,35 @@ expand_mode = 5
 stretch_mode = 4
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HUD/Box_Powers/Background"]
-custom_minimum_size = Vector2(96, 48)
-layout_mode = 0
-offset_left = 65.0
-offset_top = 40.0
-offset_right = 161.0
-offset_bottom = 102.0
+custom_minimum_size = Vector2(128, 64)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -66.0
+offset_top = -80.0
+offset_right = 66.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
 
 [node name="PassivePower" type="TextureRect" parent="HUD/Box_Powers/Background/HBoxContainer"]
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
-size_flags_horizontal = 7
+size_flags_horizontal = 6
 size_flags_vertical = 4
-texture = ExtResource("7_puekb")
-expand_mode = 5
+texture = ExtResource("8_bm08s")
 stretch_mode = 4
 
 [node name="OnDeathPower" type="TextureRect" parent="HUD/Box_Powers/Background/HBoxContainer"]
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
-size_flags_horizontal = 7
+size_flags_horizontal = 6
 size_flags_vertical = 4
-texture = ExtResource("7_puekb")
-expand_mode = 5
+texture = ExtResource("9_8dfe0")
 stretch_mode = 4
 
 [node name="PowerSelect" type="CanvasLayer" parent="." node_paths=PackedStringArray("powerSelect")]
@@ -156,6 +165,7 @@ script = ExtResource("8_uhr2j")
 powerSelect = NodePath("powerSelect")
 
 [node name="powerSelect" parent="PowerSelect" instance=ExtResource("8_0jx5h")]
+visible = false
 
 [node name="parallaxBG" type="ParallaxBackground" parent="."]
 scale = Vector2(2.5, 2.5)

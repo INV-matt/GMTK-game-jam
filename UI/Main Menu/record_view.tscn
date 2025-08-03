@@ -46,11 +46,13 @@ theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="VBoxContainer" type="GridContainer" parent="MarginContainer"]
+[node name="Grid" type="GridContainer" parent="MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme = ExtResource("1_s8dub")
+theme_override_constants/h_separation = 100
+theme_override_constants/v_separation = 100
 columns = 5
 
 [node name="TextureButton" type="TextureButton" parent="MarginContainer"]

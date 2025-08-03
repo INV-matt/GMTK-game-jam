@@ -16,8 +16,8 @@ offset_right = 144.0
 offset_bottom = 144.0
 grow_horizontal = 2
 grow_vertical = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
+size_flags_horizontal = 4
+size_flags_vertical = 4
 texture_normal = ExtResource("1_edcdc")
 stretch_mode = 4
 
