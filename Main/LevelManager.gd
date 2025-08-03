@@ -13,6 +13,8 @@ var GM: GameManager
 
 var LevelScores: Dictionary = {}
 
+var currentEnemyPoisitions: Array[Vector2] = []
+
 func loadSaveFile():
   var save_file = FileAccess.open("user://savegame.save", FileAccess.READ)
   var json_string = save_file.get_line()
@@ -60,6 +62,11 @@ func _nextLevel():
 func _loadLevel():
   if currLevel >= len(levels):
     return
+    
+  currentEnemyPoisitions = []
+  
+  for i in get_tree().get_nodes_in_group("enemy") :
+    currentEnemyPoisitions.append(i.global_position)
     
   player.position = Vector2.ZERO
   player.velocity = Vector2.ZERO
