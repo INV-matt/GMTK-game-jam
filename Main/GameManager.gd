@@ -120,7 +120,8 @@ func resetLevel() :
   
   LM._loadLevel()
   
-  SignalBus.open_power_select.emit()
+  if CanShowPowers() :
+    SignalBus.open_power_select.emit()
 
 #! DEBUG
 func _input(event: InputEvent) -> void:
