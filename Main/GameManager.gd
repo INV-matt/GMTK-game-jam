@@ -106,6 +106,23 @@ func CanShowPowers() -> bool:
 func CanShowOnDeathPowers() -> bool:
   return Globals.getCurrentLevel() >= MinimumOnDeathPowersLevel
 
+func resetLevel() :
+  # Kill player
+  var pl = Globals._player
+  for i in pl.get_children() :
+    if i is HealthComponent :
+      (i as HealthComponent).doDamage(i.health)
+      
+  resetLivesUsed()
+
+  for i in get_tree().get_nodes_in_group("ondeatheffect") :
+    i.queue_free()
+
+  for i in get_tree().get_nodes_in_group("bodies") :
+    i.queue_free()
+
 #! DEBUG
 func _input(event: InputEvent) -> void:
   if event is InputEventKey && event.keycode == KEY_P: SignalBus.open_power_select.emit()
+  if event is InputEventKey && event.keycode == KEY_R :
+    resetLevel()
