@@ -117,7 +117,6 @@ layout_mode = 2
 stretch_mode = 4
 
 [node name="powerName" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/selectedPowers/passiveActive"]
-visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -0.416667
@@ -139,7 +138,6 @@ layout_mode = 2
 stretch_mode = 4
 
 [node name="powerName" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/selectedPowers/onDeathActive"]
-visible = false
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -195,7 +193,7 @@ offset_bottom = 624.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_0sgcx")
-theme_override_font_sizes/normal_font_size = 15
+theme_override_font_sizes/normal_font_size = 25
 text = "Click on powers here to select them
 ←"
 
