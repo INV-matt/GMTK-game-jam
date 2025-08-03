@@ -34,10 +34,10 @@ func _on_texture_button_pressed() -> void:
 
 
 func _process(_delta: float) -> void:
-  var newSize = DisplayServer.window_get_size() - Vector2i(40, 40)
+  var newSize = (DisplayServer.window_get_size() - Vector2i(40, 40))
   var cols: int = container.columns
-  var rows: int = int(container.get_child_count() / cols)
-  var h_sep = (newSize.x / (cols)) - content_size.x
-  var v_sep = (newSize.y / (rows)) - content_size.y
+  var rows: int = int(container.get_child_count() / cols) + 1
+  var h_sep = (newSize.x / (cols) + 1) - content_size.x
+  var v_sep = (newSize.y / (rows) + 1) - content_size.y
   container.add_theme_constant_override("h_separation", h_sep)
-  container.add_theme_constant_override("h_separation", v_sep)
+  container.add_theme_constant_override("v_separation", v_sep)
