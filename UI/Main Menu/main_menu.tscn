@@ -22,6 +22,21 @@ region = Rect2(0, 88, 256, 72)
 atlas = ExtResource("4_vq10u")
 region = Rect2(248, 88, 264, 72)
 
+[sub_resource type="Animation" id="Animation_ajqx1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(48, 40)]
+}
+
 [sub_resource type="Animation" id="Animation_k0v0h"]
 resource_name = "wobble"
 length = 5.0
@@ -37,21 +52,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(48, 20), Vector2(48, 60)]
-}
-
-[sub_resource type="Animation" id="Animation_ajqx1"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("TextureRect2:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(48, 40)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7i25j"]
