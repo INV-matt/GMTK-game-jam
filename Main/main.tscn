@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://b3ip2tsabj3dm"]
+[gd_scene load_steps=41 format=3 uid="uid://b3ip2tsabj3dm"]
 
 [ext_resource type="PackedScene" uid="uid://cnv1i1bs5daa0" path="res://Player/player.tscn" id="1_2w1kt"]
 [ext_resource type="Script" uid="uid://60ahfl7tx4bs" path="res://Main/GameManager.gd" id="1_rix8b"]
@@ -34,7 +34,6 @@
 [ext_resource type="Resource" uid="uid://bsl42bpe7kjbt" path="res://Powers/Resources/pw_ChargeJump.tres" id="25_4uyae"]
 [ext_resource type="PackedScene" uid="uid://bjbs8vq5hq2r5" path="res://Levels/level_9.tscn" id="25_gbm1g"]
 [ext_resource type="Resource" uid="uid://dnme70i62ehr0" path="res://Powers/Resources/pw_GravityControl.tres" id="26_21byg"]
-[ext_resource type="PackedScene" uid="uid://cb25nmwbs0wlc" path="res://Levels/level_10.tscn" id="26_nigqn"]
 [ext_resource type="Resource" uid="uid://vl0mf7dlwyat" path="res://Powers/Resources/pw_Lantern.tres" id="27_pcl83"]
 [ext_resource type="Resource" uid="uid://wryci5qd3a0w" path="res://Powers/Resources/pw_Mini.tres" id="28_2jdh1"]
 [ext_resource type="Resource" uid="uid://ds13mjdq0dhwn" path="res://Powers/Resources/pw_SuperSpeed.tres" id="29_bq3qr"]
@@ -228,7 +227,7 @@ stretch_mode = 1
 
 [node name="LevelManager" parent="." instance=ExtResource("12_f3gf5")]
 unique_name_in_owner = true
-levels = Array[PackedScene]([ExtResource("18_2jdh1"), ExtResource("19_bq3qr"), ExtResource("20_7k2ad"), ExtResource("21_28m4a"), ExtResource("22_bq3qr"), ExtResource("23_7k2ad"), ExtResource("23_28m4a"), ExtResource("24_28m4a"), ExtResource("25_safcc"), ExtResource("26_nigqn")])
+levels = Array[PackedScene]([ExtResource("18_2jdh1"), ExtResource("19_bq3qr"), ExtResource("20_7k2ad"), ExtResource("21_28m4a"), ExtResource("22_bq3qr"), ExtResource("23_7k2ad"), ExtResource("23_bm08s"), ExtResource("24_8dfe0"), ExtResource("25_gbm1g")])
 
 [node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("HUD", "UI_PowerSelect")]
 unique_name_in_owner = true
@@ -237,7 +236,6 @@ script = ExtResource("1_rix8b")
 HUD = NodePath("../HUD")
 UI_PowerSelect = NodePath("../PowerSelect")
 MinimumPowersLevel = 4
-MinimumOnDeathPowersLevel = 9
 PowersList = Array[ExtResource("16_wbdht")]([ExtResource("17_puekb"), ExtResource("18_xi84t"), ExtResource("19_j4inf"), ExtResource("21_xi84t"), ExtResource("24_qded6"), ExtResource("25_4uyae"), ExtResource("26_21byg"), ExtResource("27_pcl83"), ExtResource("28_2jdh1"), ExtResource("29_bq3qr")])
 PossiblePowersForLevel = Dictionary[int, PackedStringArray]({
 0: PackedStringArray("ALL"),
@@ -248,10 +246,5 @@ PossiblePowersForLevel = Dictionary[int, PackedStringArray]({
 5: PackedStringArray("Dash"),
 6: PackedStringArray("Mini"),
 7: PackedStringArray("GravityControl"),
-8: PackedStringArray("Float"),
-9: PackedStringArray("Climb"),
-10: PackedStringArray(),
-11: PackedStringArray(),
-12: PackedStringArray()
-
+8: PackedStringArray("Float")
 })

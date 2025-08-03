@@ -63,13 +63,6 @@ func _loadLevel():
     
   player.position = Vector2.ZERO
   player.velocity = Vector2.ZERO
-  player.GlobalGravityDir = 1
-
-  # Remove powerups when loading player
-  for el in player.get_children():
-    if "power" in el.get_groups():
-      el.queue_free()
-
   
   var lvl = levels[currLevel].instantiate()
   

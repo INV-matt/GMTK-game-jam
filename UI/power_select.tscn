@@ -1,23 +1,39 @@
-[gd_scene load_steps=10 format=3 uid="uid://5o18xxp7cefe"]
+[gd_scene load_steps=9 format=3 uid="uid://5o18xxp7cefe"]
 
 [ext_resource type="Theme" uid="uid://diigp8dh8nst4" path="res://UI/UI.tres" id="1_0sgcx"]
 [ext_resource type="Script" uid="uid://coqao33cnc1ek" path="res://UI/power_select.gd" id="1_qt35a"]
 [ext_resource type="PackedScene" uid="uid://cvkn3sj7itjql" path="res://UI/btn_power.tscn" id="4_0sgcx"]
-[ext_resource type="Texture2D" uid="uid://tnh36r841c3m" path="res://UI/Power_Hud.png" id="4_qt35a"]
-[ext_resource type="Texture2D" uid="uid://ciwkswtr8b8h6" path="res://UI/Text_Huds-Sheet.png" id="5_qt35a"]
+[ext_resource type="Texture2D" uid="uid://c37nis0k32wvl" path="res://Powers/Icons/chargejump.png" id="4_qt35a"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_0sgcx"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qt35a"]
-bg_color = Color(0.0352941, 0.0352941, 0.0431373, 1)
+bg_color = Color(0.110342, 0.110342, 0.110342, 1)
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_51ka4"]
-texture = ExtResource("4_qt35a")
-region_rect = Rect2(0, 0, 192, 280.832)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0sgcx"]
+bg_color = Color(0.253956, 0.253956, 0.253956, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.901241, 0.901241, 0.901241, 1)
+border_blend = true
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_d5eav"]
-texture = ExtResource("5_qt35a")
-region_rect = Rect2(451.785, 0, 440.83, 112)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_51ka4"]
+bg_color = Color(0.254902, 0.254902, 0.254902, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_blend = true
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
 
 [node name="powerSelect" type="Control" node_paths=PackedStringArray("btn_proceed", "label_Tooltip")]
 layout_mode = 3
@@ -60,16 +76,9 @@ size_flags_vertical = 3
 
 [node name="PanelContainer" type="PanelContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_51ka4")
+theme_override_styles/panel = SubResource("StyleBoxFlat_0sgcx")
 
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer"]
-layout_mode = 2
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 32
-theme_override_constants/margin_right = 32
-theme_override_constants/margin_bottom = 16
-
-[node name="availablePowers" type="GridContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer"]
+[node name="availablePowers" type="GridContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
@@ -77,7 +86,7 @@ theme = ExtResource("1_0sgcx")
 theme_override_constants/h_separation = 32
 columns = 2
 
-[node name="btn_power" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/availablePowers" instance=ExtResource("4_0sgcx")]
+[node name="btn_power" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/availablePowers" instance=ExtResource("4_0sgcx")]
 layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
@@ -106,6 +115,7 @@ alignment = 1
 [node name="passiveActive" type="TextureButton" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/selectedPowers"]
 custom_minimum_size = Vector2(192, 192)
 layout_mode = 2
+texture_normal = ExtResource("4_qt35a")
 stretch_mode = 4
 
 [node name="powerName" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/selectedPowers/passiveActive"]
@@ -128,6 +138,7 @@ vertical_alignment = 1
 [node name="onDeathActive" type="TextureButton" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/selectedPowers"]
 custom_minimum_size = Vector2(192, 192)
 layout_mode = 2
+texture_normal = ExtResource("4_qt35a")
 stretch_mode = 4
 
 [node name="powerName" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/selectedPowers/onDeathActive"]
@@ -158,7 +169,7 @@ text = "Select Powers"
 [node name="Box_Tooltip" type="PanelContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_styles/panel = SubResource("StyleBoxTexture_d5eav")
+theme_override_styles/panel = SubResource("StyleBoxFlat_51ka4")
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Box_Tooltip"]
 layout_mode = 2
