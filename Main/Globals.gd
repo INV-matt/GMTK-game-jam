@@ -4,6 +4,7 @@ var _player: Player
 var _main: Node2D
 var _currentLevel: int
 var _gameManager: GameManager
+var _levelManager: LevelManager
 
 var ScenesWhereToNotLoad: Array[String] = ["res://UI/Main Menu/main_menu.tscn", "res://UI/Main Menu/level_select.tscn", "res://UI/Intro Cutscene/intro_cutscene.tscn", "res://UI/Main Menu/record_view.tscn"]
 
@@ -20,6 +21,7 @@ func _ready() -> void:
     _main = get_node("../power_testing") as Node2D
   
   _player = _main.get_node("%Player") as Player
+  _levelManager = _main.get_node("%LevelManager") as LevelManager
   _gameManager = _main.get_node("%GameManager") as GameManager
 
 func getPlayer() -> Player:
@@ -51,3 +53,9 @@ func getGameManager() -> GameManager:
     _ready()
     
   return _gameManager
+
+func getLevelManager() -> LevelManager:
+  if not _main:
+    _ready()
+    
+  return _levelManager

@@ -161,6 +161,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("1_0sgcx")
 theme_override_colors/font_hover_color = Color(0, 0.752941, 0, 1)
+theme_override_font_sizes/font_size = 32
 text = "Start Level "
 
 [node name="Box_Tooltip" type="PanelContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
@@ -195,7 +196,7 @@ offset_bottom = 624.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_0sgcx")
-theme_override_font_sizes/normal_font_size = 25
+theme_override_font_sizes/normal_font_size = 32
 text = "Click on powers here to select them
 ←"
 

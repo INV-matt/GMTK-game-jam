@@ -16,6 +16,7 @@ var PassivePower: Power
 var OnDeathPower: Power
 var PL: Player
 var _livesUsed = 0
+var LM: LevelManager
 
 func getLivesUsed() -> int: return _livesUsed
 func setLivesUsed(amt: int): _livesUsed = amt; HUD.UpdateLives()
@@ -26,7 +27,7 @@ func _ready() -> void:
   SignalBus.player_death.connect(_on_player_death)
   SignalBus.next_level.connect(_on_next_level)
   ChosenPowers.resize(2)
-
+  LM = Globals.getLevelManager()
 
 func _on_player_death() -> void:
   _handlePowerMenuOpening()
@@ -106,13 +107,9 @@ func CanShowPowers() -> bool:
 func CanShowOnDeathPowers() -> bool:
   return Globals.getCurrentLevel() >= MinimumOnDeathPowersLevel
 
+var enemyScene = preload("res://Enemies/Basic Enemy/basic_enemy.tscn")
+
 func resetLevel() :
-  # Kill player
-  var pl = Globals._player
-  for i in pl.get_children() :
-    if i is HealthComponent :
-      (i as HealthComponent).doDamage(i.health)
-      
   resetLivesUsed()
 
   for i in get_tree().get_nodes_in_group("ondeatheffect") :
@@ -120,9 +117,13 @@ func resetLevel() :
 
   for i in get_tree().get_nodes_in_group("bodies") :
     i.queue_free()
+  
+  LM._loadLevel()
+  
+  if CanShowPowers() :
+    SignalBus.open_power_select.emit()
 
 #! DEBUG
 func _input(event: InputEvent) -> void:
-  if event is InputEventKey && event.keycode == KEY_P: SignalBus.open_power_select.emit()
   if event is InputEventKey && event.keycode == KEY_R :
     resetLevel()
