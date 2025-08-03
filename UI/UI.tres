@@ -3,9 +3,11 @@
 [ext_resource type="FontFile" uid="uid://dqw7a87orxmqa" path="res://alagard.ttf" id="1_28aw6"]
 
 [resource]
+Button/fonts/font = ExtResource("1_28aw6")
 GridContainer/constants/h_separation = 200
 GridContainer/constants/v_separation = 200
 HBoxContainer/constants/separation = 80
+Label/fonts/font = ExtResource("1_28aw6")
 RichTextLabel/font_sizes/normal_font_size = 15
 RichTextLabel/fonts/normal_font = ExtResource("1_28aw6")
 VBoxContainer/constants/separation = 48
