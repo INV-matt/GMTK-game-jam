@@ -13,14 +13,14 @@ var GM: GameManager
 
 var LevelScores: Dictionary = {}
 
-func loadSaveFile() :
+func loadSaveFile():
   var save_file = FileAccess.open("user://savegame.save", FileAccess.READ)
   var json_string = save_file.get_line()
   
   var json = JSON.new()
   
   var parse_result = json.parse(json_string)
-  if parse_result != OK :
+  if parse_result != OK:
     print("Error loading savefile")
     return
   
@@ -29,7 +29,7 @@ func loadSaveFile() :
   print("Loaded savefile:")
   print(LevelScores)
 
-func saveScores() :
+func saveScores():
   var save_file = FileAccess.open("user://savegame.save", FileAccess.WRITE)
   var json_string = JSON.stringify(LevelScores)
   
@@ -44,10 +44,10 @@ func _nextLevel():
   
   var lvl = str(currLevel)
   
-  if lvl in LevelScores :
+  if lvl in LevelScores:
     LevelScores[lvl] = min(LevelScores[lvl], usedThisLevel)
-  else :
-    LevelScores[lvl] = usedThisLevel  
+  else:
+    LevelScores[lvl] = usedThisLevel
   
   saveScores()
   
@@ -63,6 +63,13 @@ func _loadLevel():
     
   player.position = Vector2.ZERO
   player.velocity = Vector2.ZERO
+  player.GlobalGravityDir = 1
+
+  # Remove powerups when loading player
+  for el in player.get_children():
+    if "power" in el.get_groups():
+      el.queue_free()
+
   
   var lvl = levels[currLevel].instantiate()
   
@@ -86,7 +93,7 @@ func _loadLevel():
   addTo.call_deferred("add_child", lvl)
 
 func _ready() -> void:
-  if !get_tree().current_scene or get_tree().current_scene.scene_file_path in Globals.ScenesWhereToNotLoad :
+  if !get_tree().current_scene or get_tree().current_scene.scene_file_path in Globals.ScenesWhereToNotLoad:
     return
   
   var root = get_tree().get_root()
@@ -100,9 +107,9 @@ func _ready() -> void:
   
   GM = Globals.getGameManager()
   
-  if !FileAccess.file_exists("user://savegame.save") :
+  if !FileAccess.file_exists("user://savegame.save"):
     print("No save file found")
-  else :
+  else:
     loadSaveFile()
   
   _loadLevel()
