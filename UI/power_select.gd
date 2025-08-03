@@ -151,8 +151,8 @@ func CalculateSep() -> void:
   var container: GridContainer = %availablePowers
   var newSize = margin_box.size - Vector2(40, 48)
   var cols: int = container.columns
-  var rows: int = int(container.get_child_count() / cols)
+  var rows: int = int(container.get_child_count() / cols) + 1
   var h_sep = (newSize.x / (cols)) - 96
   var v_sep = (newSize.y / (rows)) - 96
   container.add_theme_constant_override("h_separation", h_sep)
-  container.add_theme_constant_override("h_separation", v_sep)
+  container.add_theme_constant_override("v_separation", v_sep)
