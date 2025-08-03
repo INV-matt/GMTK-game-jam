@@ -9,4 +9,5 @@ script = ExtResource("2_lf0bu")
 name = "Attack"
 power = ExtResource("1_a2pxg")
 texture = ExtResource("3_a2pxg")
+tooltip = "When equipped press Z to attack. On death spawns spikes that deal damage to enemies"
 metadata/_custom_type_script = "uid://d7dn4j8wjask"

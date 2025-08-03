@@ -18,6 +18,7 @@ var damageArea = preload("res://Powers/Attack Power/damage_area.tscn")
 func _power_death(p: Player):
   var area: Area2D = damageArea.instantiate()
   area.global_position = p.global_position
+  area.position.y += 14
   
   get_tree().get_root().call_deferred("add_child", area)
 

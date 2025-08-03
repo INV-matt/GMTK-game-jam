@@ -175,4 +175,12 @@ text = "Lorem ipsum dolor sit amet "
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="TutorialText" type="RichTextLabel" parent="."]
+layout_mode = 2
+offset_left = 144.0
+offset_top = 24.0
+offset_right = 256.0
+offset_bottom = 624.0
+text = "Click on powers here to select them"
+
 [connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/selectPowers" to="." method="_on_select_powers_pressed"]

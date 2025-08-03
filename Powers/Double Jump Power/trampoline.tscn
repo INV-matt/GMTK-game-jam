@@ -1,9 +1,58 @@
-[gd_scene load_steps=3 format=3 uid="uid://bwmbxf5ac1ilk"]
+[gd_scene load_steps=10 format=3 uid="uid://bwmbxf5ac1ilk"]
 
 [ext_resource type="Script" uid="uid://bwaimesrko0nl" path="res://Powers/Double Jump Power/trampoline.gd" id="1_otv22"]
+[ext_resource type="Texture2D" uid="uid://3x6i6edgqe46" path="res://Powers/Double Jump Power/Death_Effect_Douple_Jump-Sheet.png" id="2_v1g65"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b5w1k"]
 size = Vector2(50, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gt6fd"]
+atlas = ExtResource("2_v1g65")
+region = Rect2(0, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2rxjy"]
+atlas = ExtResource("2_v1g65")
+region = Rect2(64, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r55p3"]
+atlas = ExtResource("2_v1g65")
+region = Rect2(0, 32, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q2lft"]
+atlas = ExtResource("2_v1g65")
+region = Rect2(64, 32, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_edfje"]
+atlas = ExtResource("2_v1g65")
+region = Rect2(0, 0, 64, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0xesl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gt6fd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2rxjy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r55p3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q2lft")
+}],
+"loop": false,
+"name": &"bounce",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_edfje")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="trampoline" type="Area2D"]
 collision_layer = 0
@@ -13,4 +62,9 @@ script = ExtResource("1_otv22")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_b5w1k")
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_0xesl")
+autoplay = "default"
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

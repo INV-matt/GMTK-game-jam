@@ -1,7 +1,64 @@
-[gd_scene load_steps=3 format=3 uid="uid://d1aceh5uo5bq"]
+[gd_scene load_steps=13 format=3 uid="uid://d1aceh5uo5bq"]
 
 [ext_resource type="Theme" uid="uid://diigp8dh8nst4" path="res://UI/UI.tres" id="1_3g31d"]
 [ext_resource type="Script" uid="uid://b88wg2sijqkng" path="res://UI/Main Menu/main_menu.gd" id="1_v04x6"]
+[ext_resource type="Texture2D" uid="uid://c5od5m4ix6lhd" path="res://UI/Main Menu/Main_Menu_Scene.png" id="2_mqkp3"]
+[ext_resource type="Texture2D" uid="uid://dmh5gpbpijiiv" path="res://UI/Main Menu/Main_Menu_Bottons-Sheet.png" id="4_vq10u"]
+[ext_resource type="Texture2D" uid="uid://ckhfis4vmvcr1" path="res://UI/Main Menu/Title.png" id="5_vq10u"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k0v0h"]
+atlas = ExtResource("4_vq10u")
+region = Rect2(0, 0, 248, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ajqx1"]
+atlas = ExtResource("4_vq10u")
+region = Rect2(248, 0, 264, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mqkp3"]
+atlas = ExtResource("4_vq10u")
+region = Rect2(0, 88, 256, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vq10u"]
+atlas = ExtResource("4_vq10u")
+region = Rect2(248, 88, 264, 72)
+
+[sub_resource type="Animation" id="Animation_ajqx1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(48, 40)]
+}
+
+[sub_resource type="Animation" id="Animation_k0v0h"]
+resource_name = "wobble"
+length = 5.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect2:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(48, 20), Vector2(48, 60)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7i25j"]
+_data = {
+&"RESET": SubResource("Animation_ajqx1"),
+&"wobble": SubResource("Animation_k0v0h")
+}
 
 [node name="main_menu" type="Control"]
 layout_mode = 3
@@ -12,31 +69,57 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_v04x6")
 
-[node name="buttons" type="VBoxContainer" parent="."]
+[node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
-anchors_preset = 13
-anchor_left = 0.5
-anchor_right = 0.5
+anchors_preset = 15
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -272.0
-offset_top = 280.0
-offset_right = 272.0
-offset_bottom = -104.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_3g31d")
-alignment = 2
+texture = ExtResource("2_mqkp3")
 
-[node name="start" type="Button" parent="buttons"]
+[node name="buttons" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -296.0
+offset_right = -40.0
+grow_horizontal = 0
+grow_vertical = 2
+theme = ExtResource("1_3g31d")
+alignment = 1
+
+[node name="start" type="TextureButton" parent="buttons"]
 layout_mode = 2
-text = "Start"
+texture_normal = SubResource("AtlasTexture_k0v0h")
+texture_hover = SubResource("AtlasTexture_ajqx1")
 
 [node name="level_select" type="Button" parent="buttons"]
+visible = false
 layout_mode = 2
 text = "Level Select"
 
-[node name="quit" type="Button" parent="buttons"]
+[node name="quit" type="TextureButton" parent="buttons"]
 layout_mode = 2
-text = "Quit"
+texture_normal = SubResource("AtlasTexture_mqkp3")
+texture_hover = SubResource("AtlasTexture_vq10u")
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+layout_mode = 1
+offset_left = 48.0
+offset_top = 20.0
+offset_right = 688.0
+offset_bottom = 212.0
+texture = ExtResource("5_vq10u")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_7i25j")
+}
+autoplay = "wobble"
 
 [connection signal="pressed" from="buttons/start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="buttons/level_select" to="." method="_on_level_select_pressed"]
+[connection signal="pressed" from="buttons/quit" to="." method="_on_quit_pressed"]

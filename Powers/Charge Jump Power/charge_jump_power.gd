@@ -36,8 +36,8 @@ func _process(delta: float) -> void:
 
 func _exit_tree() -> void:
   var pl = Globals.getPlayer()
-  pl.getPlayer().SetScaleMultiplier(1)
-  pl.getPlayer()._jumpVelocity = originalvelocity
+  pl.SetScaleMultiplier(1)
+  pl._jumpVelocity = originalvelocity
 
 
 var jumpZoneScene = preload("res://Powers/Charge Jump Power/jump_power_area.tscn")

@@ -13,6 +13,8 @@ var player: Player
 func _on_body_entered(body: Player) -> void:
   if !canGrab:
     return
+    
+  visible = false
   
   body.SetScaleMultiplier(.5)
   player = body

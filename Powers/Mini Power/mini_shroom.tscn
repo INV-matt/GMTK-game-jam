@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://bc4ks0b520sf2"]
+[gd_scene load_steps=4 format=3 uid="uid://bc4ks0b520sf2"]
 
 [ext_resource type="Script" uid="uid://7t5xs3156plg" path="res://Powers/Mini Power/mini_shroom.gd" id="1_xmexi"]
+[ext_resource type="Texture2D" uid="uid://c8t77yeo3plnf" path="res://Powers/Mini Power/Mini_Death_Effect.png" id="2_dljp4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dljp4"]
 
@@ -15,6 +16,10 @@ shape = SubResource("RectangleShape2D_dljp4")
 [node name="Timer" type="Timer" parent="."]
 wait_time = 20.0
 one_shot = true
+
+[node name="MiniDeathEffect" type="Sprite2D" parent="."]
+position = Vector2(0, -4)
+texture = ExtResource("2_dljp4")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

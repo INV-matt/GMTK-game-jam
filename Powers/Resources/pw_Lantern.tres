@@ -9,4 +9,5 @@ script = ExtResource("2_kaws0")
 name = "Lantern"
 power = ExtResource("1_rlfip")
 texture = ExtResource("3_7tcot")
+tooltip = "When equipped lights up the area around you. On death spawns a lanter that can be picked up"
 metadata/_custom_type_script = "uid://d7dn4j8wjask"

@@ -9,4 +9,5 @@ script = ExtResource("2_budyn")
 name = "Dash"
 power = ExtResource("1_bj1li")
 texture = ExtResource("3_bj1li")
+tooltip = "When equipped press Z to dash. On death spawn a pepper that, when picked up, makes you faster for a bit"
 metadata/_custom_type_script = "uid://d7dn4j8wjask"

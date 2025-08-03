@@ -22,6 +22,11 @@ func _process(delta: float) -> void:
   var dx = Input.get_axis("pl_left", "pl_right")
   var dy = Input.get_axis("pl_up", "pl_down")
   
+  if dx > 0 :
+    $SurfBoardPlatform.flip_h = true
+  elif dx < 0 :
+    $SurfBoardPlatform.flip_h = false
+  
   var dir = Vector2(dx, dy).normalized() * player.Speed
   
   velocity = dir

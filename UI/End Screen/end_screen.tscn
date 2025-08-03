@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=3 uid="uid://cou7btocpt00s"]
+
+[ext_resource type="Texture2D" uid="uid://wrm8gq5qngeo" path="res://UI/End Screen/Thank_you_for_playing_Scene.png" id="1_nuwqm"]
+[ext_resource type="Script" uid="uid://n5quubu2ek85" path="res://UI/End Screen/end_screen.gd" id="1_s8crm"]
+[ext_resource type="Texture2D" uid="uid://dbq45floeioji" path="res://UI/End Screen/Return_Button-Sheet.png" id="3_qamop"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sf05b"]
+atlas = ExtResource("3_qamop")
+region = Rect2(0, 0, 112, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lxcvw"]
+atlas = ExtResource("3_qamop")
+region = Rect2(112, 0, 112, 32)
+
+[node name="end_screen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_s8crm")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_nuwqm")
+
+[node name="TextureButton" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 40.0
+offset_top = -112.0
+offset_right = 200.0
+offset_bottom = -80.0
+grow_vertical = 0
+scale = Vector2(2, 2)
+texture_normal = SubResource("AtlasTexture_sf05b")
+texture_hover = SubResource("AtlasTexture_lxcvw")
+
+[connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]

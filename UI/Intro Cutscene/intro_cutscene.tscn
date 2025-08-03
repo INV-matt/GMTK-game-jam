@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://yudk03obnltg"]
+
+[ext_resource type="VideoStream" uid="uid://hiwuj7jnik48" path="res://UI/The_Temple_Loops_Boot_up.ogv" id="1_8av87"]
+[ext_resource type="Script" uid="uid://bwkcae5wk2ehm" path="res://UI/Intro Cutscene/intro_cutscene.gd" id="1_w7tsp"]
+
+[node name="intro_cutscene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_w7tsp")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stream = ExtResource("1_8av87")
+volume_db = -80.0
+autoplay = true
+
+[connection signal="finished" from="VideoStreamPlayer" to="." method="_on_video_stream_player_finished"]

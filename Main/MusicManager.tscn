@@ -71,7 +71,7 @@ _data = {
 script = ExtResource("1_bto22")
 tracks = Array[AudioStreamOggVorbis]([ExtResource("2_121o8"), ExtResource("3_wx16t"), ExtResource("4_aiqq3"), ExtResource("5_p587h")])
 tracknames = Array[String](["gameover", "levelcomplete", "maingame", "mainmenu"])
-startingTrack = "maingame"
+startingTrack = "mainmenu"
 
 [node name="Stream1" type="AudioStreamPlayer" parent="."]
 

@@ -9,4 +9,5 @@ script = ExtResource("1_8jdla")
 name = "GravityControl"
 power = ExtResource("1_vrx74")
 texture = ExtResource("2_vrx74")
+tooltip = "When equipped press Z to reverse gravity. On death spawn a zone where gravity is reversed"
 metadata/_custom_type_script = "uid://d7dn4j8wjask"
