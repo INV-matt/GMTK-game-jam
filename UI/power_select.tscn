@@ -2,11 +2,10 @@
 
 [ext_resource type="Theme" uid="uid://diigp8dh8nst4" path="res://UI/UI.tres" id="1_0sgcx"]
 [ext_resource type="Script" uid="uid://coqao33cnc1ek" path="res://UI/power_select.gd" id="1_qt35a"]
+[ext_resource type="Texture2D" uid="uid://k2i7b2lpwnru" path="res://Powers/Icons/EmptyIcon.png" id="3_51ka4"]
 [ext_resource type="PackedScene" uid="uid://cvkn3sj7itjql" path="res://UI/btn_power.tscn" id="4_0sgcx"]
 [ext_resource type="Texture2D" uid="uid://dn3pu17wcxvfw" path="res://UI/Power_Hud.png" id="4_qt35a"]
 [ext_resource type="Texture2D" uid="uid://cvc5pxi81ghsw" path="res://UI/Text_Huds-Sheet.png" id="5_qt35a"]
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_0sgcx"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qt35a"]
 bg_color = Color(0.0352941, 0.0352941, 0.0431373, 1)
@@ -28,7 +27,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_0sgcx")
 script = ExtResource("1_qt35a")
-BlankSlot = SubResource("CompressedTexture2D_0sgcx")
+BlankSlot = ExtResource("3_51ka4")
 btn_proceed = NodePath("PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/selectPowers")
 scn_btn_power = ExtResource("4_0sgcx")
 label_Tooltip = NodePath("PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Box_Tooltip/MarginContainer/TooltipLabel")
