@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://b3ip2tsabj3dm"]
+[gd_scene load_steps=44 format=3 uid="uid://b3ip2tsabj3dm"]
 
 [ext_resource type="PackedScene" uid="uid://cnv1i1bs5daa0" path="res://Player/player.tscn" id="1_2w1kt"]
 [ext_resource type="Script" uid="uid://60ahfl7tx4bs" path="res://Main/GameManager.gd" id="1_rix8b"]
@@ -248,7 +248,7 @@ script = ExtResource("1_rix8b")
 HUD = NodePath("../HUD")
 UI_PowerSelect = NodePath("../PowerSelect")
 MinimumPowersLevel = 4
-MinimumOnDeathPowersLevel = 9
+MinimumOnDeathPowersLevel = 5
 PowersList = Array[ExtResource("16_wbdht")]([ExtResource("21_xi84t"), ExtResource("25_4uyae"), ExtResource("18_xi84t"), ExtResource("19_j4inf"), ExtResource("17_puekb"), ExtResource("24_qded6"), ExtResource("26_21byg"), ExtResource("27_pcl83"), ExtResource("28_2jdh1"), ExtResource("29_bq3qr")])
 PossiblePowersForLevel = Dictionary[int, PackedStringArray]({
 0: PackedStringArray("ALL"),

@@ -38,10 +38,9 @@ func _process(_delta) -> void:
   if GM.CanShowOnDeathPowers():
     btn_proceed.disabled = !(slotsOccupied[0] && slotsOccupied[1])
   else: btn_proceed.disabled = !slotsOccupied[0]
+  
   $TutorialText.visible = Globals._currentLevel == 4
   
-  btn_proceed.disabled = !slotsOccupied[0]
-
 
 func _selectPower(idx: int):
   var wrapper = toDisplay[idx]
