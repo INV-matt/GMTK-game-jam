@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=4 uid="uid://cc7vdteo3xij6"]
+[gd_scene load_steps=5 format=4 uid="uid://cc7vdteo3xij6"]
 
 [ext_resource type="TileSet" uid="uid://bxgijqt2hjkdu" path="res://Levels/tileset.tres" id="1_ftfcu"]
 [ext_resource type="PackedScene" uid="uid://crxkprqfmatbv" path="res://Hazards/hazard.tscn" id="2_e78ah"]
 [ext_resource type="PackedScene" uid="uid://cqkmli6tk17on" path="res://Cookie/next_level_progress.tscn" id="3_nsqb1"]
+[ext_resource type="Theme" uid="uid://diigp8dh8nst4" path="res://UI/UI.tres" id="4_t60mx"]
 
 [node name="level_4" type="Node2D"]
 
@@ -32,3 +33,11 @@ scale = Vector2(0.282031, 3.69078)
 
 [node name="next_level_progress" parent="." instance=ExtResource("3_nsqb1")]
 position = Vector2(464, -448)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = -32.0
+offset_top = -72.0
+offset_right = 72.0
+offset_bottom = -32.0
+theme = ExtResource("4_t60mx")
+text = "TAB to toggle scouting mode"

@@ -9,4 +9,5 @@ script = ExtResource("1_qyop6")
 name = "Mini"
 power = ExtResource("1_t2jt5")
 texture = ExtResource("2_t2jt5")
+tooltip = "When equipped makes you smaller. On death spawns a mini pellet that when picked up make you smaller for a limited amount of time"
 metadata/_custom_type_script = "uid://d7dn4j8wjask"

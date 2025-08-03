@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=4 uid="uid://wga2vjnx5wwx"]
+[gd_scene load_steps=4 format=4 uid="uid://wga2vjnx5wwx"]
 
 [ext_resource type="TileSet" uid="uid://bxgijqt2hjkdu" path="res://Levels/tileset.tres" id="1_3mhv4"]
 [ext_resource type="PackedScene" uid="uid://cqkmli6tk17on" path="res://Cookie/next_level_progress.tscn" id="3_3mhv4"]
+[ext_resource type="Theme" uid="uid://diigp8dh8nst4" path="res://UI/UI.tres" id="3_rf6l5"]
 
 [node name="level_1" type="Node2D"]
 
@@ -12,3 +13,19 @@ tile_set = ExtResource("1_3mhv4")
 
 [node name="next_level_progress" parent="." instance=ExtResource("3_3mhv4")]
 position = Vector2(-16, -200)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 16.0
+offset_top = -16.0
+offset_right = 80.0
+offset_bottom = 24.0
+theme = ExtResource("3_rf6l5")
+text = "WASD to move"
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="."]
+offset_left = 88.0
+offset_top = -160.0
+offset_right = 176.0
+offset_bottom = -120.0
+theme = ExtResource("3_rf6l5")
+text = "SPACE to jump"
