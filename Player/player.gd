@@ -87,6 +87,10 @@ func _physics_process(delta: float) -> void:
   
   if is_on_floor():
     _jumpCount = 0
+    
+    if _lastOnFloor > 0 :
+      landSfx.playRandom()
+    
     _lastOnFloor = 0
   
   if Input.is_action_just_pressed("pl_scout"): _handleScout()
@@ -111,7 +115,9 @@ func _apply_powers_ondeath():
       i.apply_power_death()
 #endregion
 
-@onready var stepSfx: RandomizedAuiodStreamPlayer = $RandomizedPlayer
+@onready var stepSfx: RandomizedAuiodStreamPlayer = $stepSound
+@onready var jumpSfx: RandomizedAuiodStreamPlayer = $jumpSound
+@onready var landSfx: RandomizedAuiodStreamPlayer = $landSound
 
 #region HORIZONTAL MOVEMENT
 func _handleHorizontalMovement(delta) -> void:
@@ -157,6 +163,7 @@ func _handleGravity(delta) -> void:
     _localGravity = _getCurrentGravity()
     
     if velocity.y < 0 and !_isClimbing:
+      jumpSfx.playRandom()
       _setAnimation("jump")
 
   if not is_on_floor():

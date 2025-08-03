@@ -16,9 +16,6 @@ func _getTrackByName(name: String) -> AudioStreamOggVorbis: # Shouldn't this ret
   return tracks[0]
 
 func playTrack(name: String):
-  return
-  
-  
   var track = _getTrackByName(name)
   
   stream2.stream = track
@@ -38,5 +35,5 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 
 func _ready() -> void:
   stream1.stream = _getTrackByName(startingTrack)
-  #stream1.playing = true
+  stream1.playing = true
   stream1.volume_db = 0
