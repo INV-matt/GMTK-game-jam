@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://rw2wes2fidtn"
+path="res://.godot/imported/SwordSlashSFX1.ogg-dc2ad9e6fbe4295664ce7f3cdc1bf5be.oggvorbisstr"
+
+[deps]
+
+source_file="res://Powers/Attack Power/SwordSlashSFX1.ogg"
+dest_files=["res://.godot/imported/SwordSlashSFX1.ogg-dc2ad9e6fbe4295664ce7f3cdc1bf5be.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -111,6 +111,8 @@ func _apply_powers_ondeath():
       i.apply_power_death()
 #endregion
 
+@onready var stepSfx: RandomizedAuiodStreamPlayer = $RandomizedPlayer
+
 #region HORIZONTAL MOVEMENT
 func _handleHorizontalMovement(delta) -> void:
   # _direction = Input.get_axis("pl_left", "pl_right")
@@ -128,6 +130,8 @@ func _handleHorizontalMovement(delta) -> void:
   if is_on_floor() and !_isClimbing:
     if _direction:
       _setAnimation("walk")
+      if stepSfx.finishedPlaying :
+        stepSfx.playRandom()
     else:
       _setAnimation("idle")
   

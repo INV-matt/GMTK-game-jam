@@ -1,7 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://bcwjmekm2lobt"]
+[gd_scene load_steps=4 format=3 uid="uid://bcwjmekm2lobt"]
 
 [ext_resource type="Script" uid="uid://nggl1tmdcpsu" path="res://Powers/Attack Power/attack_power.gd" id="1_8i07b"]
+[ext_resource type="PackedScene" uid="uid://d20bhya7suka7" path="res://Randomized Sfx Player/randomized_player.tscn" id="2_pvts4"]
+[ext_resource type="AudioStream" uid="uid://rw2wes2fidtn" path="res://Powers/Attack Power/SwordSlashSFX1.ogg" id="3_u10kf"]
 
 [node name="attack_power" type="Node2D" groups=["power"]]
 script = ExtResource("1_8i07b")
 PowerName = "Attack Power"
+
+[node name="RandomizedPlayer" parent="." instance=ExtResource("2_pvts4")]
+PossibleStreams = Array[AudioStreamOggVorbis]([ExtResource("3_u10kf")])
