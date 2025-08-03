@@ -9,5 +9,5 @@ script = ExtResource("2_hw03x")
 name = "Float"
 power = ExtResource("1_bwk12")
 texture = ExtResource("3_r61rx")
-tooltip = "When equipped you're more floaty. On death spawns a surfboard that you can fly on for a limited amount of time"
+tooltips = Array[String](["When equipped you're more floaty", "On death spawns a surfboard that you can fly on for a limited amount of time"])
 metadata/_custom_type_script = "uid://d7dn4j8wjask"

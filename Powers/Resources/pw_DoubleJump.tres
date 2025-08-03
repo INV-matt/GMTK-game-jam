@@ -9,5 +9,5 @@ script = ExtResource("2_khq1e")
 name = "DoubleJump"
 power = ExtResource("1_0yryj")
 texture = ExtResource("3_0yryj")
-tooltip = "When equipped you have a double jump. On death spawns a trampoline"
+tooltips = Array[String](["When equipped you have a double jump", " On death spawns a trampoline"])
 metadata/_custom_type_script = "uid://d7dn4j8wjask"

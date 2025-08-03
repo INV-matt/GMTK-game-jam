@@ -9,5 +9,5 @@ script = ExtResource("2_1p25j")
 name = "SuperSpeed"
 power = ExtResource("1_1sulv")
 texture = ExtResource("3_4121r")
-tooltip = "When equipped your speed is doubled. On death spawn a zone that slows down enemies"
+tooltips = Array[String](["When equipped your speed is doubled", "On death spawn a zone that slows down enemies"])
 metadata/_custom_type_script = "uid://d7dn4j8wjask"

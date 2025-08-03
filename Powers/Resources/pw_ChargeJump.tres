@@ -9,5 +9,5 @@ script = ExtResource("1_u5a1d")
 name = "ChargeJump"
 power = ExtResource("1_al3lw")
 texture = ExtResource("2_al3lw")
-tooltip = "When active hold down jump to charge up, release to jump. On death spawns a zone where you jump higher"
+tooltips = Array[String](["When active hold down jump to charge up, release to jump ", "On death spawns a zone where you jump higher"])
 metadata/_custom_type_script = "uid://d7dn4j8wjask"
