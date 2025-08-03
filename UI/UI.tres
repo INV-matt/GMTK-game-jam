@@ -1,6 +1,8 @@
 [gd_resource type="Theme" format=3 uid="uid://diigp8dh8nst4"]
 
 [resource]
+GridContainer/constants/h_separation = 200
+GridContainer/constants/v_separation = 200
 HBoxContainer/constants/separation = 80
-RichTextLabel/font_sizes/normal_font_size = 11
+RichTextLabel/font_sizes/normal_font_size = 15
 VBoxContainer/constants/separation = 48
