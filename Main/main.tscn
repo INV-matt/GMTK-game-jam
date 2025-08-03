@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://b3ip2tsabj3dm"]
+[gd_scene load_steps=47 format=3 uid="uid://b3ip2tsabj3dm"]
 
 [ext_resource type="PackedScene" uid="uid://cnv1i1bs5daa0" path="res://Player/player.tscn" id="1_2w1kt"]
 [ext_resource type="Script" uid="uid://60ahfl7tx4bs" path="res://Main/GameManager.gd" id="1_rix8b"]
@@ -41,6 +41,8 @@
 [ext_resource type="Resource" uid="uid://wryci5qd3a0w" path="res://Powers/Resources/pw_Mini.tres" id="28_2jdh1"]
 [ext_resource type="Resource" uid="uid://ds13mjdq0dhwn" path="res://Powers/Resources/pw_SuperSpeed.tres" id="29_bq3qr"]
 [ext_resource type="PackedScene" uid="uid://b504u5l0n5yk8" path="res://Levels/level_12.tscn" id="29_nigqn"]
+[ext_resource type="PackedScene" uid="uid://cws7vrihfwi1q" path="res://Levels/level_13.tscn" id="30_vrhvj"]
+[ext_resource type="PackedScene" uid="uid://dnssr6py440jr" path="res://Levels/level_14.tscn" id="31_ahvxl"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qac2q"]
 atlas = ExtResource("8_rj11h")
@@ -280,7 +282,7 @@ stretch_mode = 1
 
 [node name="LevelManager" parent="." instance=ExtResource("12_f3gf5")]
 unique_name_in_owner = true
-levels = Array[PackedScene]([ExtResource("18_2jdh1"), ExtResource("19_bq3qr"), ExtResource("20_7k2ad"), ExtResource("21_28m4a"), ExtResource("22_bq3qr"), ExtResource("23_7k2ad"), ExtResource("23_bm08s"), ExtResource("24_8dfe0"), ExtResource("25_gbm1g"), ExtResource("26_bm08s"), ExtResource("27_8dfe0"), ExtResource("29_nigqn")])
+levels = Array[PackedScene]([ExtResource("18_2jdh1"), ExtResource("19_bq3qr"), ExtResource("20_7k2ad"), ExtResource("21_28m4a"), ExtResource("22_bq3qr"), ExtResource("23_7k2ad"), ExtResource("23_bm08s"), ExtResource("24_8dfe0"), ExtResource("25_gbm1g"), ExtResource("26_bm08s"), ExtResource("27_8dfe0"), ExtResource("29_nigqn"), ExtResource("30_vrhvj"), ExtResource("31_ahvxl")])
 
 [node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("HUD", "UI_PowerSelect")]
 unique_name_in_owner = true
@@ -303,5 +305,7 @@ PossiblePowersForLevel = Dictionary[int, PackedStringArray]({
 8: PackedStringArray("Float"),
 9: PackedStringArray("Climb"),
 10: PackedStringArray("Attack", "Climb"),
-11: PackedStringArray("ALL")
+11: PackedStringArray("ALL"),
+12: PackedStringArray("ALL"),
+13: PackedStringArray("ALL")
 })

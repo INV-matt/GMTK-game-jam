@@ -4,6 +4,10 @@ var active = false
 var player_offset = Vector2.ZERO
 var player = Globals.getPlayer()
 
+func _ready() -> void:
+  SignalBus.player_death.connect(_on_player_death)
+  SignalBus.next_level.connect(_on_next_lvl)
+
 func _on_grab_area_body_entered(body: Player) -> void:
   player_offset = body.global_position - global_position
   active = true
@@ -11,7 +15,7 @@ func _on_grab_area_body_entered(body: Player) -> void:
   $Timer.start()
 
 func _process(delta: float) -> void:
-  if !active :
+  if !active:
     return
     
   player._setAnimation("idle")
@@ -22,9 +26,9 @@ func _process(delta: float) -> void:
   var dx = Input.get_axis("pl_left", "pl_right")
   var dy = Input.get_axis("pl_up", "pl_down")
   
-  if dx > 0 :
+  if dx > 0:
     $SurfBoardPlatform.flip_h = true
-  elif dx < 0 :
+  elif dx < 0:
     $SurfBoardPlatform.flip_h = false
   
   var dir = Vector2(dx, dy).normalized() * player.Speed
@@ -34,4 +38,11 @@ func _process(delta: float) -> void:
   move_and_slide()
 
 func _on_timer_timeout() -> void:
+  queue_free()
+
+func _on_player_death() -> void:
+  if active: queue_free()
+  active = false
+
+func _on_next_lvl() -> void:
   queue_free()
