@@ -27,7 +27,11 @@ func UpdatePowers() -> void:
     
   PowerContainer.visible = true
   textures_Powers[0].texture = GM.ChosenPowers[0].texture # ERROR Null ChosenPower
-  if GM.CanShowOnDeathPowers(): textures_Powers[1].texture = GM.ChosenPowers[1].texture
+  if GM.CanShowOnDeathPowers():
+    textures_Powers[1].texture = GM.ChosenPowers[1].texture
+    textures_Powers[1].visible = true
+  else:
+    textures_Powers[1].visible = false
 
 
 func _separateDigits(value: int) -> Array:

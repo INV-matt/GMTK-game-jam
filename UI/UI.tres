@@ -4,8 +4,6 @@
 
 [resource]
 Button/fonts/font = ExtResource("1_28aw6")
-GridContainer/constants/h_separation = 200
-GridContainer/constants/v_separation = 200
 HBoxContainer/constants/separation = 80
 Label/fonts/font = ExtResource("1_28aw6")
 RichTextLabel/font_sizes/normal_font_size = 15

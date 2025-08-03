@@ -9,5 +9,5 @@ script = ExtResource("2_ceqjn")
 name = "Climb"
 power = ExtResource("1_jlrg5")
 texture = ExtResource("3_jlrg5")
-tooltip = "When active lets you attach to walls. On death spawns a rope that you can climb"
+tooltips = Array[String](["When active lets you attach to walls", "On death spawns a rope that you can climb"])
 metadata/_custom_type_script = "uid://d7dn4j8wjask"

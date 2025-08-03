@@ -122,7 +122,9 @@ func Populate():
     (btn.get_child(0) as RichTextLabel).text = "[center]" + toDisplay[i].name + "[/center]"
     btn.pressed.connect(_selectPower.bind(i))
     btn.mouse_entered.connect(func():
-      label_Tooltip.text = toDisplay[i].tooltip
+      var s = toDisplay[i].tooltips[0]
+      if GM.CanShowOnDeathPowers(): s += '\n' + toDisplay[i].tooltips[1]
+      label_Tooltip.text = s
     )
 
 
@@ -141,3 +143,16 @@ func Populate():
   #(slotsBtn[0].get_child(0) as RichTextLabel).text = "[center]Active ability: None[/center]"
   #(slotsBtn[1].get_child(0) as RichTextLabel).text = "[center]On death ability: None[/center]"
   #slotsBtn[1].visible = GM.CanShowOnDeathPowers()
+
+
+#! WARNING : HARDCODED VALUES
+func CalculateSep() -> void:
+  var margin_box: MarginContainer = %margin_grid
+  var container: GridContainer = %availablePowers
+  var newSize = margin_box.size - Vector2(40, 48)
+  var cols: int = container.columns
+  var rows: int = int(container.get_child_count() / cols)
+  var h_sep = (newSize.x / (cols)) - 96
+  var v_sep = (newSize.y / (rows)) - 96
+  container.add_theme_constant_override("h_separation", h_sep)
+  container.add_theme_constant_override("h_separation", v_sep)
