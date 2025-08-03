@@ -15,11 +15,11 @@ var ChosenPowers: Array[PowerWrapper]
 var PassivePower: Power
 var OnDeathPower: Power
 var PL: Player
-var _livesUsed = 1
+var _livesUsed = 0
 
 func getLivesUsed() -> int: return _livesUsed
 func setLivesUsed(amt: int): _livesUsed = amt; HUD.UpdateLives()
-func resetLivesUsed(): setLivesUsed(1)
+func resetLivesUsed(): setLivesUsed(0)
 
 func _ready() -> void:
   PL = Globals.getPlayer() as Player
