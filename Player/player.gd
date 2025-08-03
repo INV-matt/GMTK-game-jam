@@ -76,7 +76,18 @@ func _ready():
   _baseSpeed = Speed
   _baseAccel = Acceleration
 
+@onready var killProgress: TextureProgressBar = $killProgress
+
 func _physics_process(delta: float) -> void:
+  if Input.is_action_pressed("pl_die") :
+    killProgress.value += 1
+  else :
+    killProgress.value = 0
+  
+  if killProgress.value >= 100 :
+    killProgress.value = 0
+    $HealthComponent.doDamage($HealthComponent.health)
+  
   _frameSinceJumpPressed += 1
   
   up_direction = Vector2(0, -GlobalGravityDir)

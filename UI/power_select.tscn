@@ -117,6 +117,7 @@ layout_mode = 2
 stretch_mode = 4
 
 [node name="powerName" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/selectedPowers/passiveActive"]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -0.416667
@@ -138,6 +139,7 @@ layout_mode = 2
 stretch_mode = 4
 
 [node name="powerName" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/selectedPowers/onDeathActive"]
+visible = false
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0

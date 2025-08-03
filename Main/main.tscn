@@ -161,6 +161,46 @@ size_flags_vertical = 4
 texture = ExtResource("9_8dfe0")
 stretch_mode = 4
 
+[node name="buttonTips" type="Control" parent="HUD"]
+layout_mode = 3
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -104.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 8
+theme = ExtResource("5_k3v36")
+
+[node name="reset" type="RichTextLabel" parent="HUD/buttonTips"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 72.0
+offset_right = -576.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("5_k3v36")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[center]R to reset level"
+
+[node name="kys" type="RichTextLabel" parent="HUD/buttonTips"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 576.0
+offset_top = 72.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("5_k3v36")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[center]Hold X to kill yourself"
+
 [node name="PowerSelect" type="CanvasLayer" parent="." node_paths=PackedStringArray("powerSelect")]
 process_mode = 2
 script = ExtResource("8_uhr2j")

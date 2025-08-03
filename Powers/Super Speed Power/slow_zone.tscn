@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uclty"]
 size = Vector2(192, 10)
 
-[node name="slow_zone" type="Area2D"]
+[node name="slow_zone" type="Area2D" groups=["ondeatheffect"]]
 collision_layer = 0
 collision_mask = 4
 script = ExtResource("1_4bsrs")

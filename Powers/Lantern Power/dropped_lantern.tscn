@@ -6,7 +6,7 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a2fvd"]
 
-[node name="dropped_lantern" type="PointLight2D"]
+[node name="dropped_lantern" type="PointLight2D" groups=["ondeatheffect"]]
 texture = ExtResource("1_gssh5")
 script = ExtResource("2_a2fvd")
 
