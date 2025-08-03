@@ -11,12 +11,12 @@ func _ready() -> void:
   connect("body_exited", func(x: Player): player = x; canPlayerClimb = false)
 
 func _process(delta: float) -> void:
-  if not player :
+  if not player:
     return
     
   player._isClimbing = canPlayerClimb
     
-  if canPlayerClimb :
+  if canPlayerClimb:
     player._setAnimation("climb")
     player.GlobalGravityMult = 0
     player.velocity.y = 0
@@ -24,11 +24,14 @@ func _process(delta: float) -> void:
     var dy = Input.get_axis("pl_up", "pl_down")
     attachHeight += ClimbSpeed * dy
     
-    for i in player.get_children() :
-      if i is AnimatedSprite2D :
+    for i in player.get_children():
+      if i is AnimatedSprite2D:
         (i as AnimatedSprite2D).speed_scale = dy
         break
     
     player.global_position.y = attachHeight
-  else :
+    # var ray = (Globals.getPlayer().Raycast as RayCast2D)
+    # ray.target_position = Vector2(0, 16 * dy)
+    # if !ray.is_colliding():
+  else:
     player.GlobalGravityMult = 1

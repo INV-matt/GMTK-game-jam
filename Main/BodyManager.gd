@@ -86,7 +86,7 @@ var HasBeenLoaded = false
 
 func _ready() -> void:
   # Disable if in main menu
-  if !get_tree().current_scene or get_tree().current_scene.scene_file_path in Globals.ScenesWhereToNotLoad :
+  if !get_tree().current_scene or get_tree().current_scene.scene_file_path in Globals.ScenesWhereToNotLoad:
     return
     
   HasBeenLoaded = true
@@ -95,7 +95,7 @@ func _ready() -> void:
 
 # Attempt to load if in the correct scene
 func _process(delta: float) -> void:
-  if HasBeenLoaded :
+  if HasBeenLoaded:
     return
   
   _ready()

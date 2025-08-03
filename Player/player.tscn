@@ -345,10 +345,11 @@ animations = [{
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_75muk"]
 radius = 7.0
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("Raycast")]
 collision_layer = 2
 collision_mask = 17
 script = ExtResource("1_dynme")
+Raycast = NodePath("RayCast2D")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_6pogt")
@@ -380,5 +381,8 @@ PossibleStreams = Array[AudioStreamOggVorbis]([ExtResource("12_p5o4e"), ExtResou
 
 [node name="landSound" parent="." instance=ExtResource("9_apopc")]
 PossibleStreams = Array[AudioStreamOggVorbis]([ExtResource("14_gu6f8")])
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+collision_mask = 9
 
 [connection signal="animation_finished" from="Sprite2D" to="." method="_on_sprite_2d_animation_finished"]

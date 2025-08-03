@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://4l30djvs1qv2"]
 
-[ext_resource type="Script" uid="uid://ufu41nfunyp" path="res://Powers/Attack Power/damage_area.gd" id="1_jl1yk"]
+[ext_resource type="Script" path="res://Powers/Attack Power/damage_area.gd" id="1_jl1yk"]
 [ext_resource type="Texture2D" uid="uid://c06o4njjjdg4e" path="res://Powers/Attack Power/Attack_Death_Effect.png" id="2_qryoa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_as40c"]
@@ -10,6 +10,7 @@ size = Vector2(128, 16)
 collision_layer = 0
 collision_mask = 4
 script = ExtResource("1_jl1yk")
+Damage = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -8)

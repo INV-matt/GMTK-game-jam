@@ -42,6 +42,7 @@ var movementLocked = false
 
 @export var DoNotInterrupt = ["swing"]
 var _animFinished = false
+@export var Raycast: RayCast2D
 
 func _setAnimation(name: String):
   if $Sprite2D.animation in DoNotInterrupt and !_animFinished:
@@ -88,7 +89,7 @@ func _physics_process(delta: float) -> void:
   if is_on_floor():
     _jumpCount = 0
     
-    if _lastOnFloor > 0 :
+    if _lastOnFloor > 0:
       landSfx.playRandom()
     
     _lastOnFloor = 0
@@ -136,7 +137,7 @@ func _handleHorizontalMovement(delta) -> void:
   if is_on_floor() and !_isClimbing:
     if _direction:
       _setAnimation("walk")
-      if stepSfx.finishedPlaying :
+      if stepSfx.finishedPlaying:
         stepSfx.playRandom()
     else:
       _setAnimation("idle")
