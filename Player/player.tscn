@@ -385,6 +385,7 @@ PossibleStreams = Array[AudioStreamOggVorbis]([ExtResource("14_gu6f8")])
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 collision_mask = 9
+
 [node name="killProgress" type="TextureProgressBar" parent="."]
 offset_left = -16.0
 offset_top = -48.0

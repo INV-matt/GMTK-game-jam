@@ -280,7 +280,7 @@ stretch_mode = 1
 
 [node name="LevelManager" parent="." instance=ExtResource("12_f3gf5")]
 unique_name_in_owner = true
-levels = Array[PackedScene]([ExtResource("18_2jdh1"), ExtResource("29_nigqn"), ExtResource("19_bq3qr"), ExtResource("20_7k2ad"), ExtResource("21_28m4a"), ExtResource("22_bq3qr"), ExtResource("23_7k2ad"), ExtResource("23_bm08s"), ExtResource("24_8dfe0"), ExtResource("25_gbm1g"), ExtResource("26_bm08s"), ExtResource("27_8dfe0")])
+levels = Array[PackedScene]([ExtResource("18_2jdh1"), ExtResource("19_bq3qr"), ExtResource("20_7k2ad"), ExtResource("21_28m4a"), ExtResource("22_bq3qr"), ExtResource("23_7k2ad"), ExtResource("23_bm08s"), ExtResource("24_8dfe0"), ExtResource("25_gbm1g"), ExtResource("26_bm08s"), ExtResource("27_8dfe0"), ExtResource("29_nigqn")])
 
 [node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("HUD", "UI_PowerSelect")]
 unique_name_in_owner = true
@@ -288,8 +288,8 @@ process_mode = 3
 script = ExtResource("1_rix8b")
 HUD = NodePath("../HUD")
 UI_PowerSelect = NodePath("../PowerSelect")
-MinimumPowersLevel = 1
-MinimumOnDeathPowersLevel = 1
+MinimumPowersLevel = 4
+MinimumOnDeathPowersLevel = 9
 PowersList = Array[ExtResource("16_wbdht")]([ExtResource("21_xi84t"), ExtResource("25_4uyae"), ExtResource("18_xi84t"), ExtResource("19_j4inf"), ExtResource("17_puekb"), ExtResource("24_qded6"), ExtResource("26_21byg"), ExtResource("27_pcl83"), ExtResource("28_2jdh1"), ExtResource("29_bq3qr")])
 PossiblePowersForLevel = Dictionary[int, PackedStringArray]({
 0: PackedStringArray("ALL"),
