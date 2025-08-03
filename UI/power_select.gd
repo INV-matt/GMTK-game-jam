@@ -67,7 +67,6 @@ func _unselectPower(idx: int):
   else:
     (btn.get_child(0) as RichTextLabel).text = "[center]On death ability: None[/center]"
   return
-  
 
 func _on_select_powers_pressed() -> void:
   for b in slotsOccupied:
