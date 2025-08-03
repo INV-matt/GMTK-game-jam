@@ -25,6 +25,8 @@ func _power_death(p: Player):
 
 var trailScene = preload("res://Powers/Dash Power/dash_trail.tscn")
 
+@onready var dashSound: RandomizedAuiodStreamPlayer = $RandomizedPlayer
+
 func _process(delta: float) -> void:
   if not isReady:
     return
@@ -52,7 +54,7 @@ func _process(delta: float) -> void:
   var dy = Input.get_axis("pl_up", "pl_down")
   
   if canDash and Input.is_action_pressed("pl_dash") and abs(dx) + abs(dy) > 0:
-    
+    dashSound.playRandom()
     dir = Vector2(dx, dy).normalized()
     
     length = Length

@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bxwgmaaymui16"
+path="res://.godot/imported/Yoink SFX 1.ogg-8ba4ee23c3bc8a915a7f1058b91032dd.oggvorbisstr"
+
+[deps]
+
+source_file="res://Player/Sfx/Yoink SFX 1.ogg"
+dest_files=["res://.godot/imported/Yoink SFX 1.ogg-8ba4ee23c3bc8a915a7f1058b91032dd.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

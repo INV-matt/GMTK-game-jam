@@ -1,7 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://sgp1mlwgotkw"]
+[gd_scene load_steps=5 format=3 uid="uid://sgp1mlwgotkw"]
 
 [ext_resource type="Script" uid="uid://bm48sm6w3ijss" path="res://Powers/Dash Power/dash_power.gd" id="1_mh6kn"]
+[ext_resource type="PackedScene" uid="uid://d20bhya7suka7" path="res://Randomized Sfx Player/randomized_player.tscn" id="2_mbnya"]
+[ext_resource type="AudioStream" uid="uid://d1kpmtyjgmd2m" path="res://Powers/Dash Power/WooshSFX1.ogg" id="3_0wix7"]
+[ext_resource type="AudioStream" uid="uid://bsij8813151dv" path="res://Powers/Dash Power/WooshSFX2.ogg" id="4_mqbvy"]
 
 [node name="dash" type="Node2D" groups=["power"]]
 script = ExtResource("1_mh6kn")
 PowerName = "Dash Power"
+
+[node name="RandomizedPlayer" parent="." instance=ExtResource("2_mbnya")]
+PossibleStreams = Array[AudioStreamOggVorbis]([ExtResource("3_0wix7"), ExtResource("4_mqbvy")])

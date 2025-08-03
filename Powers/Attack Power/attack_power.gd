@@ -29,6 +29,8 @@ func _dealDamageToEnemy(enemy: Enemy):
     if i is HealthComponent:
       i.doDamage(AtkDamage)
 
+@onready var swingSfx: RandomizedAuiodStreamPlayer = $RandomizedPlayer
+
 func _physics_process(delta: float) -> void:
   player = Globals.getPlayer()
   var dx = Input.get_axis("pl_left", "pl_right")
@@ -46,6 +48,7 @@ func _physics_process(delta: float) -> void:
   cooldown = MaxCooldown
   
   player._setAnimation("swing")
+  swingSfx.playRandom()
   
   var time = Timer.new()
   

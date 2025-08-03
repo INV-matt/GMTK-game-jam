@@ -1,6 +1,11 @@
-[gd_resource type="Theme" format=3 uid="uid://diigp8dh8nst4"]
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://diigp8dh8nst4"]
+
+[ext_resource type="FontFile" uid="uid://dqw7a87orxmqa" path="res://alagard.ttf" id="1_28aw6"]
 
 [resource]
+Button/fonts/font = ExtResource("1_28aw6")
 HBoxContainer/constants/separation = 80
+Label/fonts/font = ExtResource("1_28aw6")
 RichTextLabel/font_sizes/normal_font_size = 15
+RichTextLabel/fonts/normal_font = ExtResource("1_28aw6")
 VBoxContainer/constants/separation = 48

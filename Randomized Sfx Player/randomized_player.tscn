@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://d20bhya7suka7"]
+
+[ext_resource type="Script" uid="uid://b250ipmwubr36" path="res://Randomized Sfx Player/randomized_player.gd" id="1_sl3go"]
+
+[node name="RandomizedPlayer" type="AudioStreamPlayer2D"]
+script = ExtResource("1_sl3go")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

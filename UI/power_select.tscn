@@ -188,10 +188,12 @@ vertical_alignment = 1
 
 [node name="TutorialText" type="RichTextLabel" parent="."]
 layout_mode = 2
-offset_left = 144.0
+offset_left = 160.0
 offset_top = 24.0
-offset_right = 256.0
+offset_right = 264.0
 offset_bottom = 624.0
+grow_horizontal = 2
+grow_vertical = 2
 theme = ExtResource("1_0sgcx")
 theme_override_font_sizes/normal_font_size = 15
 text = "Click on powers here to select them
