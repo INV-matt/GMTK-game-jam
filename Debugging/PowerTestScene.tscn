@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://ck81r3hikcayl"]
+[gd_scene load_steps=19 format=3 uid="uid://ck81r3hikcayl"]
 
 [ext_resource type="PackedScene" uid="uid://cnv1i1bs5daa0" path="res://Player/player.tscn" id="1_biqb7"]
 [ext_resource type="Script" uid="uid://c6vhf65b77vw7" path="res://Debugging/power_test_scene.gd" id="1_rmu8i"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://crxkprqfmatbv" path="res://Hazards/hazard.tscn" id="9_4oqgs"]
 [ext_resource type="PackedScene" uid="uid://cbo7l02al8h0e" path="res://Powers/Gravity Control Power/gravity_control_power.tscn" id="10_7cfra"]
 [ext_resource type="PackedScene" uid="uid://cnee6r7i5eftq" path="res://Powers/Charge Jump Power/charge_jump_power.tscn" id="11_tt4ml"]
+[ext_resource type="PackedScene" uid="uid://cnav47qi1edyr" path="res://Invisible Block/invisible_block.tscn" id="15_wswx0"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_rmu8i"]
 distance = -32.0
@@ -57,7 +58,7 @@ shape = SubResource("RectangleShape2D_1mqgf")
 position = Vector2(-544, -8)
 
 [node name="hazard" parent="." instance=ExtResource("9_4oqgs")]
-position = Vector2(-136, 16)
+position = Vector2(-232, 16)
 
 [node name="light_switch" type="Area2D" parent="."]
 position = Vector2(0, -60)
@@ -78,5 +79,56 @@ text = "Toggle light"
 [node name="lightsout" type="CanvasModulate" parent="."]
 visible = false
 color = Color(0, 0, 0, 1)
+
+[node name="invisibleBlock" parent="." instance=ExtResource("15_wswx0")]
+position = Vector2(-80, -40)
+
+[node name="invisibleBlock2" parent="." instance=ExtResource("15_wswx0")]
+position = Vector2(-96, -56)
+
+[node name="invisibleBlock3" parent="." instance=ExtResource("15_wswx0")]
+position = Vector2(-56, -104)
+
+[node name="invisibleBlock4" parent="." instance=ExtResource("15_wswx0")]
+position = Vector2(-40, -120)
+
+[node name="invisibleBlock5" parent="." instance=ExtResource("15_wswx0")]
+position = Vector2(-24, -136)
+
+[node name="invisibleBlock6" parent="." instance=ExtResource("15_wswx0")]
+position = Vector2(40, -136)
+
+[node name="invisibleBlock7" parent="." instance=ExtResource("15_wswx0")]
+position = Vector2(56, -136)
+
+[node name="invisibleBlock8" parent="." instance=ExtResource("15_wswx0")]
+position = Vector2(72, -136)
+
+[node name="invisibleBlock9" parent="." instance=ExtResource("15_wswx0")]
+position = Vector2(88, -136)
+
+[node name="invisibleBlock10" parent="." instance=ExtResource("15_wswx0")]
+position = Vector2(104, -136)
+
+[node name="invisibleBlock11" parent="." instance=ExtResource("15_wswx0")]
+position = Vector2(120, -136)
+
+[node name="invisibleBlock12" parent="." instance=ExtResource("15_wswx0")]
+position = Vector2(136, -136)
+
+[node name="invisibleBlock13" parent="." instance=ExtResource("15_wswx0")]
+position = Vector2(152, -136)
+
+[node name="invisibleBlock14" parent="." instance=ExtResource("15_wswx0")]
+position = Vector2(168, -136)
+
+[node name="invisibleBlock15" parent="." instance=ExtResource("15_wswx0")]
+position = Vector2(184, -136)
+
+[node name="invisibleBlock16" parent="." instance=ExtResource("15_wswx0")]
+position = Vector2(200, -136)
+
+[node name="invisibleBlock17" parent="." instance=ExtResource("15_wswx0")]
+position = Vector2(216, -136)
 
 [connection signal="body_entered" from="light_switch" to="." method="_on_light_switch_body_entered"]

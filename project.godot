@@ -34,6 +34,7 @@ levelcontainer=""
 bodies=""
 ondeatheffect=""
 enemy=""
+revealblocks=""
 
 [input]
 
